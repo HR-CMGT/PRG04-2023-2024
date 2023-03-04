@@ -30,9 +30,9 @@ Je leert de setup van een modern web development project met behulp van [Parcel]
 
 | Les | OOP Theorie ochtend | Game Theorie middag | 
 |------|---------|----------|
-| 1 | Classes en instances. Class diagram. | Werkomgeving met Excalibur. Endless runner. | 
-| 2 | Composition en Encapsulation | Shark en array van Fishes. Vector en collision. Spawning and removing objects. | 
-| 3 | Composition en Encapsulation | Spawning en removing. Object pool. Physics toevoegen. |
+| 1 | Typescript. Classes en instances. Class diagram. | Werkomgeving met Excalibur. Werken met modules en `import`. Fish aquarium vullen. | 
+| 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Vector en collision. Fish onclick. | 
+| 3 | Composition en Encapsulation | Spawning and removing bullets. Object pool. Physics toevoegen. |
 | 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. |
 | 6 | Typescript tips en truuks | [Game op Arcade Kast plaatsen](https://github.com/HR-CMGT/PRG04-2021-2022-controller) | 
 | 7 | Game development | Verschillende game mechanics en systems |
@@ -53,9 +53,18 @@ Je leert de setup van een modern web development project met behulp van [Parcel]
 
 ## Startcode
 
-- [Voorbeeld project 1: leeg startproject]()
-- [Voorbeeld project 2: Sprites laden, animeren en collisions]()
-- [Voorbeeld project 3: Physics toepassen]()
+- [Voorbeeld project 1: leeg startproject](./startcode/)
+- [Voorbeeld project 2: Classes, animatie, sound en collisions](./startcode-classes/)
+- [Voorbeeld project 3: Physics](./startcode-physics/)
+
+## Startcode gebruiken
+
+- Clone deze repository, of download de zip. Plaats de bestanden uit het gewenste project in een nieuwe map.
+- Open deze nieuwe map in Visual Studio Code. Open een terminal.
+- Typ `npm install` om excalibur, typescript en parcel te installeren.
+- Typ `npm start` om de live ontwikkelserver te starten.
+- Typ `ctrl-c` om de live ontwikkelserver te stoppen.
+- Typ `npm build` als je spel klaar is en je wil het naar github pages gaan uploaden. Maak de `docs` map vantevoren even leeg.
 
 <br>
 <br>
@@ -104,7 +113,9 @@ Je ontwikkelt in de `src` folder. Door in de terminal `npm  start` te typen star
 
 ## Links
 
+- [Excalibur](https://excaliburjs.com)
 - [Typescript](https://www.typescriptlang.org)
+- [Parcel](https://parceljs.org)
 - [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 - [Online Multiplayer met Socket.IO](https://socket.io) of [Lance](https://lance-gg.github.io)
