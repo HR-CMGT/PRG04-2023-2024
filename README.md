@@ -13,10 +13,12 @@ We leren Object Oriented Programming (OOP) omdat je dit in je carriere als devel
 
 [Excalibur](https://excaliburjs.com) is een object-oriented library is die gebruik maakt van typescript. Excalibur geeft je een makkelijke manier om te werken met:
 
-- Collision detection
-- Physics
-- Animaties
 - Besturing
+- Animatie
+- Collisions
+- Physics
+- Scenes en Camera
+- etc.
 
 ### Professioneel web development
 
@@ -30,13 +32,13 @@ Je leert de setup van een modern web development project met behulp van [Parcel]
 
 | Les | OOP Theorie ochtend | Game Theorie middag | 
 |------|---------|----------|
-| 1 | Typescript. Classes en instances. Class diagram. | Werkomgeving met Excalibur. Werken met modules en `import`. Fish aquarium vullen. | 
-| 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Vector en collision. Fish onclick. | 
+| 1 | Typescript. Classes en instances. Class diagram. | Werkomgeving met Excalibur en Parcel. Werken met modules en `import`. Pixel aquarium. | 
+| 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Vector en collision. Fish onclick. Keyboard input. | 
 | 3 | Composition en Encapsulation | Spawning and removing bullets. Object pool. Physics toevoegen. |
-| 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. |
-| 6 | Typescript tips en truuks | [Game op Arcade Kast plaatsen](https://github.com/HR-CMGT/PRG04-2021-2022-controller) | 
-| 7 | Game development | Verschillende game mechanics en systems |
-| 8 | Game development | Vraaggestuurd | 
+| 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes en Camera. |
+| 6 | Communicatie tussen classes | UI en Spritesheets | 
+| 7 | Object Oriented Game Design | Excalibur advanced topics |
+| 8 | Object Oriented Game Design | [Game op Arcade Kast plaatsen](https://github.com/HR-CMGT/PRG04-2021-2022-controller) | 
 
 
 
@@ -47,8 +49,7 @@ Je leert de setup van een modern web development project met behulp van [Parcel]
 ## Excalibur Basics
 
 - [Excalibur JS](https://excaliburjs.com)
-- [Actors](https://excaliburjs.com/docs/actors)
-- [Sprites](https://excaliburjs.com/docs/sprites)
+- [Actors](https://excaliburjs.com/docs/actors) en [Sprites](https://excaliburjs.com/docs/sprites)
 - [Physics](https://excaliburjs.com/docs/physics)
 
 ## Startcode
