@@ -34,9 +34,9 @@ Je leert de setup van een modern web development project met behulp van [Parcel]
 |------|---------|----------|
 | 1 | Typescript. Classes en instances. Class diagram. | Werkomgeving met Excalibur en Parcel. Resources laden en startknop gebruiken. Basis animatie met Actor en Vector. Pixel aquarium. | 
 | 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Vector en collision. Fish onclick. Keyboard input. | 
-| 3 | Composition en Encapsulation | Spawning and removing bullets. Object pool. Physics toevoegen. |
-| 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes en Camera. |
-| 6 | Communicatie tussen classes | UI en Spritesheets | 
+| 3 | Composition en Encapsulation | Spawning and removing bullets. Object pool. Physics toevoegen. Camera follow player. World and Screen coordinates. |
+| 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes. Tiling background. |
+| 6 | Communicatie tussen classes | UI en Spritesheets. | 
 | 7 | Object Oriented Game Design | Excalibur advanced topics |
 | 8 | Object Oriented Game Design | [Game op Arcade Kast plaatsen](https://github.com/HR-CMGT/arcade-game) | 
 
