@@ -32,7 +32,7 @@ Je leert de setup van een modern web development project met behulp van [Parcel]
 
 | Les | OOP Theorie ochtend | Game Theorie middag | 
 |------|---------|----------|
-| 1 | Typescript. Classes en instances. Class diagram. | Werkomgeving met Excalibur en Parcel. Basis animatie met Actor en Vector. Pixel aquarium. | 
+| 1 | Typescript. Classes en instances. Class diagram. | Werkomgeving met Excalibur en Parcel. Resources laden en startknop gebruiken. Basis animatie met Actor en Vector. Pixel aquarium. | 
 | 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Vector en collision. Fish onclick. Keyboard input. | 
 | 3 | Composition en Encapsulation | Spawning and removing bullets. Object pool. Physics toevoegen. |
 | 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes en Camera. |
@@ -48,9 +48,8 @@ Je leert de setup van een modern web development project met behulp van [Parcel]
 
 ## Excalibur Basics
 
-- [Excalibur JS](https://excaliburjs.com)
-- [Actors](https://excaliburjs.com/docs/actors) en [Sprites](https://excaliburjs.com/docs/sprites)
-- [Physics](https://excaliburjs.com/docs/physics)
+- [Excalibur](https://excaliburjs.com) en [API](https://excaliburjs.com/docs/api/edge/index.html)
+- [Actors](https://excaliburjs.com/docs/actors)
 
 ## Startcode
 
@@ -112,13 +111,17 @@ Je ontwikkelt in de `src` folder. Door in de terminal `npm  start` te typen star
 <br>
 <br>
 
-## Links
+## Lesstof
 
 - [Excalibur](https://excaliburjs.com)
-- [Typescript](https://www.typescriptlang.org)
-- [Parcel](https://parceljs.org)
-- [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
+- [Excalibur API documentation](https://excaliburjs.com/docs/api/edge/index.html)
+- [Typescript](https://www.typescriptlang.org) en  [Parcel](https://parceljs.org)
 - [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+
+
+## Links
+
+- [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [Online Multiplayer met Socket.IO](https://socket.io) of [Lance](https://lance-gg.github.io)
 - [Create Game Sounds](https://sfxr.me)
 - [Genereer je Class Diagram met markdown](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp9ks1uwyAMgF8F-bStzQtEO037uewwqVcuTvBatPAjA1Kjru--pBSUZto4IPRhPhvDCXqnCFroBwzhWeOe0UgrrZjGGxoSD00jnlLXDbSCrzocSuTOs44kHr8rX9OiyDuXbFl1ymQeG5tMRyxC75gW-EMftfDTtGDJK4x0d79Ayll6d6i03Rd-vk2Yi6gZm5LPE6kCf5k3fnD-D-F81_91za1udT53qBpKA45rMFagKER2Y_XBFgyxQa2mR7yIJMQDGZLQTkuF_CVB2jkuV_KidHQM7ScOgbaAKbrdaHtoIycqQdePcI06_wCsKKak)

@@ -55,6 +55,8 @@ class Game extends Engine {
 
         this.ui = new UI()
         this.add(this.ui)
+
+        this.currentScene.camera.strategy.lockToActor(this.mario)
     }
 
 }
