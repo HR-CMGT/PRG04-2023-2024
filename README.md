@@ -68,11 +68,37 @@ Je leert de setup van een modern web development project met behulp van [Parcel]
 - Typ `ctrl-c` om de live ontwikkelserver te stoppen.
 - Typ `npm build` als je spel klaar is en je wil het naar github pages gaan uploaden. Maak de `docs` map vantevoren even leeg.
 
+Na `npm install` ziet je project er als volgt uit:
+
+```
+docs
+src/
+├── index.html
+├── css/
+│   └── style.css
+└── ts/
+    ├── game.ts
+    ├── fish.ts
+    └── shark.ts
+package.json
+package-lock.json
+.gitignore
+node_modules
+README.md
+```
+
+## Github Pages
+
+- Zet github pages aan in de settings van je repository: `github.com/yourgame/settings/pages`
+- Publiceer de branch `main` en kies als folder `docs`
+
+
+
 <br>
 <br>
 <br>
 
-## OOP Basics
+## OOP in Excalibur
 
 Een typescript class schrijf je als volgt.
 
@@ -100,14 +126,6 @@ class Fish extends Actor {
     }
 }
 ```
-
-<br>
-<br>
-<br>
-
-## Parcel Basics
-
-Je ontwikkelt in de `src` folder. Door in de terminal `npm  start` te typen start je de development server. Als je project af is typ je `npm build`. Je project komt automatisch terecht in de `docs` folder. In github pages kan je vervolgens aangeven dat je `docs` folder live moet staan.
 
 <br>
 <br>
