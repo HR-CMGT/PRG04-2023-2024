@@ -41,6 +41,7 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 - Voorbeelden van games die studenten kunnen maken met deze lessen
 - Concrete les oefeningen waar ze de tijd voor krijgen / nodig hebben
 - Kennisclips PIXI opnieuw ?!?!? 😭
+- Omschrijven game typen? Top down, side scroller, platformer, infinite runner, text-based, etc.
 
 <br>
 <br>
@@ -71,8 +72,8 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 |------|---------|----------|
 | 1 | Classes en instances. Class diagram. | Werkomgeving met Excalibur en Github Pages. Werken met modules en `import`. Resources laden en startknop gebruiken. Basis animatie met Actor en Vector. | 
 | 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Collision. Keyboard input. Position, velocity, acceleration. | 
-| 3 | Composition en Encapsulation | Spawning and removing bullets. Physics toevoegen. Camera follow player. World and Screen coordinates. |
-| 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes. Tiling background.  UI en Spritesheets. |
+| 3 | Composition en Encapsulation | Spawning and removing bullets. Physics toevoegen. Camera follow player. Top down view. World and Screen coordinates. |
+| 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes. Tiling background. UI en Spritesheets. |
 | 5 | Communicatie tussen classes | Level opzetten in JSON.  | 
 | 6 | Object Oriented Design | [Game op Arcade Kast plaatsen](https://github.com/HR-CMGT/arcade-game) | 
 
