@@ -32,10 +32,10 @@ Je leert de setup van een modern web development project met behulp van [Parcel]
 
 | Les | OOP Theorie ochtend | Game Theorie middag | 
 |------|---------|----------|
-| 1 | Typescript. Classes en instances. Class diagram. | Werkomgeving met Excalibur en Parcel. Resources laden en startknop gebruiken. Basis animatie met Actor en Vector. Pixel aquarium. | 
-| 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Vector en collision. Fish onclick. Keyboard input. | 
-| 3 | Composition en Encapsulation | Spawning and removing bullets. Object pool. Physics toevoegen. Camera follow player. World and Screen coordinates. |
-| 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes. Tiling background. |
+| 1 | Typescript. Classes en instances. Class diagram. | Werkomgeving met Excalibur en Parcel. Werken met modules en `import`. Resources laden en startknop gebruiken. Basis animatie met Actor en Vector. | 
+| 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Collision. Keyboard input. | 
+| 3 | Composition en Encapsulation | Spawning and removing bullets. Physics toevoegen. Camera follow player. World and Screen coordinates. |
+| 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes. Tiling background. Level opzetten in JSON. |
 | 6 | Communicatie tussen classes | UI en Spritesheets. | 
 | 7 | Object Oriented Game Design | Excalibur advanced topics |
 | 8 | Object Oriented Game Design | [Game op Arcade Kast plaatsen](https://github.com/HR-CMGT/arcade-game) | 
@@ -134,6 +134,7 @@ class Fish extends Actor {
 ## Lesstof
 
 - [Excalibur](https://excaliburjs.com)
+- [Excalibur discussions](https://github.com/excaliburjs/Excalibur/discussions)
 - [Excalibur API documentation](https://excaliburjs.com/docs/api/edge/index.html)
 - [Typescript](https://www.typescriptlang.org) en  [Parcel](https://parceljs.org)
 - [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
