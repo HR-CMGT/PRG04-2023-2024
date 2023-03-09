@@ -27,9 +27,9 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
     - Zelfstandig werken 1 uur
     - OOP theorie uitleg en oefening 1 uur
 - Middag: 
-    - Theorie toepassen in Excalibur omgeving uitleg 1 uur
-    - Excalibur oefening 1 uur
-    - Zelfstandig werken 1 uur
+    - OOP in Excalibur uitleg en hands-on 1 uur
+    - Zelfstandig werken 1.5 uur
+    - Afsluiting dag: 0.5 uur (links in teams, elkaars games spelen)
 
 <br>
 <br>
@@ -70,7 +70,7 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 
 | Les | OOP Theorie ochtend | Game Theorie middag | 
 |------|---------|----------|
-| 1 | Classes en instances. Class diagram. | Werkomgeving met Excalibur en Github Pages. Werken met modules en `import`. Resources laden en startknop gebruiken. Basis animatie met Actor en Vector. | 
+| 1 | Classes en instances. Class diagram. | Werkomgeving met Excalibur en Github Pages. Werken met modules en `import`. Resources laden en startknop gebruiken. Basis animatie met Actor en Vector. onClick basic gameplay | 
 | 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Collision. Keyboard input. Position, velocity, acceleration. | 
 | 3 | Composition en Encapsulation | Spawning and removing bullets. Physics toevoegen. Camera follow player. Top down view. World and Screen coordinates. |
 | 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes. Tiling background. UI en Spritesheets. |
