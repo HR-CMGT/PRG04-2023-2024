@@ -11,6 +11,8 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 - Scenes en Camera
 - etc.
 
+[TESTPROJECT MARIO PLATFORM GAME IN JAVASCRIPT](https://github.com/HR-CMGT/PRG04-2022-2023-finished/tree/main/javascript/javascript-mario)
+
 <br>
 <br>
 <br>
