@@ -40,6 +40,7 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 - Studenten duidelijk doel geven waar ze naartoe werken
 - Voorbeelden van games die studenten kunnen maken met deze lessen
 - Concrete les oefeningen waar ze de tijd voor krijgen / nodig hebben
+- Kennisclips PIXI opnieuw ?!?!? 😭
 
 <br>
 <br>
