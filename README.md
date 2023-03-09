@@ -35,6 +35,35 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 <br>
 <br>
 
+## TODO
+
+- Studenten duidelijk doel geven waar ze naartoe werken
+- Voorbeelden van games die studenten kunnen maken met deze lessen
+- Concrete les oefeningen waar ze de tijd voor krijgen / nodig hebben
+
+<br>
+<br>
+<br>
+
+## Toetsing (WORK IN PROGRESS)
+
+- Eindopdracht : game waar alle OOP onderwerpen in terug komen.
+- Code live op github pages en in eigen repo.
+- Feedbackfruits links en zelfevaluatie inleveren
+- Evaluatie op leerdoelen:
+    - Classes en instances
+    - Composition en Encapsulation
+    - Inheritance
+    - Communicatie tussen classes
+    - Object Oriented Design
+    - Game development leerdoel 1
+    - Game development leerdoel 2
+    - Game development leerdoel 3
+
+<br>
+<br>
+<br>
+
 ## Onderwerpen (WORK IN PROGRESS)
 
 | Les | OOP Theorie ochtend | Game Theorie middag | 
