@@ -68,13 +68,13 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 
 ## Onderwerpen (WORK IN PROGRESS)
 
-| Les | OOP Theorie ochtend | Game Theorie middag | 
-|------|---------|----------|
-| 1 | Classes en instances. Class diagram. | Werkomgeving met Excalibur en Github Pages. Werken met modules en `import`. Resources laden en startknop gebruiken. Basis animatie met Actor en Vector. | 
-| 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Collision. Keyboard input. Position, velocity, acceleration. | 
-| 3 | Composition en Encapsulation | Spawning and removing bullets. Physics toevoegen. Camera follow player. Top down view. World and Screen coordinates. |
-| 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes. Tiling background. UI en Spritesheets. |
-| 5 | Communicatie tussen classes | Level opzetten in JSON.  | 
+| Les | OOP Theorie ochtend | Game Theorie middag | Game |
+|------|---------|----------|-----|
+| 1 | Classes en instances. Class diagram. | Wat is het canvas element. Werkomgeving met Excalibur en Github.  Werken met modules en `import`. Resources laden en startknop gebruiken. Basis animatie met Actor. | Vallende Appels. 
+| 2 | Composition en Encapsulation. Aparte bestanden voor classes | Actor class. Shark en array van Fishes. Collision. Keyboard input. Vector voor Position, velocity, acceleration. | Shark Aquarium. Frogger. |
+| 3 | Composition en Encapsulation | Spawning and removing game elements. Explosie spawn op plek van hit. Top down view, camera volgt speler. World and Screen coordinates. | Zelda top down |
+| 4 | Inheritance | Excalibur classes extenden, eigen classes extenden. Scenes. Tiling background. UI met HTML. Spritesheets. | Ruimtegruis |
+| 5 | Communicatie tussen classes | Physics toevoegen. Level opzetten in JSON.  | Platform game |
 | 6 | Object Oriented Design | [Game op Arcade Kast plaatsen](https://github.com/HR-CMGT/arcade-game) | 
 
 
