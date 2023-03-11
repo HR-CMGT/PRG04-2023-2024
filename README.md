@@ -27,9 +27,9 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
     - Zelfstandig werken 1 uur
     - OOP theorie uitleg en oefening 1 uur
 - Middag: 
-    - Theorie toepassen in Excalibur omgeving uitleg 1 uur
-    - Excalibur oefening 1 uur
-    - Zelfstandig werken 1 uur
+    - OOP in Excalibur uitleg en hands-on 1 uur
+    - Zelfstandig werken 1.5 uur
+    - Afsluiting dag: 0.5 uur (links in teams, elkaars games spelen)
 
 <br>
 <br>
