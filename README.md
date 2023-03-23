@@ -25,8 +25,8 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 | 2 | Wat is canvas. Wat is Excalibur. Werken met Actors. Excalibur installeren met npm install. | De Actor class extenden. Je eigen classes importeren in de game class. Besturing. Collision en hitbox. Arrays. |
 | 3 | Inheritance theorie. Uitleg super(). Eigen classes extenden. Klassendiagram met multiple inheritance. | Eigen actor classes weer extenden. Waarden doorgeven via constructor. Communicatie van actor naar game. Spawning objects op de plek van een collision. |
 | 4 | Composition theorie: een object samenstellen uit meerdere classes. Een grote class opsplitsen. | Game heeft scene, scene heeft actors. Niet elke class is een excalibur class. Werken met graphics groups om een UI te bouwen. |
-| 5 | Communicatie tussen classes. Referenties doorgeven. Vanuit een child de main class aanroepen. | Vanuit een actor de game aanroepen, die vervolgens de UI aanroept. Werken met Physics!
-| 6 | Samenvatting Object Oriented Design. Camera volgt speler. Parallax. Top down view. Platform game met physics. [Optioneel: workshop Arcade Kast](https://github.com/HR-CMGT/arcade-game) | Zelfstandig werken
+| 5 | Communicatie tussen classes. Referenties doorgeven. Vanuit een child de main class aanroepen. | Vanuit een actor de game aanroepen, die vervolgens de UI aanroept. Werken met Physics. Camera volgt speler. Parallax. Top down view.
+| 6 | Samenvatting Object Oriented Design. Voorbeeldproject platform game met physics. [Optioneel: workshop Arcade Kast](https://github.com/HR-CMGT/arcade-game) | Zelfstandig werken
 
 
 
