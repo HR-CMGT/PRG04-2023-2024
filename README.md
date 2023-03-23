@@ -45,8 +45,7 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 
 ## Startcode
 
-- [Theorie vanilla javascript]()
-- [Praktijk excalibur]()
+- [Praktijklessen excalibur startproject](https://github.com/HR-CMGT/excalibur-startproject)
 
 ## Lesstof
 
