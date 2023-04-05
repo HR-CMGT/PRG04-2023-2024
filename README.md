@@ -1,17 +1,10 @@
 # PRG04-2022-2023
 
-WORK IN PROGRESS
-
 ## 👾Object oriented game development 👾
 
-In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de [excalibur library](https://excaliburjs.com). Dit is een object-oriented library, waarmee je snel de basics van game development kan opzetten:
+In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de [excalibur library](https://excaliburjs.com) en dit [startproject](https://github.com/HR-CMGT/prg4-startproject-2023). We werken met een moderne web development setup. We gebruiken git en github om onze game live te zetten.
 
-- Besturing
-- Animatie
-- Collisions
-- Physics
-- Scenes en Camera
-- etc.
+Lees de cursushandleiding op MS TEAMS voor details over de opdracht en de beoordeling. Lees de les presentaties voor de theorietoelichting.
 
 <br>
 <br>
@@ -19,25 +12,16 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 
 ## Onderwerpen
 
-| Les | Ochtend | Middag | 
+| Week | Ochtend | Middag | 
 |------|---------|----------|
-| 1 | Introductie. Classes en instances. Class diagram. Constructor. Javascript classes Klassendiagram tekenen | Modern Web development met npm install, modules en import / export. Publiceren op github pages met commit en push.
-| 2 | Wat is canvas. Wat is Excalibur. Werken met Actors. Excalibur installeren met npm install. | De Actor class extenden. Je eigen classes importeren in de game class. Besturing. Collision en hitbox. Arrays. |
-| 3 | Inheritance theorie. Uitleg super(). Eigen classes extenden. Klassendiagram met multiple inheritance. | Eigen actor classes weer extenden. Waarden doorgeven via constructor. Communicatie van actor naar game. Spawning objects op de plek van een collision. |
-| 4 | Composition theorie: een object samenstellen uit meerdere classes. Een grote class opsplitsen. | Game heeft scene, scene heeft actors. Niet elke class is een excalibur class. Werken met graphics groups om een UI te bouwen. |
-| 5 | Communicatie tussen classes. Referenties doorgeven. Vanuit een child de main class aanroepen. | Vanuit een actor de game aanroepen, die vervolgens de UI aanroept. Werken met Physics. Camera volgt speler. Parallax. Top down view.
-| 6 | Samenvatting Object Oriented Design. Voorbeeldproject platform game met physics. [Optioneel: workshop Arcade Kast](https://github.com/HR-CMGT/arcade-game) | Zelfstandig werken
+| 1 | Introductie vak en introductie Excalibur library | Modern Web development met npm install, modules en import / export. Publiceren op github pages met commit en push.
+| 2 | Introductie OOP. Classes en instances, properties en methods. Constructor en this keyword. Klassendiagram. Uitleg en kiezen van eindproject | Werken met het Excalibur startproject. Game en Resources. Laadscherm en startknop. Actors. Animatie. DOCS lezen. |
+| 3 | Inheritance theorie. Uitleg super(). Actor extenden. Waarden doorgeven via constructor. | Game Loop. Update Lifecycle. Keyboard besturing. Collision en hitbox. |
+| 4 | Composition en encapsulation. | Timers gebruiken om objecten te spawnen. Scenes gebruiken om schermen te wisselen. Score opslaan met localStorage. Tekst en graphics gebruiken. |
+| 5 | Communicatie tussen classes. Referenties doorgeven. | Physics gebruiken voor Pong / Breakout type game. Physics gebruiken voor platform game. |
+| 6 | College Game Design Best Practices. Keuze college tilemaps, particles, spritesheets, inventory system | Eindopdracht afronden
+| 6 | Week 6 deadline inleveropdracht en zelfevaluatie |
 
-
-
-<br>
-<br>
-<br>
-
-## Github Pages
-
-- Zet github pages aan in de settings van je repository: `github.com/yourgame/settings/pages`
-- Publiceer de branch `main` en de map `docs`
 
 <br>
 <br>
@@ -45,13 +29,15 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 
 ## Startcode
 
-- [Praktijklessen excalibur startproject](https://github.com/HR-CMGT/excalibur-startproject)
+- [Startproject Excalibur](https://github.com/HR-CMGT/prg4-startproject-2023)
+- [Setup instructies voor github pages](./setup.md)
 
-## Lesstof
+## Excalibur
 
 - [Excalibur](https://excaliburjs.com)
-- [Excalibur discussions](https://github.com/excaliburjs/Excalibur/discussions)
 - [Excalibur API documentation](https://excaliburjs.com/docs/api/edge/index.html)
+- [Excalibur forum](https://github.com/excaliburjs/Excalibur/discussions)
+- [Een excalibur project starten zonder het startproject](./advanced.md)
 
 ## Excalibur Code Examples
 
@@ -63,7 +49,10 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 ## Links
 
 - [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+- [Font Loader](https://fontfaceobserver.com)
 - [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
+- [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)
+- [MDN Object Oriented Programming](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
 - [Online Multiplayer met Socket.IO](https://socket.io) of [Lance](https://lance-gg.github.io)
 - [Create Game Sounds](https://sfxr.me)
-- [Genereer je Class Diagram met markdown](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp9ks1uwyAMgF8F-bStzQtEO037uewwqVcuTvBatPAjA1Kjru--pBSUZto4IPRhPhvDCXqnCFroBwzhWeOe0UgrrZjGGxoSD00jnlLXDbSCrzocSuTOs44kHr8rX9OiyDuXbFl1ymQeG5tMRyxC75gW-EMftfDTtGDJK4x0d79Ayll6d6i03Rd-vk2Yi6gZm5LPE6kCf5k3fnD-D-F81_91za1udT53qBpKA45rMFagKER2Y_XBFgyxQa2mR7yIJMQDGZLQTkuF_CVB2jkuV_KidHQM7ScOgbaAKbrdaHtoIycqQdePcI06_wCsKKak)
+- [Genereer je Class Diagram met markdown](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp9kc1uwyAMgF8F-bS1zQtEO1XddtmtVy5OcFs0_sSPtKjruy8JBaWZNi6gD_PZ2FforSBooVcYwkHi2aPmhhs2rnfUxDZNw_ap6xSt4JsMlxJ5dF5GYi_fla9pUeSbOVtWXTOZ1tYk3ZFnobeeFvjDohixmrcFT05gpKfnBRLW0BQuzbnw22PSXEjN2pScjkgU-Mu8dcq6P4TTf__XNY-61fvcpWooTfhag6ECQSF6O1Qf7ECT1yjFOMhZxCFeSBOHdjwK9J8cuJniMEV7HEwPbfSJdpAru88d2hOqUOmrkNH6O7z9AKopqB4)
