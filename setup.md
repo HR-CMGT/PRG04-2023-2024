@@ -11,13 +11,13 @@
 
 ## Startcode downloaden
 
-- Ga naar de [startproject repository](https://github.com/HR-CMGT/prg4-startproject-2023) en klik op ***USE THIS TEMPLATE***. Kies als owner jouw eigen github account. Check dat het startproject in je eigen github terecht komt.
-- Hernoem de repository in github settings.
+- Ga naar de [startproject repository](https://github.com/HR-CMGT/prg4-startproject-2023) en klik op ***USE THIS TEMPLATE***. Kies als owner jouw eigen github account. 
+- Geef je repository een goede naam. Check dat het startproject in je eigen github terecht komt.
 - CLONE de repository van jouw eigen github naar je lokale computer via de git url. Die vind je onder "code".
 - Open VS Code. Klik het "Source Control" icoontje. Kies voor "clone repository" en plak de git url.
 - VS Code haalt nu het startproject op en opent het automatisch.
 
-[Bekijk dit instructie filmpje](https://youtu.be/8Z9Z9Z9Z9Z9)
+[🔥 Bekijk dit instructie filmpje](https://youtu.be/UIVpe4L5_P4)
 
 <br>
 <br>
