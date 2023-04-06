@@ -11,7 +11,8 @@
 
 ## Startcode downloaden
 
-- Ga naar de [startproject repository](https://github.com/HR-CMGT/prg4-startproject-2023) en klik op ***USE THIS TEMPLATE***. Kies als owner jouw eigen github account. 
+- Ga naar het [Excalibur Startproject](https://github.com/HR-CMGT/prg4-startproject-2023) of het [Javascript Startproject](https://github.com/HR-CMGT/prg4-javascript-2023)
+- Klik op ***USE THIS TEMPLATE***. Kies als owner jouw eigen github account. 
 - Geef je repository een goede naam. Check dat het startproject in je eigen github terecht komt.
 - CLONE de repository van jouw eigen github naar je lokale computer via de git url. Die vind je onder "code".
 - Open VS Code. Klik het "Source Control" icoontje. Kies voor "clone repository" en plak de git url.

@@ -3,6 +3,7 @@
 - build preview
 - starting from scratch
 - VS code settings
+- Codesandbox playground
 
 <br>
 <br>
@@ -54,7 +55,7 @@ Je kan onderstaande twee classes toevoegen aan de SRC map. Let op dat je `game.j
 GAME.JS
 
 ```javascript
-import { Actor, Engine, Vector } from "excalibur"
+import { Actor, Engine, Vector, Label, Font, Color } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 
 export class Game extends Engine {
@@ -62,10 +63,29 @@ export class Game extends Engine {
     constructor() {
         super({ width: 800, height: 600 })
         this.start(ResourceLoader).then(() => this.startGame())
+        // als je geen plaatjes wil laden:
+        // this.start().then(() => this.startGame())
     }
 
     startGame(){
-        console.log("start de game!")
+        // voorbeeld tekstlabel
+        let textField = new Label({
+            font: new Font({
+                family: "Arial",
+                size: 32,
+                color: Color.White
+            })
+        })
+        textField.text = `Score: 0`
+        textField.pos = new Vector(20, 30)
+        this.add(textField)
+
+        // voorbeeld actor
+        const fish = new Actor()
+        fish.graphics.use(Resources.Fish.toSprite())
+        fish.pos = new Vector(400, 300)
+        fish.vel = new Vector(-50, 0)
+        this.add(fish)
     }
 }
 
@@ -100,3 +120,12 @@ Open "File > Preferences > Settings"
 Search "npm script"
 Toggle "Npm: Enable Script Explorer"
 ```
+
+<br>
+<br>
+<br>
+
+
+## Codesandbox playground
+
+[Codesandbox Vite Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu?file=/game.js)

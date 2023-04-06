@@ -1,0 +1,60 @@
+# Week 1 Middag
+
+## Modern Web development
+
+- Werkomgeving met VS Code en git.
+- Een repository van github clonen.
+- Werken met commit en push in je editor.
+- Op Github pages publiceren.
+- Werken met modules en import / export in javascript.
+
+<Br>
+<Br>
+<Br>
+
+## Voorbereiding
+
+- Installeer [Node.js](https://nodejs.org/en/download/)
+- Installeer [Visual Studio Code](https://code.visualstudio.com/download)
+- Maak een account op [Github](https://github.com)
+
+<Br>
+<Br>
+<Br>
+
+## Git
+
+In VS Code open je een terminal (via terminal > new terminal in het menu). Typ `git version`. Als je geen git blijkt te hebben, kan je [git installeren](https://git-scm.com/downloads)
+
+Om naar github te kunnen pushen moet je je naam en email instellen:
+```bash
+git config --global user.name "jouw naam"
+git config --global user.email "jouw email"
+```
+Je kan nu naar github pushen, maar je moet dan elke keer je wachtwoord typen. Om dat te voorkomen kan je een key instellen.
+
+[Bekijk dit youtube filmpje voor instructies](https://www.youtube.com/watch?v=HfTXHrWMGVY)
+
+
+
+<Br>
+<Br>
+<Br>
+
+## Demo project van github installeren en gebruiken
+
+- Open het [Startproject Javascript](https://github.com/HR-CMGT/prg4-javascript-2023) 
+- Volg de [install instructies](../setup.md)
+
+Als het goed is gegaan kan je nu pushen naar github en publiceren op github pages!
+
+<Br>
+<Br>
+<Br>
+
+## Werken met modules
+
+- verschil tussen SRC en DOCS map
+- script type module gebruiken
+- import / export gebruiken in javascript files
+- import gebruiken voor afbeeldingen
