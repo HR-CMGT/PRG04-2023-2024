@@ -2,12 +2,12 @@
 
 ## 👾Object oriented game development 👾
 
-In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de [excalibur library](https://excaliburjs.com). We werken met een moderne web development setup. We gebruiken git en github om onze game live te zetten. Hier vind je de [github pages setup instructies](./setup.md)
+In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de [excalibur library](https://excaliburjs.com). We werken met een moderne web development setup. We gebruiken git en github om onze game live te zetten.
 
 - De cursushandleiding op TEAMS bevat details over de beoordeling.
 - De presentaties op TEAMS bevatten de lesstof en de opdrachten.
 
-Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een moderne development omgeving](https://github.com/HR-CMGT/prg4-javascript-2023), en hetzelfde project met [excalibur startcode](https://github.com/HR-CMGT/prg4-startproject-2023)
+Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een moderne development omgeving](https://github.com/HR-CMGT/prg4-javascript-2023), en hetzelfde project met [excalibur startcode](https://github.com/HR-CMGT/prg4-startproject-2023). Je kan een van deze projecten gebruiken en op je eigen github zetten met behulp van [de setup instructies](./setup.md).
 
 <br>
 <br>
