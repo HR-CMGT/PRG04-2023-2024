@@ -47,18 +47,32 @@ Klik op Source Control in VS Code. Typ een commit message en klik op commit, en 
 <br>
 <br>
 
+## Project lokaal openen
+
+Als je jouw project wil openen via `http://localhost/henk/mijnproject/docs`, dan ziet je `build` commando in `package.json` er zo uit:
+
+```json
+"scripts": {
+   "build": "vite build --outDir=docs --base=/henk/mijnproject/docs/"
+},
+```
+Je kan nu `npm run build` uitvoeren. Als je nu in je browser naar je localhost toe gaat, en dan naar docs map van het project navigeert, zie je je project.
+
+<br>
+<br>
+<br>
+
 ## Publiceren op Github Pages
 
 In de ***github pages settings*** kies je voor ***publish main > docs***. Dit zorgt dat je `docs` folder live komt te staan.
 
 ![pages](./images/page.png)
 
-Je publiceert je project in de `docs` folder met het `npm build` commando. Pas je `package.json` aan met de `projectnaam` van jouw project:
+Als je project live komt te staan op `https://jouwnaam.github.io/projectnaam/`, dan ziet je `build` commando er zo uit:
 
 ```json
 "scripts": {
   "build": "vite build --outDir=docs --base=/projectnaam/",
 },
 ```
-> *Voorbeeld: als je project gaat draaien op `https://jouwnaam.github.io/chicken-on-a-raft/`, dan vul je `--base=/chicken-on-a-raft/` in 🐔*
 

@@ -57,6 +57,7 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 - [Codesandbox Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu?file=/game.js)
 - [Een excalibur project opzetten zonder het startproject](./advanced.md)
 - [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+- [Git instellen](https://www.youtube.com/watch?v=HfTXHrWMGVY)
 - [Font Loader](https://fontfaceobserver.com)
 - [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)

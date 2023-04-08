@@ -58,3 +58,22 @@ Als het goed is gegaan kan je nu pushen naar github en publiceren op github page
 - script type module gebruiken
 - import / export gebruiken in javascript files
 - import gebruiken voor afbeeldingen
+- een module van npm installeren met `npm install`
+
+<Br>
+<Br>
+<Br>
+
+### Voorbeeld
+
+```bash
+npm install everyday-fun
+```
+
+```javascript
+import all from "everyday-fun"
+
+const r = all.getRandomRiddle();
+console.log(r.riddle)
+console.log(r.answer)
+```
