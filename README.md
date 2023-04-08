@@ -7,7 +7,7 @@ In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de
 - De cursushandleiding op TEAMS bevat details over de beoordeling.
 - De presentaties op TEAMS bevatten de lesstof en de opdrachten.
 
-Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een moderne development omgeving](https://github.com/HR-CMGT/prg4-javascript-2023), en hetzelfde project met [excalibur startcode]((https://github.com/HR-CMGT/prg4-startproject-2023)
+Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een moderne development omgeving](https://github.com/HR-CMGT/prg4-javascript-2023), en hetzelfde project met [excalibur startcode](https://github.com/HR-CMGT/prg4-startproject-2023)
 
 <br>
 <br>
