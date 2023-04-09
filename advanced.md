@@ -11,14 +11,13 @@
 
 ## Build preview
 
-Om te testen of het publiceren naar de `docs` map werkt kan je een preview doen. In `package.json` moet je het pad van je lokale werkmap invullen:
+Om snel te testen of het publiceren naar de `docs` map werkt kan je een preview doen. Dit kan je toevoegen aan `package.json`:
 
 ```json
 "scripts": {
-    "preview": "vite preview --outDir=docs --base=/~henk/prg4/les1/docs/"
+    "preview": "vite preview --outDir=docs --base=./"
 },
 ```
-> *Voorbeeld: als je werkt in http://localhost/~henk/chicken-on-raft/docs/, dan vul je /~henk/chicken-on-a-raft/docs/ in*
 
 <br>
 <br>
@@ -38,17 +37,22 @@ Je krijgt nu een standaard Vite project. Voeg een `SRC` folder toe. Je kan de `P
 
 ### Package.json aanpassen
 
-Voeg het build en preview commando toe aan package.json
+Voeg het build en preview commando toe aan package.json. We voegen hier `docs` toe aan de `outDir` omdat github pages met een `docs` folder werkt. De `base` variabele bepaalt het startpunt van waaruit je project naar bestanden gaat zoeken. 
+
+```json
 
 ```json
  "scripts": {
     "dev": "vite",
-    "build": "vite build --outDir=docs --base=/github-projectnaam/",
-    "preview": "vite preview --outDir=docs --base=/jouw/lokale/werkmap/docs/"
+    "build": "vite build --outDir=docs --base=./",
+    "preview": "vite preview --outDir=docs --base=./"
   },
 ```
+<br>
+<br>
+<br>
 
-### Startcode voor game en resources
+## Startcode voor game en resources
 
 Je kan onderstaande twee classes toevoegen aan de SRC map. Let op dat je `game.js` inlaadt in `index.html`. `index.html` staat in de root. Verder staan alle werkbestanden in de SRC map.
 

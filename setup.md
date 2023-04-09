@@ -16,6 +16,7 @@
 - Geef je repository een goede naam. Check dat het startproject in je eigen github terecht komt.
 - CLONE de repository van jouw eigen github naar je lokale computer via de git url. Die vind je onder "code".
 - Open VS Code. Klik het "Source Control" icoontje. Kies voor "clone repository" en plak de git url.
+- Kies een map die je ook via localhost kan openen, bijvoorbeeld `xampp/htdocs/mijnproject`.
 - VS Code haalt nu het startproject op en opent het automatisch.
 
 [🔥 Bekijk dit instructie filmpje](https://youtu.be/UIVpe4L5_P4)
@@ -39,24 +40,21 @@ Open de browser op de link die verschijnt. Je kan nu je game gaan ontwikkelen. O
 <br>
 <br>
 
-## Code opslaan op Github
-
-Klik op Source Control in VS Code. Typ een commit message en klik op commit, en vervolgens `sync` (of `push`). Je code staat nu op je eigen github.
-
-<br>
-<br>
-<br>
-
 ## Project lokaal openen
 
-Als je jouw project wil openen via `http://localhost/henk/mijnproject/docs`, dan ziet je `build` commando in `package.json` er zo uit:
+Als je klaar met met developen dan run je `npm run build` om het project te bouwen. Let op dat je code in een folder staat die je ook via localhost kan openen.
 
-```json
-"scripts": {
-   "build": "vite build --outDir=docs --base=/henk/mijnproject/docs/"
-},
-```
-Je kan nu `npm run build` uitvoeren. Als je nu in je browser naar je localhost toe gaat, en dan naar docs map van het project navigeert, zie je je project.
+Open nu de `docs` folder in je browser via `localhost`, bijvoorbeeld: `http://localhost/henk/mijnproject/docs/`.
+
+<br>
+<br>
+<br>
+
+## Code opslaan op Github
+
+Klik op Source Control in VS Code. Typ een commit message en klik op `commit`, en vervolgens `sync` (of `push`). Check of je code  nu op je eigen github staat.
+
+Het bestand `.gitignore` zorgt dat de `node_modules` map niet op github gezet wordt.
 
 <br>
 <br>
@@ -64,15 +62,15 @@ Je kan nu `npm run build` uitvoeren. Als je nu in je browser naar je localhost t
 
 ## Publiceren op Github Pages
 
-In de ***github pages settings*** kies je voor ***publish main > docs***. Dit zorgt dat je `docs` folder live komt te staan.
+Je kan de `docs` map van je project live zetten via ***github pages settings***. Kies ***publish main > docs***. 
 
 ![pages](./images/page.png)
 
-Als je project live komt te staan op `https://jouwnaam.github.io/projectnaam/`, dan ziet je `build` commando er zo uit:
+*🚨 Als jouw online afbeeldingen en css niet geladen kunnen worden, dan kan je jouw github repository toevoegen aan `package.json`*
 
 ```json
 "scripts": {
-  "build": "vite build --outDir=docs --base=/projectnaam/",
+  "build": "vite build --outDir=docs --base=/naam-van-repository/",
 },
 ```
 
