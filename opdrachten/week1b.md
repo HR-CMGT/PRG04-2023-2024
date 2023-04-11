@@ -41,37 +41,31 @@ Je kan nu naar github pushen, maar je moet dan elke keer je wachtwoord typen. Om
 <Br>
 <Br>
 
-## Demo project van github installeren en gebruiken
+## Oefenen met github en demo project
 
-- Open het [Startproject Javascript](https://github.com/HR-CMGT/prg4-javascript-2023) 
+- Fork en clone het [Startproject Javascript](https://github.com/HR-CMGT/prg4-javascript-2023) 
 - Volg de [install instructies](../setup.md)
 
 Als het goed is gegaan kan je nu pushen naar github en publiceren op github pages!
 
-<Br>
-<Br>
-<Br>
-
-## Git workflow
-
 - Open je project in VS Code
-- Doe `git pull`
-- Maak je wijzigingen
+- Maak een wijziging in `index.html`
 - Doe `git commit` en `git sync`
 
-> *Als je met meer mensen samenwerkt in dezelfde repository, dan doe je nog een `git pull` vlak voordat je jouw wijzigingen commit.*
-
 <Br>
 <Br>
 <Br>
 
-## Werken met modules
+## Oefenen met modules
 
 - verschil tussen SRC en DOCS map
 - script type module gebruiken
 - import / export gebruiken in javascript files
 - import gebruiken voor afbeeldingen
 - een module van npm installeren met `npm install`
+- een dev server starten met `npm run dev`
+- een docs folder bouwen met `npm run build`
+- de docs folder pushen naar github
 
 <Br>
 <Br>
