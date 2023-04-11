@@ -45,6 +45,7 @@ Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een mod
 
 - [Excalibur](https://excaliburjs.com)
 - [Excalibur API documentation](https://excaliburjs.com/docs/api/edge/index.html)
+- [Code snippets](./snippets.md)
 - [Excalibur forum](https://github.com/excaliburjs/Excalibur/discussions)
 
 ## Excalibur Code Examples

@@ -52,6 +52,19 @@ Als het goed is gegaan kan je nu pushen naar github en publiceren op github page
 <Br>
 <Br>
 
+## Git workflow
+
+- Open je project in VS Code
+- Doe `git pull`
+- Maak je wijzigingen
+- Doe `git commit` en `git sync`
+
+> *Als je met meer mensen samenwerkt in dezelfde repository, dan doe je nog een `git pull` vlak voordat je jouw wijzigingen commit.*
+
+<Br>
+<Br>
+<Br>
+
 ## Werken met modules
 
 - verschil tussen SRC en DOCS map
