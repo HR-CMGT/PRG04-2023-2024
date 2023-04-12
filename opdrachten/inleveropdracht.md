@@ -26,6 +26,18 @@ Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen u
     - Karakter moet obstakels ontwijken
     - Oplopende moeilijkheidsgraad door meer obstakels of hogere snelheid
 
+<Br>
+
+- Space Shooter
+    - Eindeloos scrollende achtergrond
+    - Speler kan alle kanten op bewegen
+    - Collision detection met vijanden, powerups, obstakels
+    - Speler kan schieten. Kogels kunnen opgaan.
+    - Speler heeft bommen die het hele scherm in een keer leeg maken.
+    - Vijanden kunnen schieten
+    - Life bar gaat omlaag bij aanraking met vijand
+    - Variatie in achtergond door planeten, sterren te laten voorbijkomen waar je niet mee kan botsen
+
 <br>
 
 - Platformer
