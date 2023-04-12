@@ -1,4 +1,4 @@
-# Week 1 Ochtend
+# Les 1 - Week 1 Ochtend
 
 - Introductie vak, cursushandleiding, toetsing
 - Introductie Excalibur library

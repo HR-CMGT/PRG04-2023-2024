@@ -18,15 +18,15 @@ Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een mod
 | Week | Ochtend | Middag | 
 |------|---------|----------|
 | 1 | Introductie vak en introductie Excalibur library | Modern Web development met npm install, modules en import / export. Publiceren op github pages met commit en push.
-|  | [Opdracht](./opdrachten/week1a.md) | [Opdracht](./opdrachten/week1b.md) | 
+|  | [Opdracht](./opdrachten/les1.md) | [Opdracht](./opdrachten/les2.md) | 
 | 2 | Introductie OOP. Classes en instances, properties en methods. Constructor en this keyword. Klassendiagram. Uitleg en kiezen van eindproject | Werken met het Excalibur startproject. Game en Resources. Laadscherm en startknop. Actors. Animatie. DOCS lezen. |
-|  | [Opdracht](./opdrachten/week2a.md) | [Opdracht](./opdrachten/week2b.md) | 
+|  | [Opdracht](./opdrachten/les3.md) | [Opdracht](./opdrachten/les4.md) | 
 | 3 | Inheritance theorie. Uitleg super(). Actor extenden. Waarden doorgeven via constructor. | Game Loop. Update Lifecycle. Keyboard besturing. Collision en hitbox. |
-|  | [Opdracht](./opdrachten/week3a.md) | [Opdracht](./opdrachten/week3b.md) | 
+|  | [Opdracht](./opdrachten/les5.md) | [Opdracht](./opdrachten/les6.md) | 
 | 4 | Composition en encapsulation. | Timers gebruiken om objecten te spawnen. Scenes gebruiken om schermen te wisselen. Score opslaan met localStorage. Tekst en graphics gebruiken. |
-|  | [Opdracht](./opdrachten/week4a.md) | [Opdracht](./opdrachten/week4b.md) | 
+|  | [Opdracht](./opdrachten/les7.md) | [Opdracht](./opdrachten/les8.md) | 
 | 5 | Communicatie tussen classes. Referenties doorgeven. | Physics gebruiken voor Pong / Breakout type game. Physics gebruiken voor platform game. |
-|  | [Opdracht](./opdrachten/week5a.md) | [Opdracht](./opdrachten/week5b.md) | 
+|  | [Opdracht](./opdrachten/les9.md) | [Opdracht](./opdrachten/les10.md) | 
 | 6 | College Game Design Best Practices. Keuze college tilemaps, particles, spritesheets, inventory system | Eindopdracht afronden
 | 6 | Week 6 deadline [inleveropdracht](./opdrachten/inleveropdracht.md) en [zelfevaluatie](https://feedbackfruits.com) |
 

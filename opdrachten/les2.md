@@ -1,4 +1,4 @@
-# Week 1 Middag
+# Les 2 - Week 1 Middag
 
 ## Modern Web development
 
