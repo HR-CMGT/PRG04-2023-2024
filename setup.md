@@ -1,4 +1,4 @@
-# Werken met Excalibur
+# Werken met github startproject
 
 - Startcode downloaden
 - Project installeren en development server starten
