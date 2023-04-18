@@ -1,22 +1,14 @@
 # Inleveropdracht
 
-In week 2 kies je een van onderstaande templates. Je gaat hier tijdens de lessen en in je zelfstudietijd aan werken.
+In week 2 kies je een van onderstaande templates. Je gaat hier tijdens de lessen en in je zelfstudietijd aan werken. 
 
-In week 9 lever je de game in via de zelfevaluatie op feedbackfruits. Je hebt dan alle onderwerpen uit de lessen verwerkt in je game.
-
-🚨 **De vragen uit de zelfevaluatie vind je in de cursushandleiding. Dit is waar je op beoordeeld wordt!**
+- De templates dienen als handvat om jou een doel te geven om naartoe te werken.
+- Het is ***niet*** verplicht dat je alle onderdelen van de templates in je game hebt verwerkt.
+- Het is ***wel*** verplicht dat je de onderwerpen uit de lessen in je game hebt verwerkt. Zie voor de beoordeling de cursushandleiding!
 
 <br>
 <br>
 <Br>
-
-## Templates
-
-Door een van de templates te kiezen krijg je een duidelijker doel om naartoe te werken.
-
-Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen uit de cursushandleiding*. Je hoeft dus niet persé alle onderdelen uit de template te gebruiken!
-
-<br>
 
 ### Endless Runner
     - Eindeloos scrollende achtergrond
