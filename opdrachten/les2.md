@@ -41,42 +41,66 @@ Je kan nu naar github pushen, maar je moet dan elke keer je wachtwoord typen. Om
 <Br>
 <Br>
 
-## Oefenen met github en demo project
+## Opdracht
 
-- Fork en clone het [Startproject Javascript](https://github.com/HR-CMGT/prg4-javascript-2023) 
-- Volg de [install instructies](../setup.md)
+In deze oefening ga je kijken of je jouw werkomgeving helemaal op orde hebt. Dit gaat om het pushen naar github, en het werken met de `npm` commando's.
 
-Als het goed is gegaan kan je nu pushen naar github en publiceren op github pages!
+<br>
 
-- Open je project in VS Code
-- Maak een wijziging in `index.html`
-- Doe `git commit` en `git sync`
-
-<Br>
-<Br>
-<Br>
-
-## Oefenen met modules
-
-- verschil tussen SRC en DOCS map
-- script type module gebruiken
-- import / export gebruiken in javascript files
-- import gebruiken voor afbeeldingen
-- een module van npm installeren met `npm install`
-- een dev server starten met `npm run dev`
-- een docs folder bouwen met `npm run build`
-- de docs folder pushen naar github
+- Zorg dat je een github account hebt, en dat je lokale git settings gekoppeld zijn aan github (zie de presentatie).
+- Fork en clone het [Startproject Javascript](https://github.com/HR-CMGT/prg4-javascript-2023) , volgens de [install instructies](../setup.md)
+- Zet ***github pages*** aan op github > settings > pages. Kies de main/docs map en druk op save.
+- Open de `index.html` in VS Code
+- Voeg een `<p>` met wat tekst toe in de `index.html`
+- Kijk of je `git commit` kan doen. Kijk daarna of je `git push / sync` kan doen.
+- Staat je aangepaste html file nu op je github?
+- Voeg een script toe aan de SRC map. Laad het als module in de index.html file `<script type="module" src="/src/js/game.js"></script>`
+- Gebruik een `console.log("hello world")` in je javascript file.
+- Start de dev server met `npm run dev` om te zien of het console bericht getoond wordt.
+- In de javascript file gebruik je `import` om een afbeelding te laden. `import myImage from "./supermario.png"`
+- Vervolgens plaats je de afbeelding in de DOM via `createElement("img")` en `appendChild()`.
+- Kijk of je dev server de afbeelding toont.
+- Stop de dev server met `ctrl + c`
+- Bouw de docs folder met `npm run build`. Kijk wat er in de docs folder staat.
+- `commit` en `push` je code naar github. Kijk of je code in je repostory staat. 
+- Kijk of github pages werkt. 
 
 <Br>
 <Br>
 <Br>
 
-### Voorbeeld
+### Troubleshooting
+
+Als github pages wel je HTML file laat zien, maar geen afbeeldingen of CSS, dan kan je de `base url` aanpassen in `package.json`
+
+```json
+"scripts": {
+    "dev": "vite",
+    "build": "vite build --outDir=docs --base=''",
+},
+```
+of
+```json
+"scripts": {
+    "dev": "vite",
+    "build": "vite build --outDir=docs --base=/naam-van-je-repository/",
+},
+```
+
+<Br>
+<Br>
+<Br>
+
+## Optioneel
+
+- Installeer een npm package zoals `everyday-fun`
+- Kijk of je hiermee kan werken
+- Verwijder het weer via `npm uninstall everyday-fun`
 
 ```bash
 npm install everyday-fun
 ```
-
+Javascript
 ```javascript
 import all from "everyday-fun"
 

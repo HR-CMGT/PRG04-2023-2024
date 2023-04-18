@@ -73,4 +73,10 @@ Je kan de `docs` map van je project live zetten via ***github pages settings***.
   "build": "vite build --outDir=docs --base=/naam-van-repository/",
 },
 ```
+of
+```json
+"scripts": {
+  "build": "vite build --outDir=docs --base=''",
+},
+```
 

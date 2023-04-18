@@ -81,5 +81,6 @@ Je kan het [startproject](https://github.com/HR-CMGT/prg4-startproject-2023) als
 ## Links
 
 - [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)
+- Genereer game art met DallE of Midjourney en maak het vrijstaand
 - [Font Loader](https://fontfaceobserver.com)
 - [Create Game Sounds](https://sfxr.me)
