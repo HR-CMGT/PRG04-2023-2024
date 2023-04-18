@@ -6,6 +6,8 @@ In week 2 kies je een van onderstaande templates. Je gaat hier tijdens de lessen
 - Het is ***niet*** verplicht dat je alle onderdelen van deze templates in je game hebt verwerkt.
 - Het is ***wel*** verplicht dat je de onderwerpen uit de lessen in je game hebt verwerkt. Zie voor de beoordeling de cursushandleiding!
 
+Je kan het [startproject](https://github.com/HR-CMGT/prg4-startproject-2023) als basis gebruiken.
+
 <br>
 <br>
 <Br>
