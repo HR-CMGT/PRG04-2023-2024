@@ -67,6 +67,7 @@ In week 2 kies je een van onderstaande templates. Je gaat hier tijdens de lessen
 
 ### Top-down RPG
     - Rondlopen met camera op player
+    - Niet door gebouwen of bomen heen kunnen lopen
     - "Praten" met characters
     - Inventory, object zoals een sleutel kunnen meenemen en gebruiken
     - Tilemap voor omgeving, of custom colliders op een achtergrondplaat
