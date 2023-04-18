@@ -52,18 +52,25 @@ Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen u
 <br/>
 
 - Tower Defense
+    - Top down view
     - Torentjes plaatsen
     - Torentjes schieten vanzelf
     - Enemies worden automatisch toegevoegd en volgen een pad
     - Zodra een enemy wordt afgeschoten, wordt er een score bijgeteld
+    - Torentjes kunnen upgraden
+    - Game over als teveel vijanden doorgelaten worden
     
+<br/>
 - Top-down Racegame
+    - Top down view
+    - Camera volgt speler
     - Controls (gas, remmen, sturen)
     - Addforce met drag (auto verlangzaamt over tijd)
     - Start/Finish collider, halverwege-collider (om cheaten tegen te gaan)
     - Gereden rondes per speler bijhouden
     - Tweede auto: Local multiplayer OF simpele tegenstander die door waypoints rijdt
     
+<br/>
 - Top-down RPG
     - Rondlopen met camera op player
     - "Praten" met characters
