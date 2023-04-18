@@ -18,7 +18,7 @@ Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen u
 
 <br>
 
-- Endless Runner
+### Endless Runner
     - Eindeloos scrollende achtergrond
     - Levels met verschillende achtergronden
     - Karakter kan springen en tijdelijk vliegen
@@ -28,7 +28,7 @@ Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen u
 
 <Br>
 
-- Space Shooter
+### Space Shooter
     - Eindeloos scrollende achtergrond
     - Speler kan alle kanten op bewegen
     - Collision detection met vijanden, powerups, obstakels
@@ -40,7 +40,7 @@ Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen u
 
 <br>
 
-- Platformer
+### Platformer
     - Basic physics en gravity gebruiken om te botsen met objecten
     - Level ontwerpen waarbij je het einde moet zien te bereiken
     - Achtergrond en voorgrond graphics hebben een consistent thema
@@ -51,7 +51,7 @@ Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen u
 
 <br/>
 
-- Tower Defense
+### Tower Defense
     - Top down view
     - Torentjes plaatsen
     - Torentjes schieten vanzelf
@@ -61,7 +61,8 @@ Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen u
     - Game over als teveel vijanden doorgelaten worden
     
 <br/>
-- Top-down Racegame
+    
+### Top-down Racegame
     - Top down view
     - Camera volgt speler
     - Controls (gas, remmen, sturen)
@@ -71,7 +72,8 @@ Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen u
     - Tweede auto: Local multiplayer OF simpele tegenstander die door waypoints rijdt
     
 <br/>
-- Top-down RPG
+
+### Top-down RPG
     - Rondlopen met camera op player
     - "Praten" met characters
     - Inventory, object zoals een sleutel kunnen meenemen en gebruiken
