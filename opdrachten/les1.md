@@ -26,5 +26,6 @@ Gebruik de presentatie voor code voorbeelden!
 
 ## Links
 
+- [Game Art](https://opengameart.org) en [Kenney](https://www.kenney.nl/assets)
 - [Excalibur](https://excaliburjs.com)
 - [Codesandbox Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu)
