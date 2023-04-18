@@ -56,3 +56,16 @@ Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen u
     - Torentjes schieten vanzelf
     - Enemies worden automatisch toegevoegd en volgen een pad
     - Zodra een enemy wordt afgeschoten, wordt er een score bijgeteld
+    
+- Top-down Racegame
+    - Controls (gas, remmen, sturen)
+    - Addforce met drag (auto verlangzaamt over tijd)
+    - Start/Finish collider, halverwege-collider (om cheaten tegen te gaan)
+    - Gereden rondes per speler bijhouden
+    - Tweede auto: Local multiplayer OF simpele tegenstander die door waypoints rijdt
+    
+- Top-down RPG
+    - Rondlopen met camera op player
+    - "Praten" met characters
+    - Inventory, object zoals een sleutel kunnen meenemen en gebruiken
+    - Tilemap voor omgeving, of custom colliders op een achtergrondplaat
