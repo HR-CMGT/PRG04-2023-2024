@@ -49,3 +49,10 @@ Voor je beoordeling wordt gekeken naar de implementatie van de *lesonderwerpen u
     - Je kan alleen door een deur als je een sleutel hebt
     - Er zijn meerdere levels met een eigen thema
 
+<br/>
+
+- Tower Defense
+    - Torentjes plaatsen
+    - Torentjes schieten vanzelf
+    - Enemies worden automatisch toegevoegd en volgen een pad
+    - Zodra een enemy wordt afgeschoten, wordt er een score bijgeteld
