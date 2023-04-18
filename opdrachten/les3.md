@@ -54,3 +54,7 @@ export class DeLorean {
     }
 }
 ```
+
+## Inleveropdracht
+
+[Kies een van de templates voor je eindproject](https://github.com/HR-CMGT/PRG04-2022-2023/blob/main/opdrachten/inleveropdracht.md)
