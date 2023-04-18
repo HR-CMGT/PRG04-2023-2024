@@ -20,7 +20,7 @@ Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een mod
 | 1 | Introductie vak en introductie Excalibur library | Modern Web development met npm install, modules en import / export. Publiceren op github pages met commit en push.
 |  | [Opdracht](./opdrachten/les1.md) | [Opdracht](./opdrachten/les2.md) | 
 | 2 | Introductie OOP. Classes en instances, properties en methods. Constructor en this keyword. Klassendiagram. Uitleg en kiezen van eindproject | Werken met het Excalibur startproject. Game en Resources. Laadscherm en startknop. Actors. Animatie. DOCS lezen. |
-|  | [Opdracht](./opdrachten/les3.md) | [Opdracht](./opdrachten/les4.md) | 
+|  | [Opdracht](./opdrachten/les3.md) en  [Inleveropdracht](./opdrachten/inleveropdracht.md) | [Opdracht](./opdrachten/les4.md) | 
 | 3 | Inheritance theorie. Uitleg super(). Actor extenden. Waarden doorgeven via constructor. | Game Loop. Update Lifecycle. Keyboard besturing. Collision en hitbox. |
 |  | [Opdracht](./opdrachten/les5.md) | [Opdracht](./opdrachten/les6.md) | 
 | 4 | Composition en encapsulation. | Timers gebruiken om objecten te spawnen. Scenes gebruiken om schermen te wisselen. Score opslaan met localStorage. Tekst en graphics gebruiken. |
@@ -58,13 +58,14 @@ Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een mod
 ## Links
 
 - [Codesandbox Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu?file=/game.js)
-- [Een excalibur project opzetten zonder het startproject](./advanced.md)
 - [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 - [Git instellen](https://www.youtube.com/watch?v=HfTXHrWMGVY)
-- [Font Loader](https://fontfaceobserver.com)
-- [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)
+- [Font Loader](https://fontfaceobserver.com)
+- [Een excalibur project opzetten zonder het startproject](./advanced.md)
+- [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [MDN Object Oriented Programming](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
 - [Online Multiplayer met Socket.IO](https://socket.io) of [Lance](https://lance-gg.github.io)
 - [Create Game Sounds](https://sfxr.me)
+- [Net Ninja OOP Javascript course](https://www.youtube.com/playlist?list=PL4cUxeGkcC9i5yvDkJgt60vNVWffpblB7)
 - [Genereer je Class Diagram met markdown](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp9kc1uwyAMgF8F-bS1zQtEO1XddtmtVy5OcFs0_sSPtKjruy8JBaWZNi6gD_PZ2FforSBooVcYwkHi2aPmhhs2rnfUxDZNw_ap6xSt4JsMlxJ5dF5GYi_fla9pUeSbOVtWXTOZ1tYk3ZFnobeeFvjDohixmrcFT05gpKfnBRLW0BQuzbnw22PSXEjN2pScjkgU-Mu8dcq6P4TTf__XNY-61fvcpWooTfhag6ECQSF6O1Qf7ECT1yjFOMhZxCFeSBOHdjwK9J8cuJniMEV7HEwPbfSJdpAru88d2hOqUOmrkNH6O7z9AKopqB4)
