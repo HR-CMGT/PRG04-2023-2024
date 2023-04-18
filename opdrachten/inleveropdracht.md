@@ -2,7 +2,7 @@
 
 In week 2 kies je een van onderstaande templates. Je gaat hier tijdens de lessen en in je zelfstudietijd aan werken. 
 
-- De templates dienen als handvat om jou een doel te geven om naartoe te werken.
+- De templates dienen als handvat om jou een realistisch doel te geven om naartoe te werken.
 - Het is ***niet*** verplicht dat je alle onderdelen van deze templates in je game hebt verwerkt.
 - Het is ***wel*** verplicht dat je de onderwerpen uit de lessen in je game hebt verwerkt. Zie voor de beoordeling de cursushandleiding!
 
