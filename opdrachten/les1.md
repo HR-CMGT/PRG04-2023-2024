@@ -20,6 +20,16 @@ Gebruik de presentatie voor code voorbeelden!
 - Bedenk een game concept met deze setup
 - Deel je codesandbox link in TEAMS en speel elkaars games
 
+
+<Br>
+<Br>
+<Br>
+
+## Inleveropdracht
+
+[Kies een van de templates voor je eindproject](https://github.com/HR-CMGT/PRG04-2022-2023/blob/main/opdrachten/inleveropdracht.md)
+
+
 <br>
 <br>
 <br>

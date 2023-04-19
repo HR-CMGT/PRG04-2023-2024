@@ -18,9 +18,9 @@ Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een mod
 | Week | Ochtend | Middag | 
 |------|---------|----------|
 | 1 | Introductie vak en introductie Excalibur library | Modern Web development met npm install, modules en import / export. Publiceren op github pages met commit en push.
-|  | [Opdracht](./opdrachten/les1.md) | [Opdracht](./opdrachten/les2.md) | 
+|  | [Opdracht](./opdrachten/les1.md) en [Inleveropdracht](./opdrachten/inleveropdracht.md) | [Opdracht](./opdrachten/les2.md) | 
 | 2 | Introductie OOP. Classes en instances, properties en methods. Constructor en this keyword. Klassendiagram. Uitleg en kiezen van eindproject | Werken met het Excalibur startproject. Game en Resources. Laadscherm en startknop. Actors. Animatie. DOCS lezen. |
-|  | [Opdracht](./opdrachten/les3.md) en  [Inleveropdracht](./opdrachten/inleveropdracht.md) | [Opdracht](./opdrachten/les4.md) | 
+|  | [Opdracht](./opdrachten/les3.md)  | [Opdracht](./opdrachten/les4.md) | 
 | 3 | Inheritance theorie. Uitleg super(). Actor extenden. Waarden doorgeven via constructor. | Game Loop. Update Lifecycle. Keyboard besturing. Collision en hitbox. |
 |  | [Opdracht](./opdrachten/les5.md) | [Opdracht](./opdrachten/les6.md) | 
 | 4 | Composition en encapsulation. | Timers gebruiken om objecten te spawnen. Scenes gebruiken om schermen te wisselen. Score opslaan met localStorage. Tekst en graphics gebruiken. |

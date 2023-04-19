@@ -1,6 +1,6 @@
 # Inleveropdracht
 
-In week 2 kies je een van onderstaande templates. Je gaat hier tijdens de lessen en in je zelfstudietijd aan werken. 
+In week 1 kies je een van onderstaande templates. Je gaat hier tijdens de lessen en in je zelfstudietijd aan werken. 
 
 - De templates dienen als handvat om jou een realistisch doel te geven om naartoe te werken.
 - Het is ***niet*** verplicht dat je alle onderdelen van deze templates in je game hebt verwerkt.
@@ -78,9 +78,9 @@ Je kan het [startproject](https://github.com/HR-CMGT/prg4-startproject-2023) als
 <br>
 <br>
 
-## Links
+## Game Assets
 
 - [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)
-- Genereer game art met DallE of Midjourney en maak het vrijstaand
+- [Midjourney](https://enchanting-trader-463.notion.site/Midjourney-AI-Guide-41eca43809dd4d8fa676e648436fc29c)
 - [Font Loader](https://fontfaceobserver.com)
-- [Create Game Sounds](https://sfxr.me)
+- [Create Game Sounds](https://sfxr.me) or use [FreeSound](https://freesound.org)
