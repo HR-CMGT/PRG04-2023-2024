@@ -1,4 +1,4 @@
-# Werken met github startproject
+# Werken met het startproject
 
 - Startcode downloaden
 - Project installeren en development server starten
