@@ -1,11 +1,11 @@
 
 # Code Snippets
 
-Een verzameling handige snippets voor Excalibur.
-
 - Scenes
-- Game.js en Resources.js
+- JSON laden
+- Meerdere sprites in een actor
 - Events
+- Default Game.js en Resources.js
 
 <br><br><br>
 
@@ -29,18 +29,98 @@ class Game extends Engine {
 SCENE has ACTORS.
 Gebruik de `engine` variabele om van scene te wisselen.
 ```javascript
+import { Scene } from "excalibur"
+
 export class Help extends Scene {
 
     onInitialize(engine) {
-        const btn = new Actor()
-        btn.graphics.use(Resources.Button.toSprite())
-        btn.pos = new Vector(200,200)
-        btn.enableCapturePointer = true
-        btn.on('pointerup', (ev) => engine.goToScene('level1'))
-        this.add(btn)
+        const mario = new Mario() // actor
+        this.add(mario)
+        mario.enableCapturePointer = true
+        mario.on('pointerup', (ev) => engine.goToScene('level1'))
     }
 }
 ```
+
+<br><br><br>
+
+
+## JSON laden
+
+Als je `import` gebruikt wordt het JSON bestand onderdeel van je project tijdens de `build` stap. Je hoeft het niet toe te voegen aan de excalibur loader. Als de data van een externe server komt (of als het bestand heel groot is) is het beter om `fetch` te gebruiken.
+
+VOORBEELD
+
+```javascript
+import jsonData from "../data/pokemon.json"
+
+class Pokemon extends Actor {
+    showPokemon(){
+        for(let p of jsonData) {
+            console.log(p)
+        }
+    }
+}
+```
+<br><br><br>
+
+
+## Meerdere sprites in een actor
+
+Je kan meerdere sprites in een graphic zetten en ze tonen en verbergen met `show` en `hide`
+
+```javascript
+export class Mario extends Actor {
+
+    onInitialize(engine) {
+        this.graphics.add('walk', Resources.Walk.toSprite())
+        this.graphics.add('jump', Resources.Jump.toSprite())
+    }
+
+    walk() {
+        this.graphics.show('walk') 
+        this.graphics.hide('jump') 
+    }
+
+    jump() {
+        this.graphics.show('jump') 
+        this.graphics.hide('walk') 
+    }
+}
+```
+
+
+
+<br><br><br>
+
+
+## Events
+
+Een child kan een event afvuren met `emit`. De parent kan hier naar luisteren met `on`.
+
+PARENT listens to BLUB event
+```javascript
+class Aquarium extends Actor {
+    onInitialize() {
+        let fish = new Fish()
+        this.add(fish)
+        
+        fish.on("blub", (ev) => {
+            console.log("fish says blub")
+        })
+    }
+}
+```
+CHILD emits BLUB event
+```javascript
+class Fish extends Actor {
+    onCollision() {
+        this.emit('blub', new GameEvent())
+    }
+}
+```
+
+
 <br><br><br>
 
 ## Startcode game en resources
@@ -83,29 +163,3 @@ export { Resources, ResourceLoader }
 
 
 <br><br><br>
-
-## Events
-
-Een child actor kan een event afvuren met `emit`. De parent actor kan hier naar luisteren met `on`.
-
-CHILD ACTOR emits BLUB event
-```javascript
-class Fish extends Actor {
-    onCollision() {
-        this.emit('blub', new GameEvent())
-    }
-}
-```
-PARENT ACTOR listens to BLUB event
-```javascript
-class Aquarium extends Actor {
-    onInitialize() {
-        let fish = new Fish()
-        this.add(fish)
-        
-        fish.on("blub", (ev) => {
-            console.log("fish says blub")
-        })
-    }
-}
-```
