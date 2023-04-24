@@ -10,23 +10,22 @@
 
 ## Opdracht
 
-Gebruik de presentatie voor code voorbeelden!
+> 🚨 ***Gebruik de presentatie voor code voorbeelden!***
+
+<Br>
 
 - Clone / Fork de [Codesandbox](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu) oefening
 - Upload een aantal PNG's om in je game te gebruiekn
 - Voeg je afbeeldingen toe via `import` aan `resources.js`
 - Maak een Actor voor de achtergrondafbeelding
 - Plaats Actors op de voorgrond met een position en een velocity
-- Kan je een FOR loop gebruiken om heel veel actors te plaatsen? Hoe zorg je dat ze allemaal ergens anders staan / anders bewegen?
 - Verwijder of verplaats de actors als er op geklikt wordt
 - Bedenk een game concept met deze setup
 - Deel je codesandbox link in TEAMS en speel elkaars games
 
-<br>
-
-> 🚨 ***Gebruik de presentatie voor code voorbeelden!***
-
-<br><br><br>
+### Extra 
+- Kan je een FOR loop gebruiken om heel veel actors te plaatsen? Hoe zorg je dat ze allemaal ergens anders staan / anders bewegen?
+- Bekijk de [documentatie](https://excaliburjs.com/docs/text/). Kan je een tekstveld toevoegen aan de game? 
 
 ## Inleveropdracht
 
