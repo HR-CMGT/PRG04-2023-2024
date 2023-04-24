@@ -14,7 +14,7 @@
 
 <Br>
 
-- Clone / Fork de [Codesandbox](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu) oefening
+- FORK de [Codesandbox](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu) oefening
 - Upload een aantal PNG's om in je game te gebruiekn
 - Voeg je afbeeldingen toe via `import` aan `resources.js`
 - Maak een Actor voor de achtergrondafbeelding
