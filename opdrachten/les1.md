@@ -12,39 +12,21 @@
 
 Gebruik de presentatie voor code voorbeelden!
 
-- Clone / Fork de Codesandbox oefening
-- Gebruik je eigen afbeeldingen voor de achtergrond en sprites (voeg toe aan resources.js)
+- Clone / Fork de [Codesandbox](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu) oefening
+- Upload een aantal PNG's om in je game te gebruiekn
+- Voeg je afbeeldingen toe via `import` aan `resources.js`
 - Maak een Actor voor de achtergrondafbeelding
 - Plaats Actors op de voorgrond met een position en een velocity
+- Kan je een FOR loop gebruiken om heel veel actors te plaatsen? Hoe zorg je dat ze allemaal ergens anders staan / anders bewegen?
 - Verwijder of verplaats de actors als er op geklikt wordt
 - Bedenk een game concept met deze setup
 - Deel je codesandbox link in TEAMS en speel elkaars games
 
+<br>
+
+> 🚨 ***Gebruik de presentatie voor code voorbeelden!***
+
 <br><br><br>
-
-## Tip : gebruik random voor variatie
-
-```javascript
-const fish = new Actor()
-const sprite = Resources.Fish.toSprite()
-fish.graphics.use(sprite)
-
-// tint
-sprite.tint = new Color(Math.random() * 255, Math.random() * 255, Math.random() * 255)
-
-// position and velocity
-fish.pos = new Vector(Math.random()*800 + 400,Math.random()*600)
-fish.vel = new Vector(Math.random() * 50, 0)
-
-// scale
-const sc = Math.random() * 2
-fish.scale = new Vector(sc, sc)
-```
-
-
-<Br>
-<Br>
-<Br>
 
 ## Inleveropdracht
 
