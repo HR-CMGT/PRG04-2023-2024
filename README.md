@@ -73,3 +73,4 @@ Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een mod
 ## Advanced
 
 - [Javascript Game Design Patterns](https://designpatternsgame.com/patterns)
+- [Type Checking](./typechecking.md)
