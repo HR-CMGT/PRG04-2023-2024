@@ -47,23 +47,18 @@ In deze oefening ga je kijken of je jouw werkomgeving helemaal op orde hebt. Dit
 
 <br>
 
-- Zorg dat je een github account hebt, en dat je lokale git settings gekoppeld zijn aan github (zie de presentatie).
-- Fork en clone het [Startproject Javascript](https://github.com/HR-CMGT/prg4-javascript-2023) , volgens de [install instructies](../setup.md)
-- Zet ***github pages*** aan op github > settings > pages. Kies de main/docs map en druk op save.
+- Zorg dat je een github account hebt, en dat je lokale git settings gekoppeld zijn
+- Fork en clone het javascript startproject volgens de instructies
+- Zet github pages aan op github. Kies de main/docs map en druk op save.
 - Open de `index.html` in VS Code
-- Voeg een `<p>` met wat tekst toe in de `index.html`
+- Maak een aanpassing in `index.html`
 - Kijk of je `git commit` kan doen. Kijk daarna of je `git push / sync` kan doen.
 - Staat je aangepaste html file nu op je github?
-- Voeg een script toe aan de SRC map. Laad het als module in de index.html file `<script type="module" src="/src/js/game.js"></script>`
-- Gebruik een `console.log("hello world")` in je javascript file.
-- Start de dev server met `npm run dev` om te zien of het console bericht getoond wordt.
-- In de javascript file gebruik je `import` om een afbeelding te laden. `import myImage from "./supermario.png"`
-- Vervolgens plaats je de afbeelding in de DOM via `createElement("img")` en `appendChild()`.
-- Kijk of je dev server de afbeelding toont.
+- Start de dev server met `npm run dev` om te zien of de dev server werkt.
 - Stop de dev server met `ctrl + c`
 - Bouw de docs folder met `npm run build`. Kijk wat er in de docs folder staat.
-- `commit` en `push` je code naar github. Kijk of je code in je repostory staat. 
-- Kijk of github pages werkt. 
+- `commit` en `push` je code naar github. Kijk of je code in je repostory staat.
+- Kijk of github pages werkt.
 
 <Br>
 <Br>
