@@ -14,7 +14,7 @@
 
 ## Opdracht
 
-- Bekijk de code snippets hieronder.
+- Bekijk de code snippets hieronder en in de presentatie.
 - Plaats de actors op een random positie.
 - Laat de actors met een random snelheid bewegen
 - Check of de actors uit beeld lopen en zet ze weer terug, middels het `exitviewport` event.
@@ -34,22 +34,20 @@
 
 ## Click en Exit Screen Events in een class
 
-In classes gebruik je het `this` keyword om op events te reageren. 
+In classes gebruik je het `this` keyword om op events te reageren. Het is overzichtelijk als je de event handler in een eigen functie zet.
 
 ```javascript
 class Henk extends Actor {
 
     onInitialize(engine){
-        this.on("exitviewport", (event) => {
-            this.pos = new Vector(500,100)
-        })
-
         this.enableCapturePointer = true
         this.pointer.useGraphicsBounds = true
-        this.on("pointerup", (event) => {
-            this.pos = new Vector(200,200) 
-            this.kill()                       
-        })
+        this.on("pointerup", (event) => this.resetPosition())
+        this.on("exitviewport", (event) => this.resetPosition())
+    }
+
+    resetPosition(){
+        this.pos = new Vector(500,100)
     }
 }
 ```
