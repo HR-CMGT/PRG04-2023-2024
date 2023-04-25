@@ -92,7 +92,13 @@ of
 
 ## Oefenen met excalibur
 
-Als je de basis met [javascript](https://github.com/HR-CMGT/prg4-javascript-2023) werkend hebt kan je ook oefenen met [excalibur](https://github.com/HR-CMGT/prg4-startproject-2023)
+Als je de basis met [javascript](https://github.com/HR-CMGT/prg4-javascript-2023) werkend hebt kan je ook oefenen met excalibur. Typ in de terminal:
+
+```bash
+npm install excalibur
+```
+
+Of clone het [excalibur startproject](https://github.com/HR-CMGT/prg4-startproject-2023)
 
 <br><br><br>
 
