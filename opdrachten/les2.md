@@ -48,33 +48,24 @@ In deze oefening ga je kijken of je jouw werkomgeving helemaal op orde hebt. Dit
 <br>
 
 - Zorg dat je een github account hebt, en dat je lokale git settings gekoppeld zijn
-- Fork en clone het javascript startproject volgens de instructies
-- Zet github pages aan op github. Kies de main/docs map en druk op save.
-- Open de `index.html` in VS Code
-- Maak een aanpassing in `index.html`
-- Kijk of je `git commit` kan doen. Kijk daarna of je `git push / sync` kan doen.
+- Fork het [excalibur startproject](https://github.com/HR-CMGT/prg4-startproject-2023) (use this template)
+- Clone het project naar je computer en open het in je editor.
+- Zet ***github pages*** aan op github. Kies de `main/docs` map en druk op save.
+- Maak een aanpassing en kijk of je `git commit` en `git push` kan doen.
 - Staat je aangepaste html file nu op je github?
 - Start de dev server met `npm run dev` om te zien of de dev server werkt.
 - Stop de dev server met `ctrl + c`
 - Bouw de docs folder met `npm run build`. Kijk wat er in de docs folder staat.
-- `commit` en `push` je code naar github. Kijk of je code in je repostory staat.
-- Kijk of github pages werkt.
+- Kijk of je de docs folder op ***github pages*** kan plaatsen met `git push`.
 
 <Br>
 <Br>
 <Br>
 
-### Troubleshooting
+### Troubleshooting github pages
 
 Als github pages wel je HTML file laat zien, maar geen afbeeldingen of CSS, dan kan je de `base url` aanpassen in `package.json`
 
-```json
-"scripts": {
-    "dev": "vite",
-    "build": "vite build --outDir=docs --base='/'",
-},
-```
-of
 ```json
 "scripts": {
     "dev": "vite",
@@ -85,20 +76,9 @@ of
 
 <br><br><br>
 
-## Oefenen met excalibur
-
-Als je de basis met [javascript](https://github.com/HR-CMGT/prg4-javascript-2023) werkend hebt kan je ook oefenen met excalibur. Typ in de terminal:
-
-```bash
-npm install excalibur
-```
-
-Of clone het [excalibur startproject](https://github.com/HR-CMGT/prg4-startproject-2023)
-
-<br><br><br>
 
 ## Links
 
-- [Startproject Javascript (week 1)](https://github.com/HR-CMGT/prg4-javascript-2023)
-- [Startproject Excalibur (week 2+)](https://github.com/HR-CMGT/prg4-startproject-2023)
+- [Startproject Excalibur](https://github.com/HR-CMGT/prg4-startproject-2023)
 - [Setup instructies voor github pages](./setup.md)
+- [Oefenproject zonder excalibur](https://github.com/HR-CMGT/prg4-javascript-2023)

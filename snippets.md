@@ -6,7 +6,7 @@
 - Scenes
 - JSON laden
 - Meerdere sprites in een actor
-- Events
+- Custom Events
 - Default Game.js en Resources.js
 
 <br><br><br>
@@ -135,7 +135,7 @@ export class Mario extends Actor {
 <br><br><br>
 
 
-## Events
+## Custom Events
 
 Een child kan een event afvuren met `emit`. De parent kan hier naar luisteren met `on`.
 
@@ -146,7 +146,7 @@ class Aquarium extends Actor {
         let fish = new Fish()
         this.add(fish)
         
-        fish.on("blub", (ev) => {
+        fish.on("blub", (event) => {
             console.log("fish says blub")
         })
     }
@@ -154,6 +154,8 @@ class Aquarium extends Actor {
 ```
 CHILD emits BLUB event
 ```javascript
+import { GameEvent } from "excalibur"
+
 class Fish extends Actor {
     onCollision() {
         this.emit('blub', new GameEvent())

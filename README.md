@@ -2,12 +2,10 @@
 
 ## 👾Object oriented game development 👾
 
-In dit vak gaan we met Object Oriented Programming games bouwen. We gebruiken de [excalibur library](https://excaliburjs.com). We werken met een moderne web development setup. We gebruiken git en github om onze game live te zetten.
+In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.com). We gebruiken git en github om onze game live te zetten. We werken met node modules in een moderne web development omgeving.
 
 - De cursushandleiding op TEAMS bevat details over de beoordeling.
 - De presentaties op TEAMS bevatten de lesstof en de opdrachten.
-
-Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een moderne development omgeving](https://github.com/HR-CMGT/prg4-javascript-2023), en hetzelfde project met [excalibur startcode](https://github.com/HR-CMGT/prg4-startproject-2023). Je kan een van deze projecten gebruiken en op je eigen github zetten met behulp van [de setup instructies](./setup.md).
 
 <br>
 <br>
@@ -37,15 +35,14 @@ Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een mod
 
 ## Startcode
 
-- [Startproject Javascript (week 1)](https://github.com/HR-CMGT/prg4-javascript-2023)
-- [Startproject Excalibur (week 2+)](https://github.com/HR-CMGT/prg4-startproject-2023)
+- [Startproject Excalibur](https://github.com/HR-CMGT/prg4-startproject-2023)
 - [Setup instructies voor github pages](./setup.md)
+- [Code snippets](./snippets.md)
 
 ## Excalibur
 
 - [Excalibur](https://excaliburjs.com)
 - [Excalibur API documentation](https://excaliburjs.com/docs/api/edge/index.html)
-- [Code snippets](./snippets.md)
 - [Excalibur forum](https://github.com/excaliburjs/Excalibur/discussions)
 
 ## Excalibur Code Examples
@@ -69,6 +66,7 @@ Er zijn twee startprojecten, eentje voor het beginnen met [javascript in een mod
 - [Create Game Sounds](https://sfxr.me)
 - [Net Ninja OOP Javascript course](https://www.youtube.com/playlist?list=PL4cUxeGkcC9i5yvDkJgt60vNVWffpblB7)
 - [Genereer je Class Diagram met markdown](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp9kc1uwyAMgF8F-bS1zQtEO1XddtmtVy5OcFs0_sSPtKjruy8JBaWZNi6gD_PZ2FforSBooVcYwkHi2aPmhhs2rnfUxDZNw_ap6xSt4JsMlxJ5dF5GYi_fla9pUeSbOVtWXTOZ1tYk3ZFnobeeFvjDohixmrcFT05gpKfnBRLW0BQuzbnw22PSXEjN2pScjkgU-Mu8dcq6P4TTf__XNY-61fvcpWooTfhag6ECQSF6O1Qf7ECT1yjFOMhZxCFeSBOHdjwK9J8cuJniMEV7HEwPbfSJdpAru88d2hOqUOmrkNH6O7z9AKopqB4)
+- [Javascript project zonder excalibur](https://github.com/HR-CMGT/prg4-javascript-2023)
 
 ## Advanced
 
