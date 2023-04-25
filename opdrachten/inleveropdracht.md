@@ -58,6 +58,7 @@ In week 1 kies je een van onderstaande templates. Je gaat hier tijdens de lessen
 - Top down view
 - Camera volgt speler
 - Controls (gas, remmen, sturen)
+- Acceleration, direction
 - Addforce met drag (auto verlangzaamt over tijd)
 - Start/Finish collider, halverwege-collider (om cheaten tegen te gaan)
 - Gereden rondes per speler bijhouden
