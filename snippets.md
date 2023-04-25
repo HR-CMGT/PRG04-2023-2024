@@ -1,11 +1,52 @@
 
 # Code Snippets
 
+- Click en Exit Screen Events
+- Tekstveld
 - Scenes
 - JSON laden
 - Meerdere sprites in een actor
 - Events
 - Default Game.js en Resources.js
+
+<br><br><br>
+
+## Click en Exit Screen Events
+
+On Exit Screen
+```javascript
+fish.on("exitviewport", (event) => {
+    fish.pos = new Vector(500,100)
+})
+```
+On Click
+```javascript
+mario.enableCapturePointer = true
+mario.pointer.useGraphicsBounds = true
+mario.on("pointerup", (event) => {
+    mario.pos = new Vector(200,200)    // verplaatsen
+    mario.kill()                       // verwijderen
+})
+```
+<br><br><br>
+
+## Tekstveld
+
+```javascript
+import { Actor, Engine, Vector, Label, FontUnit, Font} from "excalibur";
+
+let label = new Label({
+  text: 'Score',
+  pos: new Vector(100, 100),
+  font: new Font({
+    family: 'impact',
+    size: 24,
+    unit: FontUnit.Px
+  })
+})
+
+this.add(label)
+```
 
 <br><br><br>
 
