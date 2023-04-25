@@ -76,7 +76,7 @@ Als github pages wel je HTML file laat zien, maar geen afbeeldingen of CSS, dan 
 ```json
 "scripts": {
     "dev": "vite",
-    "build": "vite build --outDir=docs --base=''",
+    "build": "vite build --outDir=docs --base='/'",
 },
 ```
 of
@@ -87,24 +87,17 @@ of
 },
 ```
 
-<Br>
-<Br>
-<Br>
 
-## Optioneel
+<br><br><br>
 
-- Installeer een npm package zoals `everyday-fun`
-- Kijk of je hiermee kan werken
-- Verwijder het weer via `npm uninstall everyday-fun`
+## Oefenen met excalibur
 
-```bash
-npm install everyday-fun
-```
-Javascript
-```javascript
-import all from "everyday-fun"
+Als je de basis met [javascript](https://github.com/HR-CMGT/prg4-javascript-2023) werkend hebt kan je ook oefenen met [excalibur](https://github.com/HR-CMGT/prg4-startproject-2023)
 
-const r = all.getRandomRiddle();
-console.log(r.riddle)
-console.log(r.answer)
-```
+<br><br><br>
+
+## Links
+
+- [Startproject Javascript (week 1)](https://github.com/HR-CMGT/prg4-javascript-2023)
+- [Startproject Excalibur (week 2+)](https://github.com/HR-CMGT/prg4-startproject-2023)
+- [Setup instructies voor github pages](./setup.md)
