@@ -71,6 +71,7 @@ Eventueel kan je dit noteren in een klassendiagram (zie voorbeeld van Player hie
 - Het gedrag (functies) staat onderaan.
 
 je kunt het klassendiagram ook digitaal maken in bijvoorbeeld **Miro**. Klik in miro op 'Shapes', 'All shapes' en zoek je op 'UML'. Daar kun je kiezen voor 'Class'.
+  
 <img width="500" src="../images/diagram1.png">
 
 Eventueel kan de screenshot van ***new super mario bros*** je inspiratie geven voor objecten in je eigen game.  
