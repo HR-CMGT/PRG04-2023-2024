@@ -1,14 +1,14 @@
 
 # Code Snippets
 
+- [Scrolling Background](./scrolling.md)
 - Click en Exit Screen Events
 - Tekstveld
 - Scenes
 - JSON laden
-- [Scrolling Background](./scrolling.md)
 - Sprites wisselen binnen een actor
 - Custom Events
-- Default Game.js en Resources.js
+- Flip sprite
 
 <br><br><br>
 
@@ -167,43 +167,29 @@ class Fish extends Actor {
 
 <br><br><br>
 
-## Startcode game en resources
+## Flip sprite
 
-GAME.JS
+MARIO.JS
 ```javascript
-import '../css/style.css'
 import { Actor, Engine, Vector } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 
-export class Game extends Engine {
+export class Sprite extends Actor {
 
-    constructor() {
-        super({ width: 800, height: 600 })
-        this.start(ResourceLoader).then(() => this.startGame())
-    }
+    onInitialize(engine) {
+        // optie 1: flip de sprite bitmap
+        this.sprite = Resources.Mario.toSprite()
+        this.graphics.use(this.sprite)
+        this.sprite.flipHorizontal = true
 
-    startGame() {
-        const fish = new Actor()
-        fish.graphics.use(Resources.Fish.toSprite())
-        fish.pos = new Vector(400, 300)
-        this.add(fish)
+        // optie 2: flip de hele actor
+        // het kan dan nodig zijn om de anchor te verplaatsen
+        this.scale = new Vector(-1, 1);
+        this.anchor = new Vector(1, 0);
     }
 }
-
-new Game()
 ```
-RESOURCES.JS
-```javascript
-import { ImageSource, Sound, Resource, Loader } from 'excalibur'
-import fishImage from '../images/fish.png'
 
-const Resources = {
-    Fish: new ImageSource(fishImage)
-}
-const ResourceLoader = new Loader([Resources.Fish])
-
-export { Resources, ResourceLoader }
-```
 
 
 <br><br><br>
