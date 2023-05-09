@@ -5,7 +5,7 @@
 
 - Fork en clone het [Startproject Javascript](https://github.com/HR-CMGT/prg4-javascript-2023) volgens de [install instructies](../setup.md)
 - Hierin zit geen excalibur
-- Voer `npm install` uit en daarna `npm run build`.
+- Voer `npm install` uit en daarna `npm run dev`.
 - Schrijf onderstaande class in javascript.
 - Elke class krijgt een eigen file. Gebruik het `export` keyword.
 - Importeer de classes in main.js en maak een aantal instances van Player.
