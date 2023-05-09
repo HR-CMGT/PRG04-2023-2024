@@ -86,6 +86,9 @@ import levelStartSound from "../sound/LevelStart0.wav"
 const Resources = {
     LevelStart: new Sound(levelStartSound),
 }
+const ResourceLoader = new Loader([
+    Resources.LevelStart,
+]);
 ```
 GAME.JS (of een andere class)
 ```javascript

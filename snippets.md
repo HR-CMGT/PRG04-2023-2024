@@ -5,7 +5,8 @@
 - Tekstveld
 - Scenes
 - JSON laden
-- Meerdere sprites in een actor
+- [Scrolling Background](./scrolling.md)
+- Sprites wisselen binnen een actor
 - Custom Events
 - Default Game.js en Resources.js
 
@@ -106,7 +107,7 @@ class Pokemon extends Actor {
 <br><br><br>
 
 
-## Meerdere sprites in een actor
+## Sprites wisselen binnen een actor
 
 Je kan meerdere sprites in een graphic zetten en ze tonen en verbergen met `show` en `hide`
 
