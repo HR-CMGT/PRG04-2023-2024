@@ -10,6 +10,7 @@
 - Sprites wisselen binnen een actor
 - Custom Events
 - Flip sprite
+- Health Bar
 
 <br><br><br>
 
@@ -26,6 +27,14 @@ ResourceLoader.logoHeight = 203
 ResourceLoader.backgroundColor = Color.White
 ResourceLoader.loadingBarColor = Color.Black
 ```
+Je moet de startbutton aanpassen via CSS, omdat dit geen canvas button is.
+```css
+#excalibur-play {
+    background: rgb(0, 0, 0) !important;
+}
+```
+
+
 <br><br><br>
 
 ## Click en Exit Screen Events
@@ -206,6 +215,42 @@ export class Sprite extends Actor {
 }
 ```
 
+<br><br><br>
 
+## Health Bar
+
+Hieronder zie je een actor class die met behulp van `Rectangle` een health bar tekent. Je kan de health bar aanmaken met `new HealthBar()`
+
+```javascript
+import { Actor, Vector, Color, Sprite, Rectangle, clamp } from 'excalibur'
+
+export class HealthBar extends Actor {
+
+    healthrectangle
+
+    constructor() {
+        super({ width: 165, height: 30 })
+        this.healthrectangle = new Rectangle({
+            width: 165,
+            height: 30,
+            color: Color.Red,
+        })
+        this.anchor = new Vector(0, 0)
+        this.graphics.use(this.healthrectangle)
+    }
+
+    resetHealth(){
+        this.timerectangle.width = 165
+    } 
+
+    loseHealth(damage) {
+        this.healthrectangle.width = this.healthrectangle.width - damage
+        
+        if (this.healthrectangle.width <= 0) {
+            console.log("game over")
+        }
+    }
+}
+```
 
 <br><br><br>
