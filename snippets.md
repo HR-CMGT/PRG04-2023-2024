@@ -2,6 +2,7 @@
 # Code Snippets
 
 - [Scrolling Background](./scrolling.md)
+- Loading Screen aanpassen
 - Click en Exit Screen Events
 - Tekstveld
 - Scenes
@@ -12,22 +13,37 @@
 
 <br><br><br>
 
+## Loading Screen aanpassen
+
+RESOURCES.JS
+```javascript
+import titleImage from '../images/loadingscreen.png'
+
+const ResourceLoader = new Loader([Resources.Fish, Resources.Mario])
+ResourceLoader.logo = titleImage
+ResourceLoader.logoWidth = 659
+ResourceLoader.logoHeight = 203
+ResourceLoader.backgroundColor = Color.White
+ResourceLoader.loadingBarColor = Color.Black
+```
+<br><br><br>
+
 ## Click en Exit Screen Events
 
 On Exit Screen
 ```javascript
-fish.on("exitviewport", (event) => {
-    fish.pos = new Vector(500,100)
-})
-```
-On Click
-```javascript
-mario.enableCapturePointer = true
-mario.pointer.useGraphicsBounds = true
-mario.on("pointerup", (event) => {
-    mario.pos = new Vector(200,200)    // verplaatsen
-    mario.kill()                       // verwijderen
-})
+class Fish extends Actor {
+    onInitialize(engine) { 
+        this.enableCapturePointer = true
+        this.pointer.useGraphicsBounds = true
+        this.on("exitviewport", (event) => this.resetPosition())
+        this.on("pointerup", (event) => this.resetPosition())
+    }
+    resetPosition(){
+        this.pos = new Vector(1000,10)      // verplaatsen
+        this.kill()                         // verwijderen
+    }
+}
 ```
 <br><br><br>
 
