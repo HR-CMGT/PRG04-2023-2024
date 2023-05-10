@@ -5,7 +5,7 @@ Binnen *één* actor plaats je twee keer dezelfde sprite naast elkaar (Deze moet
 Vervolgens scroll je de actor langzaam naar links. Als de ***eerste*** afbeelding buiten beeld is plaats je de actor weer op de startpositie.
 
 ```javascript
-import { Actor, Vector, GraphicsGroup, Text, FontUnit, Color, BaseAlign, Font } from 'excalibur'
+import { Actor, Vector, GraphicsGroup } from 'excalibur'
 import { Resources } from './resources.js'
 
 
