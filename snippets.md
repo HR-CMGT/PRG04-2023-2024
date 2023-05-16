@@ -6,6 +6,7 @@
 - [Spritesheet](./spritesheet.md)
 - Click en Exit Screen Events
 - Keyboard besturing
+- Sturen en draaien
 - Tekstveld
 - Scenes
 - JSON laden
@@ -88,6 +89,24 @@ class Shark extends Actor {
     }
 }
 ```
+
+<br><br><Br>
+
+## Sturen en draaien
+
+![draaien](./images/carangle.png)
+
+In plaats van in vier richtingen te bewegen met W A S D kan je ook in de richting bewegen waar je naartoe gedraaid staat. Je kan dan de `rotation` omrekenen naar de `velocity`.
+
+```javascript
+let speed = 100
+this.vel = new Vector(
+    Math.cos(this.rotation) * speed,
+    Math.sin(this.rotation) * speed
+)
+```
+- [Compleet voorbeeld](./movedirection.md)
+- [Codesandbox voorbeeld](https://codesandbox.io/p/sandbox/excalibur-move-direction-yr22q8)
 
 <br><br><br>
 

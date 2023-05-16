@@ -43,3 +43,46 @@ export class Background extends Actor {
     }
 }
 ```
+
+Voor een verticaal scrollende background kan je hetzelfde doen, maar dan gebruik je de `y` waarde en de `height`.
+
+```javascript
+import { Actor, Engine, Vector, Label, Color, Font, FontUnit,  TileMap, DisplayMode, FrameStats, GraphicsGroup} from "excalibur";
+import { Resources, ResourceLoader } from "./resources.js";
+import { Background } from "./background.js";
+
+export class ScrollingBackground extends Actor{
+
+    offset
+
+    constructor() {
+        super()
+        let scrollImage = Resources.BGImage.toSprite()
+        this.anchor = new Vector(0, 0)
+        this.offset = scrollImage.height
+
+        const group = new GraphicsGroup({
+            members: [
+                {
+                    graphic: scrollImage,
+                    pos: new Vector(0, 0)
+                },
+                {
+                    graphic: scrollImage,
+                    pos: new Vector(0, scrollImage.height)
+                }
+            ]
+        })
+
+        this.graphics.add(group)
+        this.pos = new Vector(0, 0)
+        this.vel = new Vector(0, -100)
+    }
+
+    onPostUpdate() {
+        if (this.pos.y < -this.offset) {
+            this.pos = new Vector(0, 0)
+        }
+    }
+}
+```
