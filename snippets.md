@@ -3,6 +3,7 @@
 
 - [Scrolling Background](./scrolling.md)
 - Loading Screen aanpassen
+- [Spritesheet](https://codesandbox.io/p/sandbox/excalibur-spritesheet-ysssx4)
 - Click en Exit Screen Events
 - Tekstveld
 - Scenes
@@ -33,7 +34,6 @@ Je moet de startbutton aanpassen via CSS, omdat dit geen canvas button is.
     background: rgb(0, 0, 0) !important;
 }
 ```
-
 
 <br><br><br>
 
