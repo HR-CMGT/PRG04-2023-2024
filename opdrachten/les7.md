@@ -1,23 +1,16 @@
 # Les 7 - week 4 ochtend
 
-## Composition Javascript
-
-- Bouw dit klassendiagram in vanilla javascript (geen excalibur).
-- Let op dat je arrays gebruikt.
-- Geef de vis een `console.log("blub")` opdracht om te zien hoeveel vissen er in je stad zijn.
-
-![composition](../images/les6a.png)
-
-<Br>
-<Br>
-<Br>
-
 ## Composition Excalibur
 
-- Bouw dit klassendiagram in excalibur.
+- Begin met het [excalibur startproject](https://github.com/HR-CMGT/prg4-startproject-2023)
+- We gaan dit klassendiagram bouwen in excalibur.
+- Maak een Actor class voor de achtergrond.
+- Maak een Actor class voor een `Chicken` en voor een `Tree`.
 - De afbeeldingen staan in de [images folder](../images/).
-- Laat meerdere bomen langzaam naar links bewegen.
-- Laat per boom meerdere kippen heen en weer lopen. Blijven de kippen op de boomstam?
+- Plaats drie `Tree` instances in de `Game` class.
+- Laat trees langzaam naar links bewegen. Als ze links uit beeld gaan verschijnen ze rechts weer.
+- Plaats de kippen op de boom door `addChild()` te gebruiken in de `Tree` class.
+- Laat een kip heen en weer lopen. 
 
 ![composition](../images/les6b.png)
 
