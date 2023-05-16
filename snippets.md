@@ -5,6 +5,7 @@
 - Loading Screen aanpassen
 - [Spritesheet](./spritesheet.md)
 - Click en Exit Screen Events
+- Keyboard besturing
 - Tekstveld
 - Scenes
 - JSON laden
@@ -56,6 +57,40 @@ class Fish extends Actor {
 ```
 <br><br><br>
 
+## Keyboard besturing
+
+In dit voorbeeld kijken we in de `update` loop welke toetsen zijn ingedrukt. Aan de hand daarvan veranderen we de `velocity` van de speler.
+
+```javascript
+class Shark extends Actor {
+
+    onPreUpdate(engine) {
+
+        let xspeed = 0
+        let yspeed = 0
+
+        let kb = engine.input.keyboard
+
+        if (kb.isHeld(Input.Keys.W) || kb.isHeld(Input.Keys.Up)) {
+            yspeed = -300
+        }
+        if (kb.isHeld(Input.Keys.S) || kb.isHeld(Input.Keys.Down)) {
+            yspeed = 300
+        }
+        if (kb.isHeld(Input.Keys.A) || kb.isHeld(Input.Keys.Left)) {
+            xspeed = -300
+        }
+        if (kb.isHeld(Input.Keys.D) || kb.isHeld(Input.Keys.Right)) {
+            xspeed = 300
+        }
+
+        this.vel = new Vector(xspeed, yspeed)
+    }
+}
+```
+
+<br><br><br>
+
 ## Tekstveld
 
 ```javascript
@@ -81,33 +116,63 @@ this.add(label)
 GAME has SCENES
 ```javascript
 import { Level1 } from './scenes/level1'
-import { Help } from './scenes/help'
+import { GameOver } from './scenes/gameover'
 
 class Game extends Engine {
 
     everythingLoaded() {
         this.add('level1', new Level1())
-        this.add('help', new Help())
+        this.add('gameover', new GameOver())
 
         this.goToScene('help')
     }
 }
 ```
-SCENE has ACTORS.
-Gebruik de `engine` variabele om van scene te wisselen.
+Je bouwt nu je levels in een SCENE in plaats van rechtstreeks in de game.
+
+Een scene heeft een `onActivate` functie, deze wordt elke keer aangeroepen dat de scene actief wordt.
+
+Gebruik de `engine` variabele om van scene te wisselen. Omdat je die variabele niet altijd beschikbaar hebt maak je er een property van.
+
 ```javascript
 import { Scene } from "excalibur"
 
 export class Help extends Scene {
 
+    game
+
     onInitialize(engine) {
-        const mario = new Mario() // actor
-        this.add(mario)
-        mario.enableCapturePointer = true
-        mario.on('pointerup', (ev) => engine.goToScene('level1'))
+        this.game = engine
+    }
+
+    onActivate(ctx) {
+        console.log("the scene has started!")
+    }
+
+    gameOver() {
+        this.game.goToScene('gameover')
     }
 }
 ```
+<br>
+
+### Waarden doorgeven aan een scene
+
+Het is mogelijk om waarden zoals een score van de ene scene naar de andere door te geven via de `onActivate` functie.
+
+```javascript
+this.game.goToScene('gameover', { level: 4, score: 12 })
+```
+Dit kan je dan als volgt uitlezen:
+```javascript
+onActivate(ctx) {
+    if(ctx.data) {
+        console.log(`LEVEL: ${ctx.data.level}`)
+        console.log(`SCORE: ${ctx.data.score}`)
+    }
+}
+```
+
 
 <br><br><br>
 
