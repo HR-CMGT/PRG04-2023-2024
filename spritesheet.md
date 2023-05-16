@@ -2,10 +2,10 @@
 
 Met een `SpriteSheet` kan je meerdere sprites knippen uit een enkel PNG bestand. Deze kan je vervolgens in een `Animation` gebruiken.
 
-PNG FILE
+PNG FILE <br>
 ![sheet](./images/player.png)
 
-RESULTAAT
+RESULTAAT <br>
 ![anim](./images/running.gif)
 
 <br>
