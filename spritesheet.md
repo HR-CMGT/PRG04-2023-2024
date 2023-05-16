@@ -37,6 +37,15 @@ this.graphics.add("runright", runRight)
 this.graphics.use(idle)
 ```
 
+Flip animation
+
+In plaats van een aparte animatie te maken voor links en rechts, kan je ook de animatie flippen. Dit doe je met `animation.flipHorizontal = true`
+
+```javascript
+var right = left.clone(); 
+right.flipHorizontal = true;
+```
+
 
 
 <br><br><br>
