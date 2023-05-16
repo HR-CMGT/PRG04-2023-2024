@@ -134,7 +134,8 @@ class Pokemon extends Actor {
 
 ## Sprites wisselen binnen een actor
 
-Je kan meerdere sprites in een graphic zetten en ze tonen en verbergen met `show` en `hide`
+Je kan meerdere sprites in een graphic zetten met `add`. Je kan deze sprites tonen en verbergen met `show` en `hide`.
+Of, je kan via `use` aangeven welke sprite op een bepaald moment getoond moet worden.
 
 ```javascript
 export class Mario extends Actor {
@@ -147,11 +148,17 @@ export class Mario extends Actor {
     walk() {
         this.graphics.show('walk') 
         this.graphics.hide('jump') 
+        
+        // of
+        this.graphics.use('walk')
     }
 
     jump() {
         this.graphics.show('jump') 
         this.graphics.hide('walk') 
+        
+        // of
+        this.graphics.use('jump')
     }
 }
 ```
