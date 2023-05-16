@@ -217,7 +217,7 @@ export class Sprite extends Actor {
 Flip spritesheet
 
 ```javascript
-let left = Animation.fromSpriteSheet(spriteSheetRun, ex.range(1, 10), 50)
+let left = Animation.fromSpriteSheet(spriteSheetRun, range(1, 10), 50)
 let right = left.clone()
 right.flipHorizontal = true
 ```
