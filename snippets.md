@@ -3,7 +3,7 @@
 
 - [Scrolling Background](./scrolling.md)
 - Loading Screen aanpassen
-- [Spritesheet](https://codesandbox.io/p/sandbox/excalibur-spritesheet-ysssx4)
+- [Spritesheet](./spritesheet.md)
 - Click en Exit Screen Events
 - Tekstveld
 - Scenes
