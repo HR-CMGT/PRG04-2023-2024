@@ -14,6 +14,7 @@
 - Custom Events
 - Flip sprite
 - Health Bar
+- Object spawner with delay (Timer)
 
 <br><br><br>
 
@@ -333,3 +334,43 @@ export class HealthBar extends Actor {
 ```
 
 <br><br><br>
+    
+ ## Object Spawner with delay (Timer)
+    
+```
+import {Actor, Random, Timer} from "excalibur";
+import {Rock} from "./rock.js";
+
+export class Spawner extends Actor{
+
+    gameElements = []
+    constructor() {
+        super();
+
+        this.random = new Random(1337)
+
+    }
+
+    onInitialize(engine) {
+        this.timer = new Timer({
+            fcn: () => this.spawn(engine),
+            interval: 1000,
+            repeats: true
+        })
+        engine.currentScene.add(this.timer)
+        this.timer.start()
+    }
+
+    spawn(engine) {
+        console.log("spawn")
+        const rock = new Rock(
+            this.random.integer(0, 800),
+            this.random.integer(0, 600)
+        )
+        this.gameElements.push(rock)
+        engine.currentScene.add(rock)
+    }
+}
+```
+    
+ 
