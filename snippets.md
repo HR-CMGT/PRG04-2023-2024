@@ -7,7 +7,7 @@
 - Click en Exit Screen Events
 - Keyboard besturing
 - Sturen en draaien
-- Tekstveld
+- [Tekstveld met score tonen](./tekstveld.md)
 - Scenes
 - JSON laden
 - Sprites wisselen binnen een actor
@@ -110,25 +110,6 @@ this.vel = new Vector(
 
 <br><br><br>
 
-## Tekstveld
-
-```javascript
-import { Actor, Engine, Vector, Label, FontUnit, Font} from "excalibur";
-
-let label = new Label({
-  text: 'Score',
-  pos: new Vector(100, 100),
-  font: new Font({
-    family: 'impact',
-    size: 24,
-    unit: FontUnit.Px
-  })
-})
-
-this.add(label)
-```
-
-<br><br><br>
 
 ## Scenes
 
