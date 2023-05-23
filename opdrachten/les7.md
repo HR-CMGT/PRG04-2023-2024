@@ -2,15 +2,13 @@
 
 ## Composition Excalibur
 
-- Begin met het [excalibur startproject](https://github.com/HR-CMGT/prg4-startproject-2023)
+- Begin met het [excalibur chicken on a raft](https://github.com/HR-CMGT/prg4-chicken-on-a-raft)
 - We gaan dit klassendiagram bouwen in excalibur.
-- Maak een Actor class voor de achtergrond.
-- Maak een Actor class voor een `Chicken` en voor een `Tree`.
-- De afbeeldingen staan in de [images folder](../images/).
-- Plaats drie `Tree` instances in de `Game` class.
-- Laat trees langzaam naar links bewegen. Als ze links uit beeld gaan verschijnen ze rechts weer.
-- Plaats de kippen op de boom door `addChild()` te gebruiken in de `Tree` class.
-- Laat een kip heen en weer lopen. 
+- Plaat `Tree` in de `Game`
+- Plaat `Chicken` op de `Tree`
+- Laat de kippen meebewegen met de boomstammen. Tip: hiervoor kan je `addChild()` gebruiken
+- Laat de kippen heen en weer bewegen op de boomstammen
+- Geef de kippen een hoedje
 
 ![composition](../images/les6b.png)
 
