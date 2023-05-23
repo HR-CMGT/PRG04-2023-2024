@@ -14,7 +14,7 @@
 - Custom Events
 - Flip sprite
 - Health Bar
-- Object spawner with delay (Timer)
+- [Object spawner with delay Timer](#object-spawner-with-delay-timer)
 
 <br><br><br>
 
