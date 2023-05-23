@@ -336,7 +336,9 @@ export class HealthBar extends Actor {
 <br><br><br>
     
  ## Object Spawner with delay (Timer)
-    
+
+De `Random` instance wordt één keer aangemaakt in de constructor. Deze wordt meerdere keren gebruikt bij spawn om een object een random plek te geven binnen de afmeting van 800 x 600. In onInitialize wordt een `Timer` aangemaakt die elke 1000 miliseconden this.spawn() uitvoert. 
+
 ```
 import {Actor, Random, Timer} from "excalibur";
 import {Rock} from "./rock.js";
