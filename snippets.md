@@ -339,13 +339,12 @@ export class HealthBar extends Actor {
 
 De `Random` instance wordt één keer aangemaakt in de constructor. Deze wordt meerdere keren gebruikt bij spawn om een object een random plek te geven binnen de afmeting van 800 x 600. In onInitialize wordt een `Timer` aangemaakt die elke 1000 miliseconden this.spawn() uitvoert. 
 
-```
+```js
 import {Actor, Random, Timer} from "excalibur";
 import {Rock} from "./rock.js";
 
 export class Spawner extends Actor{
 
-    gameElements = []
     constructor() {
         super();
 
@@ -369,7 +368,6 @@ export class Spawner extends Actor{
             this.random.integer(0, 800),
             this.random.integer(0, 600)
         )
-        this.gameElements.push(rock)
         engine.currentScene.add(rock)
     }
 }
