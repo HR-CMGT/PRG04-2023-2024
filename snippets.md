@@ -2,18 +2,18 @@
 # Code Snippets
 
 - [Scrolling Background](./scrolling.md)
-- Loading Screen aanpassen
+- [Loading Screen aanpassen](#loading-screen-aanpassen)
 - [Spritesheet](./spritesheet.md)
-- Click en Exit Screen Events
-- Keyboard besturing
-- Sturen en draaien
+- [Click en Exit Screen Events](#click-en-exit-screen-events)
+- [Keyboard besturing](#keyboard-besturing)
+- [Sturen en draaien](#sturen-en-draaien)
 - [Tekstveld met score tonen](./tekstveld.md)
-- Scenes
-- JSON laden
-- Sprites wisselen binnen een actor
-- Custom Events
-- Flip sprite
-- Health Bar
+- [Scenes](#scenes)
+- [JSON laden](#json-laden)
+- [Sprites wisselen binnen een actor](#sprites-wisselen-binnen-een-actor)
+- [Custom Events](#custom-events)
+- [Flip sprite](#flip-sprite)
+- [Health Bar](#health-bar)
 - [Object spawner with delay Timer](#object-spawner-with-delay-timer)
 
 <br><br><br>
