@@ -90,6 +90,22 @@ class Shark extends Actor {
     }
 }
 ```
+## Binnen beeld blijven
+
+Als je karakter niet uit beeld mag lopen kan je `clamp` gebruiken.
+
+```js
+import { clamp } from "excalibur"
+
+class Shark extends Actor {
+    onPreUpdate(engine) {
+        //...keyboard code hier
+
+        // blijf binnen beeld
+        this.pos.x = clamp(this.pos.x, this.width/2, engine.drawWidth - this.width/2);
+        this.pos.y = clamp(this.pos.y, this.height/2, engine.drawHeight - this.height/2);
+    }
+```
 
 <br><br><Br>
 
