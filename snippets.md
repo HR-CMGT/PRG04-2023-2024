@@ -90,7 +90,7 @@ class Shark extends Actor {
     }
 }
 ```
-## Binnen beeld blijven
+### Binnen beeld blijven
 
 Als je karakter niet uit beeld mag lopen kan je `clamp` gebruiken.
 
@@ -105,6 +105,7 @@ class Shark extends Actor {
         this.pos.x = clamp(this.pos.x, this.width/2, engine.drawWidth - this.width/2);
         this.pos.y = clamp(this.pos.y, this.height/2, engine.drawHeight - this.height/2);
     }
+}
 ```
 
 <br><br><Br>
