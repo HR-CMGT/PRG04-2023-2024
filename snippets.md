@@ -336,8 +336,8 @@ export class Sprite extends Actor {
 
     onInitialize(engine) {
         let sprite = Resources.Mario.toSprite()
+        sprite.flipHorizontal = true
         this.graphics.use(sprite)
-        this.sprite.flipHorizontal = true
     }
 }
 ```
