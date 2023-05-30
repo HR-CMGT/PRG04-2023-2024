@@ -335,8 +335,8 @@ import { Resources, ResourceLoader } from './resources.js'
 export class Sprite extends Actor {
 
     onInitialize(engine) {
-        this.sprite = Resources.Mario.toSprite()
-        this.graphics.use(this.sprite)
+        let sprite = Resources.Mario.toSprite()
+        this.graphics.use(sprite)
         this.sprite.flipHorizontal = true
     }
 }
