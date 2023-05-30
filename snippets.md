@@ -335,15 +335,9 @@ import { Resources, ResourceLoader } from './resources.js'
 export class Sprite extends Actor {
 
     onInitialize(engine) {
-        // optie 1: flip de sprite bitmap
         this.sprite = Resources.Mario.toSprite()
         this.graphics.use(this.sprite)
         this.sprite.flipHorizontal = true
-
-        // optie 2: flip de hele actor
-        // het kan dan nodig zijn om de anchor te verplaatsen
-        this.scale = new Vector(-1, 1);
-        this.anchor = new Vector(1, 0);
     }
 }
 ```
