@@ -469,3 +469,13 @@ export class Platform extends Actor {
     }
 }
 ```
+Je kan een physics body de volgende properties meegeven:
+
+- Mass
+- Inertia
+- Bounciness  *(alleen bij useRealisticPhysics)*
+- Friction  *(alleen bij useRealisticPhysics)*
+
+### Collision group
+
+Een [Collision Group](https://excaliburjs.com/docs/collisiongroups/) zorgt dat actors in dezelfde group nooit met elkaar colliden.
