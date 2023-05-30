@@ -18,6 +18,7 @@
 - [Tekstveld met score](./tekstveld.md)
 - [UI class](./ui.md)
 - [Physics](#physics)
+- [Random tint](#random-tint)
 
 <br><br><br>
 
@@ -483,3 +484,12 @@ Je kan een physics body de volgende properties meegeven:
 ### Collision group
 
 Een [Collision Group](https://excaliburjs.com/docs/collisiongroups/) zorgt dat actors in dezelfde group nooit met elkaar colliden.
+
+<br><br><br>
+
+## Random tint
+
+```js
+let sprite = Resources.Mario.toSprite()
+sprite.tint = new Color(Math.random() * 255, Math.random() * 255, Math.random() * 255)
+```
