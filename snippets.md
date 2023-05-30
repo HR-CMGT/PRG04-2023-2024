@@ -459,7 +459,7 @@ export class Game extends Engine {
 ```
 PLAYER
 ```js
-export class Platform extends PLayer {
+export class Player extends Actor {
     constructor(x, y) {
         super({ width: 50, height: 10 })
         this.body.collisionType = CollisionType.Active
