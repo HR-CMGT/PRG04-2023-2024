@@ -6,6 +6,7 @@
 - [Spritesheet](./spritesheet.md)
 - [Click en Exit Screen Events](#click-en-exit-screen-events)
 - [Keyboard besturing](#keyboard-besturing)
+- [Collision](#collision)
 - [Sturen en draaien](#sturen-en-draaien)
 - [Scenes](#scenes)
 - [JSON laden](#json-laden)
@@ -32,12 +33,27 @@ ResourceLoader.logoHeight = 203
 ResourceLoader.backgroundColor = Color.White
 ResourceLoader.loadingBarColor = Color.Black
 ```
-Je moet de startbutton aanpassen via CSS, omdat dit geen canvas button is.
+### Starbutton aanpassen via CSS
 ```css
 #excalibur-play {
     background: rgb(0, 0, 0) !important;
 }
 ```
+### Geheel eigen startbutton
+```javascript
+ResourceLoader.startButtonFactory = () => {
+    let btn = document.createElement('button')
+    btn.classList.add("my-own-cool-button")
+    return btn
+}
+```
+### Geen startbutton
+
+De game gaat automatisch naar de eerste scene als de loading bar vol is. Dit kan gevolgen hebben voor het afspelen van audio in mobile devices.
+```js
+ResourceLoader.suppressPlayButton = true
+```
+
 
 <br><br><br>
 
@@ -105,6 +121,31 @@ class Shark extends Actor {
         // blijf binnen beeld
         this.pos.x = clamp(this.pos.x, this.width/2, engine.drawWidth - this.width/2);
         this.pos.y = clamp(this.pos.y, this.height/2, engine.drawHeight - this.height/2);
+    }
+}
+```
+<br><br><br>
+
+## Collisions
+
+Met de collision events kan je checken of je Actor ergens tegenaan botst. Let op dat je actor een `width`,`height`, OF een `radius` heeft. Je kan `instanceof` gebruiken om te zien waar je tegenaan botst.
+
+```javascript
+export class Ship extends Actor {
+
+    constructor() {
+        // collision box!
+        super({ width: Resources.Ship.width, height: Resources.Ship.height }) 
+    }
+    
+    onInitialize(engine) {
+        this.on('collisionstart', (event) => this.hitSomething(event))
+    }
+
+    hitSomething(event){
+        if (event.other instanceof Enemey) {
+            console.log('hit enemy')
+        }
     }
 }
 ```
