@@ -17,6 +17,7 @@
 - [Object spawner with delay Timer](#object-spawner-with-delay-timer)
 - [Tekstveld met score](./tekstveld.md)
 - [UI class](./ui.md)
+- [Physics](#physics)
 
 <br><br><br>
 
@@ -395,7 +396,7 @@ export class HealthBar extends Actor {
 
 <br><br><br>
     
- ## Object Spawner with delay (Timer)
+## Object Spawner with delay (Timer)
 
 De `Random` instance wordt één keer aangemaakt in de constructor. Deze wordt meerdere keren gebruikt bij spawn om een object een random plek te geven binnen de afmeting van 800 x 600. In onInitialize wordt een `Timer` aangemaakt die elke 1000 miliseconden this.spawn() uitvoert. 
 
@@ -433,4 +434,44 @@ export class Spawner extends Actor{
 }
 ```
     
- 
+<br><br><br>
+
+## Physics
+
+In de game kan je realistic of arcade physics aanzetten. Per object kan je het type physics collision aanpassen. 
+
+- Active (volledige physics simulatie)
+- Passive (wel events, geen physics)
+- Fixed (collision events, kan niet bewegen)
+
+Je kan ook de `body.useGravity` op true of false zetten. Let op dat je objecten een [collision](#collision) box hebben!
+
+GAME
+
+```js
+export class Game extends Engine {
+    constructor() {
+        super()
+        Physics.useRealisticPhysics()
+        Physics.gravity = new Vector(0, 800)
+    }
+}
+```
+PLAYER
+```js
+export class Platform extends PLayer {
+    constructor(x, y) {
+        super({ width: 50, height: 10 })
+        this.body.collisionType = CollisionType.Active
+    }
+}
+```
+PLATFORM
+```js
+export class Platform extends Actor {
+    constructor(x, y) {
+        super({ width: 500, height: 100 })
+        this.body.collisionType = CollisionType.Fixed
+    }
+}
+```

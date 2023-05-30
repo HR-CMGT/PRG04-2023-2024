@@ -38,6 +38,7 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 - [Startproject Excalibur](https://github.com/HR-CMGT/prg4-startproject-2023)
 - [Setup instructies voor github pages](./setup.md)
 - [Code snippets](./snippets.md)
+- [Arcade Kast](https://github.com/HR-CMGT/arcade-game)
 
 ## Excalibur
 
