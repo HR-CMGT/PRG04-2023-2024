@@ -2,8 +2,6 @@
 
 Het is handig om al je tekstvelden in een eigen Actor class te plaatsen, zodat 1 class verantwoordelijk is voor alle tekst updates.
 
-Het nadeel is dat je tekst soms onder andere elementen getekend wordt, en dat je UI uit beeld kan raken als je camera beweegt.
-
 ## ScreenElement
 
 Het Excalibur ScreenElement is een Actor die altijd bovenop je game wordt getekend en die niet meebeweegt met de camera.
