@@ -126,7 +126,7 @@ class Shark extends Actor {
 ```
 <br><br><br>
 
-## Collisions
+## Collision
 
 Met de collision events kan je checken of je Actor ergens tegenaan botst. Let op dat je actor een `width`,`height`, OF een `radius` heeft. Je kan `instanceof` gebruiken om te zien waar je tegenaan botst.
 
