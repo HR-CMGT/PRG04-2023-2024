@@ -19,15 +19,17 @@ export class UI extends ScreenElement {
     }
 
     onInitialize(engine) {
-        this.scoreText = new Text({
+        this.scoreText = new Label({
             text: 'Score: 0',
             font: new Font({
                 unit: FontUnit.Px,
-                family: 'PressStart',
-                size: 20
+                family: 'Impact',
+                size: 28,
+                color: Color.Black,
             }),
+            pos: new Vector(250, 50)
         })
-        this.graphics.add(this.scoreText)
+        this.addChild(this.scoreText)
     }
 
     updateScore() {
@@ -44,12 +46,53 @@ export class UI extends ScreenElement {
 class Game extends Engine {
     ...
     startGame() {
-        this.add(new UI())
         this.add(new Enemy())
         this.add(new Player())
+        this.add(new UI())
     }
 }
 ```
 
 <br><br><br>
 
+## Graphics in de UI
+
+Als je naast tekstvelden meerdere graphics zoals een [healthbar](./snippets.md#health-bar) wil tonen in je UI, dan kan je die in een `GraphicsGroup` plaatsen.
+
+```javascript
+class UI extends ScreenElement{
+
+    scoreField
+    hiScoreField
+    healthbar
+
+    onInitialize() {
+        this.healthbar = ...
+
+        const group = new GraphicsGroup({
+            members: [
+                {
+                    graphic: this.healthbar,
+                    pos: new Vector(80, 0),
+                }
+            ]
+        })
+
+        this.graphics.add(group)
+    }
+}
+```
+
+<br><br><br>
+
+## UI altijd boven de game tekenen
+
+Door de `.z` waarde van een Actor negatief te maken wordt die altijd onderin getekend.
+
+```javascript
+class Background extends Actor {
+    constructor() {
+        this.z = -1
+    }
+}
+```

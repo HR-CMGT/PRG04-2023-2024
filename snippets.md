@@ -7,7 +7,6 @@
 - [Click en Exit Screen Events](#click-en-exit-screen-events)
 - [Keyboard besturing](#keyboard-besturing)
 - [Sturen en draaien](#sturen-en-draaien)
-- [Tekstveld met score tonen](./tekstveld.md)
 - [Scenes](#scenes)
 - [JSON laden](#json-laden)
 - [Sprites wisselen binnen een actor](#sprites-wisselen-binnen-een-actor)
@@ -15,7 +14,8 @@
 - [Flip sprite](#flip-sprite)
 - [Health Bar](#health-bar)
 - [Object spawner with delay Timer](#object-spawner-with-delay-timer)
-- [UI tekstvelden boven de game](./ui.md)
+- [Tekstveld met score](./tekstveld.md)
+- [UI class](./ui.md)
 
 <br><br><br>
 
