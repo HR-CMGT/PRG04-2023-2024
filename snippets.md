@@ -99,9 +99,13 @@ class Shark extends Actor {
         }
         if (kb.isHeld(Input.Keys.A) || kb.isHeld(Input.Keys.Left)) {
             xspeed = -300
+            // optioneel, flip de sprite
+            // this.sprite.flipHorizontal = true
         }
         if (kb.isHeld(Input.Keys.D) || kb.isHeld(Input.Keys.Right)) {
             xspeed = 300
+            // optioneel, flip de sprite
+            // this.sprite.flipHorizontal = false
         }
 
         this.vel = new Vector(xspeed, yspeed)
