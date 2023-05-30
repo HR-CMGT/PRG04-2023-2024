@@ -15,6 +15,7 @@
 - [Flip sprite](#flip-sprite)
 - [Health Bar](#health-bar)
 - [Object spawner with delay Timer](#object-spawner-with-delay-timer)
+- [UI tekstvelden boven de game](./ui.md)
 
 <br><br><br>
 
@@ -349,6 +350,7 @@ export class HealthBar extends Actor {
     }
 }
 ```
+[zie ook het UI voorbeeld](./ui.md)
 
 <br><br><br>
     

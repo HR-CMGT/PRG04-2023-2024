@@ -1,0 +1,55 @@
+# UI
+
+Het is handig om al je tekstvelden in een eigen Actor class te plaatsen, zodat 1 class verantwoordelijk is voor alle tekst updates.
+
+Het nadeel is dat je tekst soms onder andere elementen getekend wordt, en dat je UI uit beeld kan raken als je camera beweegt.
+
+## ScreenElement
+
+Het Excalibur ScreenElement is een Actor die altijd bovenop je game wordt getekend en die niet meebeweegt met de camera.
+
+```javascript
+export class UI extends ScreenElement {
+
+    score = 0
+    scoreText
+
+    constructor() {
+        super({ x: 10, y: 10 })
+    }
+
+    onInitialize(engine) {
+        this.scoreText = new Text({
+            text: 'Score: 0',
+            font: new Font({
+                unit: FontUnit.Px,
+                family: 'PressStart',
+                size: 20
+            }),
+        })
+        this.graphics.add(this.scoreText)
+    }
+
+    updateScore() {
+        this.score++
+        this.scoreText.text = `Score: ${this.score}`
+    }
+}
+```
+<br><br><br>
+
+## De UI in de game plaatsen
+
+```javascript
+class Game extends Engine {
+    ...
+    startGame() {
+        this.add(new UI())
+        this.add(new Enemy())
+        this.add(new Player())
+    }
+}
+```
+
+<br><br><br>
+
