@@ -485,6 +485,29 @@ Je kan een physics body de volgende properties meegeven:
 - Inertia
 - Bounciness  *(alleen bij useRealisticPhysics)*
 - Friction  *(alleen bij useRealisticPhysics)*
+    
+### Physics movement
+    
+De physics engine regelt de `velocity` van je objecten zoals de speler. Effecten zoals stuiteren zal je niet zien als je handmatig de `velocity` van een object gaat aanpassen. Je kan ook `impulse` gebruiken om een richting aan de bestaande `velocity` te geven. Hieronder een voorbeeld van keyboard input voor een speler:
+    
+```js
+onPreUpdate(engine, delta) {
+    if (engine.input.keyboard.isHeld(Input.Keys.D)) {
+        this.body.applyLinearImpulse(new Vector(15 * delta, 0))
+    }
+
+    if (engine.input.keyboard.isHeld(Input.Keys.A)) {
+        this.body.applyLinearImpulse(new Vector(-15 * delta, 0))
+    }
+
+    if (this.grounded) {
+        if (engine.input.keyboard.wasPressed(Input.Keys.Space)) {
+            this.body.applyLinearImpulse(new Vector(0, -250 * delta))
+            this.grounded = false           // grounded weer op true zetten na collision met ground
+        }
+    }
+}
+```
 
 ### Collision group
 
