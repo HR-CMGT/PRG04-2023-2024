@@ -488,9 +488,12 @@ Je kan een physics body de volgende properties meegeven:
     
 ### Physics movement
     
-De physics engine regelt de `velocity` van je objecten zoals de speler. Effecten zoals stuiteren zal je niet zien als je handmatig de `velocity` van een object gaat aanpassen. Je kan ook `impulse` gebruiken om een richting aan de bestaande `velocity` te geven. Hieronder een voorbeeld van keyboard input voor een speler:
+De physics engine regelt de `velocity` van je objecten zoals de speler. Effecten zoals stuiteren zal je niet zien als je handmatig de `velocity` van een object gaat aanpassen. Je kan ook `impulse` gebruiken om een richting aan de bestaande `velocity` te geven. Je kan ook spelen met `mass`. Een zwaarder object zal moeizamer op snelheid komen. Hieronder een voorbeeld van keyboard input voor een speler:
     
 ```js
+onInitialize(engine) {
+    this.body.mass = 7    
+}
 onPreUpdate(engine, delta) {
     if (engine.input.keyboard.isHeld(Input.Keys.D)) {
         this.body.applyLinearImpulse(new Vector(15 * delta, 0))
@@ -504,6 +507,9 @@ onPreUpdate(engine, delta) {
         if (engine.input.keyboard.wasPressed(Input.Keys.Space)) {
             this.body.applyLinearImpulse(new Vector(0, -250 * delta))
             this.grounded = false           // grounded weer op true zetten na collision met ground
+    
+            // alternatief voor springen met velocity
+            // this.vel = new Vector(this.vel.x, this.vel.y - 400)
         }
     }
 }
