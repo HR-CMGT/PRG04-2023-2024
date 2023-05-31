@@ -108,6 +108,11 @@ class Shark extends Actor {
             // optioneel, flip de sprite
             // this.sprite.flipHorizontal = false
         }
+        
+        // schieten en springen gebeurt maar 1 keer na een press
+        if (engine.input.keyboard.wasPressed(Input.Keys.Space)) {
+            console.log("jump!")
+        }
 
         this.vel = new Vector(xspeed, yspeed)
     }
