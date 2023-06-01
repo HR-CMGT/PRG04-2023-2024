@@ -2,60 +2,23 @@
 # Code Snippets
 
 - [Scrolling Background](./scrolling.md)
-- [Loading Screen aanpassen](#loading-screen-aanpassen)
 - [Spritesheet](./spritesheet.md)
 - [Click en Exit Screen Events](#click-en-exit-screen-events)
 - [Keyboard besturing](#keyboard-besturing)
 - [Collision](#collision)
 - [Sturen en draaien](#sturen-en-draaien)
 - [Scenes](#scenes)
-- [JSON laden](#json-laden)
-- [Sprites wisselen binnen een actor](#sprites-wisselen-binnen-een-actor)
-- [Custom Events](#custom-events)
+- [Physics](./physics.md)
+- [Sprites wisselen in een actor](#sprites-wisselen-binnen-een-actor)
 - [Flip sprite](#flip-sprite)
-- [Health Bar](#health-bar)
-- [Object spawner with delay Timer](#object-spawner-with-delay-timer)
+- [Object spawner en timer](#object-spawner-en-timer)
 - [Tekstveld met score](./tekstveld.md)
 - [UI class](./ui.md)
-- [Physics](#physics)
 - [Random tint](#random-tint)
-
-<br><br><br>
-
-## Loading Screen aanpassen
-
-RESOURCES.JS
-```javascript
-import titleImage from '../images/loadingscreen.png'
-
-const ResourceLoader = new Loader([Resources.Fish, Resources.Mario])
-ResourceLoader.logo = titleImage
-ResourceLoader.logoWidth = 659
-ResourceLoader.logoHeight = 203
-ResourceLoader.backgroundColor = Color.White
-ResourceLoader.loadingBarColor = Color.Black
-```
-### Starbutton aanpassen via CSS
-```css
-#excalibur-play {
-    background: rgb(0, 0, 0) !important;
-}
-```
-### Geheel eigen startbutton
-```javascript
-ResourceLoader.startButtonFactory = () => {
-    let btn = document.createElement('button')
-    btn.classList.add("my-own-cool-button")
-    return btn
-}
-```
-### Geen startbutton
-
-De game gaat automatisch naar de eerste scene als de loading bar vol is. Dit kan gevolgen hebben voor het afspelen van audio in mobile devices.
-```js
-ResourceLoader.suppressPlayButton = true
-```
-
+- [Health Bar](#health-bar)
+- [Loading Screen aanpassen](#loading-screen-aanpassen)
+- [JSON laden](#json-laden)
+- [Custom Events](#custom-events)
 
 <br><br><br>
 
@@ -160,6 +123,9 @@ export class Ship extends Actor {
     }
 }
 ```
+### Collision group
+
+Een [Collision Group](https://excaliburjs.com/docs/collisiongroups/) zorgt dat actors in dezelfde group nooit met elkaar colliden.
 
 <br><br><Br>
 
@@ -248,24 +214,7 @@ onActivate(ctx) {
 <br><br><br>
 
 
-## JSON laden
 
-Als je `import` gebruikt wordt het JSON bestand onderdeel van je project tijdens de `build` stap. Je hoeft het niet toe te voegen aan de excalibur loader. Als de data van een externe server komt (of als het bestand heel groot is) is het beter om `fetch` te gebruiken.
-
-VOORBEELD
-
-```javascript
-import jsonData from "../data/pokemon.json"
-
-class Pokemon extends Actor {
-    showPokemon(){
-        for(let p of jsonData) {
-            console.log(p)
-        }
-    }
-}
-```
-<br><br><br>
 
 
 ## Sprites wisselen binnen een actor
@@ -304,36 +253,6 @@ export class Mario extends Actor {
 <br><br><br>
 
 
-## Custom Events
-
-Een child kan een event afvuren met `emit`. De parent kan hier naar luisteren met `on`.
-
-PARENT listens to BLUB event
-```javascript
-class Aquarium extends Actor {
-    onInitialize() {
-        let fish = new Fish()
-        this.add(fish)
-        
-        fish.on("blub", (event) => {
-            console.log("fish says blub")
-        })
-    }
-}
-```
-CHILD emits BLUB event
-```javascript
-import { GameEvent } from "excalibur"
-
-class Fish extends Actor {
-    onCollision() {
-        this.emit('blub', new GameEvent())
-    }
-}
-```
-
-
-<br><br><br>
 
 ## Flip sprite
 
@@ -359,6 +278,55 @@ let right = left.clone()
 right.flipHorizontal = true
 ```
 
+<br><br><br>
+
+    
+## Object Spawner en timer
+
+De `Random` instance wordt één keer aangemaakt in de constructor. Deze wordt meerdere keren gebruikt bij spawn om een object een random plek te geven binnen de afmeting van 800 x 600. In onInitialize wordt een `Timer` aangemaakt die elke 1000 miliseconden this.spawn() uitvoert. 
+
+```js
+import {Actor, Random, Timer} from "excalibur";
+import {Rock} from "./rock.js";
+
+export class Spawner extends Actor{
+
+    constructor() {
+        super();
+
+        this.random = new Random(1337)
+
+    }
+
+    onInitialize(engine) {
+        this.timer = new Timer({
+            fcn: () => this.spawn(engine),
+            interval: 1000,
+            repeats: true
+        })
+        engine.currentScene.add(this.timer)
+        this.timer.start()
+    }
+
+    spawn(engine) {
+        console.log("spawn")
+        const rock = new Rock(
+            this.random.integer(0, 800),
+            this.random.integer(0, 600)
+        )
+        engine.currentScene.add(rock)
+    }
+}
+```
+    
+<br><br><br>
+
+## Random tint
+
+```js
+let sprite = Resources.Mario.toSprite()
+sprite.tint = new Color(Math.random() * 255, Math.random() * 255, Math.random() * 255)
+```
 <br><br><br>
 
 ## Health Bar
@@ -399,131 +367,91 @@ export class HealthBar extends Actor {
 [zie ook het UI voorbeeld](./ui.md)
 
 <br><br><br>
-    
-## Object Spawner with delay (Timer)
 
-De `Random` instance wordt één keer aangemaakt in de constructor. Deze wordt meerdere keren gebruikt bij spawn om een object een random plek te geven binnen de afmeting van 800 x 600. In onInitialize wordt een `Timer` aangemaakt die elke 1000 miliseconden this.spawn() uitvoert. 
 
-```js
-import {Actor, Random, Timer} from "excalibur";
-import {Rock} from "./rock.js";
+## Loading Screen aanpassen
 
-export class Spawner extends Actor{
+RESOURCES.JS
+```javascript
+import titleImage from '../images/loadingscreen.png'
 
-    constructor() {
-        super();
-
-        this.random = new Random(1337)
-
-    }
-
-    onInitialize(engine) {
-        this.timer = new Timer({
-            fcn: () => this.spawn(engine),
-            interval: 1000,
-            repeats: true
-        })
-        engine.currentScene.add(this.timer)
-        this.timer.start()
-    }
-
-    spawn(engine) {
-        console.log("spawn")
-        const rock = new Rock(
-            this.random.integer(0, 800),
-            this.random.integer(0, 600)
-        )
-        engine.currentScene.add(rock)
-    }
+const ResourceLoader = new Loader([Resources.Fish, Resources.Mario])
+ResourceLoader.logo = titleImage
+ResourceLoader.logoWidth = 659
+ResourceLoader.logoHeight = 203
+ResourceLoader.backgroundColor = Color.White
+ResourceLoader.loadingBarColor = Color.Black
+```
+### Starbutton aanpassen via CSS
+```css
+#excalibur-play {
+    background: rgb(0, 0, 0) !important;
 }
 ```
-    
+### Geheel eigen startbutton
+```javascript
+ResourceLoader.startButtonFactory = () => {
+    let btn = document.createElement('button')
+    btn.classList.add("my-own-cool-button")
+    return btn
+}
+```
+### Geen startbutton
+
+De game gaat automatisch naar de eerste scene als de loading bar vol is. Dit kan gevolgen hebben voor het afspelen van audio in mobile devices.
+```js
+ResourceLoader.suppressPlayButton = true
+```
+
 <br><br><br>
 
-## Physics
+## JSON laden
 
-In de game kan je realistic of arcade physics aanzetten. Per object kan je het type physics collision aanpassen. 
+Als je `import` gebruikt wordt het JSON bestand onderdeel van je project tijdens de `build` stap. Je hoeft het niet toe te voegen aan de excalibur loader. Als de data van een externe server komt (of als het bestand heel groot is) is het beter om `fetch` te gebruiken.
 
-- Active (volledige physics simulatie)
-- Passive (wel events, geen physics)
-- Fixed (collision events, kan niet bewegen)
+VOORBEELD
 
-Je kan ook de `body.useGravity` op true of false zetten. Let op dat je objecten een [collision](#collision) box hebben!
+```javascript
+import jsonData from "../data/pokemon.json"
 
-GAME
-
-```js
-export class Game extends Engine {
-    constructor() {
-        super()
-        Physics.useRealisticPhysics()
-        Physics.gravity = new Vector(0, 800)
-    }
-}
-```
-PLAYER
-```js
-export class Player extends Actor {
-    constructor(x, y) {
-        super({ width: 50, height: 10 })
-        this.body.collisionType = CollisionType.Active
-    }
-}
-```
-PLATFORM
-```js
-export class Platform extends Actor {
-    constructor(x, y) {
-        super({ width: 500, height: 100 })
-        this.body.collisionType = CollisionType.Fixed
-    }
-}
-```
-Je kan een physics body de volgende properties meegeven:
-
-- Mass
-- Inertia
-- Bounciness  *(alleen bij useRealisticPhysics)*
-- Friction  *(alleen bij useRealisticPhysics)*
-    
-### Physics movement
-    
-De physics engine regelt de `velocity` van je objecten zoals de speler. Effecten zoals stuiteren zal je niet zien als je handmatig de `velocity` van een object gaat aanpassen. Je kan ook `impulse` gebruiken om een richting aan de bestaande `velocity` te geven. Je kan ook spelen met `mass`. Een zwaarder object zal moeizamer op snelheid komen. Hieronder een voorbeeld van keyboard input voor een speler:
-    
-```js
-onInitialize(engine) {
-    this.body.mass = 7    
-}
-onPreUpdate(engine, delta) {
-    if (engine.input.keyboard.isHeld(Input.Keys.D)) {
-        this.body.applyLinearImpulse(new Vector(15 * delta, 0))
-    }
-
-    if (engine.input.keyboard.isHeld(Input.Keys.A)) {
-        this.body.applyLinearImpulse(new Vector(-15 * delta, 0))
-    }
-
-    if (this.grounded) {
-        if (engine.input.keyboard.wasPressed(Input.Keys.Space)) {
-            this.body.applyLinearImpulse(new Vector(0, -250 * delta))
-            this.grounded = false           // grounded weer op true zetten na collision met ground
-    
-            // alternatief voor springen met velocity
-            // this.vel = new Vector(this.vel.x, this.vel.y - 400)
+class Pokemon extends Actor {
+    showPokemon(){
+        for(let p of jsonData) {
+            console.log(p)
         }
     }
 }
 ```
-
-### Collision group
-
-Een [Collision Group](https://excaliburjs.com/docs/collisiongroups/) zorgt dat actors in dezelfde group nooit met elkaar colliden.
-
 <br><br><br>
 
-## Random tint
 
-```js
-let sprite = Resources.Mario.toSprite()
-sprite.tint = new Color(Math.random() * 255, Math.random() * 255, Math.random() * 255)
+## Custom Events
+
+Een child kan een event afvuren met `emit`. De parent kan hier naar luisteren met `on`.
+
+PARENT listens to BLUB event
+```javascript
+class Aquarium extends Actor {
+    onInitialize() {
+        let fish = new Fish()
+        this.add(fish)
+        
+        fish.on("blub", (event) => {
+            console.log("fish says blub")
+        })
+    }
+}
 ```
+CHILD emits BLUB event
+```javascript
+import { GameEvent } from "excalibur"
+
+class Fish extends Actor {
+    onCollision() {
+        this.emit('blub', new GameEvent())
+    }
+}
+```
+
+
+<br><br><br>
