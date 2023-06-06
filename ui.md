@@ -67,32 +67,25 @@ class Game extends Engine {
 
 <br><br><br>
 
-## Graphics in de UI
+## Healthbar
 
-Als je naast tekstvelden meerdere graphics zoals een [healthbar](./snippets.md#health-bar) wil tonen in je UI, dan kan je die in een `GraphicsGroup` plaatsen.
+Excalibur heeft `Rectangle` en `Circle` om vormen te tekenen, deze kan je ook aan de graphics group toevoegen.
 
-```javascript
-class UI extends ScreenElement{
+```js
+this.healthrectangle = new Rectangle({
+    width: 165,
+    height: 30,
+    color: Color.Red,
+})
 
-    scoreField
-    hiScoreField
-    healthbar
-
-    onInitialize() {
-        this.healthbar = ...
-
-        const group = new GraphicsGroup({
-            members: [
-                {
-                    graphic: this.healthbar,
-                    pos: new Vector(80, 0),
-                }
-            ]
-        })
-
-        this.graphics.add(group)
-    }
-}
+const group = new GraphicsGroup({
+    members: [
+        {
+            graphic: this.healthrectangle,
+            pos: new Vector(0, 0),
+        }
+    ],
+})
 ```
 
 <br><br><br>
