@@ -1,6 +1,14 @@
 # Tekstveld met score
 
-Met een `Label` kan je een stukje tekst tonen. Je kan de tekst achteraf nog aanpassen.
+- Label
+- Score aanpassen vanuit andere class
+- UI class
+
+<br><Br>
+
+## Label
+
+Een `Label` is een `Actor` met een child `Text`. Hiermee kan je een stukje tekst op een positie plaatsen. Je kan de tekst achteraf nog aanpassen.
 
 ```javascript
 import { Label, FontUnit, Font} from "excalibur";
@@ -36,11 +44,6 @@ Vaak wil je de score van de game aanpassen als in een andere class iets gebeurt.
 
 GAME met LABEL en SCORE
 ```javascript
-import '../css/style.css'
-import { Actor, Color, Font, FontUnit, Label, Engine, Loader, Vector } from "excalibur"
-import { Resources } from "./resources"
-import { Fish } from "./fish"
-
 export class Game extends Engine {
 
     score
@@ -89,3 +92,10 @@ export class Fish extends Actor {
     }
 }
 ```
+<Br><br><br>
+
+## Meerdere tekstvelden en graphics
+
+Het is handig om een aparte UI class te maken zodra je meerdere tekstvelden / graphics gebruikt om de voortgang van de speler te tonen.
+
+- [UI class](./ui.md)

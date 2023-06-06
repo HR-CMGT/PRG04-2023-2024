@@ -10,6 +10,7 @@
 - [Scenes](#scenes)
 - [Physics](./physics.md)
 - [Sprites wisselen in een actor](#sprites-wisselen-binnen-een-actor)
+- [Meerdere sprites tegelijk](#meerdere-sprites-tegelijk)
 - [Flip sprite](#flip-sprite)
 - [Object spawner en timer](#object-spawner-en-timer)
 - [Tekstveld met score](./tekstveld.md)
@@ -252,7 +253,31 @@ export class Mario extends Actor {
 
 <br><br><br>
 
+## Meerdere sprites tegelijk
 
+Soms wil je meerdere plaatjes tegelijk tekenen binnen dezelfde actor. Dan heb je een graphics group nodig. In dit voorbeeld tonen we mario en luigi.
+
+```js
+onInitialize(engine) {
+
+    const group = new GraphicsGroup({
+        members: [
+            {
+                graphic: Resources.Mario.toSprite(),
+                pos: new Vector(0, 0),
+            },
+            {
+                graphic: Resources.Luigi.toSprite(),
+                pos: new Vector(50, 50),
+            }
+        ],
+    })
+    this.graphics.use(group)
+}
+```
+[Bekijk ook de UI](./ui.md) code voor een voorbeeld van een graphics group met tekstvelden.
+
+<br><br><br>
 
 ## Flip sprite
 

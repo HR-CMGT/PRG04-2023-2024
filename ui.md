@@ -4,12 +4,11 @@ Het is handig om al je tekstvelden in een eigen Actor class te plaatsen, zodat 1
 
 ## ScreenElement
 
-Het Excalibur ScreenElement is een Actor die altijd bovenop je game wordt getekend en die niet meebeweegt met de camera.
+Het Excalibur ScreenElement is een Actor die altijd bovenop je game wordt getekend en die niet meebeweegt met de camera. Je kan hier geen child actors in plaatsen maar wel graphics. In dit voorbeeld tonen we text elementen (`Text`) en sprites. De score kan worden aangepast via de `updateScore()` functie.
 
 ```javascript
 export class UI extends ScreenElement {
 
-    score = 0
     scoreText
 
     constructor() {
@@ -17,22 +16,38 @@ export class UI extends ScreenElement {
     }
 
     onInitialize(engine) {
-        this.scoreText = new Label({
+        onInitialize(engine) {
+
+        this.scoreText = new Text({
             text: 'Score: 0',
             font: new Font({
                 unit: FontUnit.Px,
-                family: 'Impact',
-                size: 28,
-                color: Color.Black,
+                family: 'PressStart',
+                size: 20,
             }),
-            pos: new Vector(250, 50)
         })
-        this.addChild(this.scoreText)
+
+        const group = new GraphicsGroup({
+            members: [
+                {
+                    graphic: Resources.Mario.toSprite(),
+                    pos: new Vector(0, 0),
+                },
+                {
+                    graphic: this.scoreText,
+                    pos: new Vector(50, 0),
+                },
+                {
+                    graphic: Resources.Luigi.toSprite(),
+                    pos: new Vector(50, 50),
+                }
+            ],
+        })
+        this.graphics.use(group)
     }
 
     updateScore() {
-        this.score++
-        this.scoreText.text = `Score: ${this.score}`
+        this.scoreText.text = `Score: 200`
     }
 }
 ```
