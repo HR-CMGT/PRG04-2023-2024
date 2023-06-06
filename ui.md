@@ -1,10 +1,10 @@
 # UI
 
-Het is handig om al je tekstvelden in een eigen Actor class te plaatsen, zodat 1 class verantwoordelijk is voor alle tekst updates.
+Het Excalibur `ScreenElement` is een Actor class die altijd bovenop je game wordt getekend en die niet meebeweegt met de camera. 
 
-## ScreenElement
+Je kan hier geen child actors in plaatsen maar wel graphics. In dit voorbeeld tonen we een `Text` element en twee sprites. 
 
-Het Excalibur ScreenElement is een Actor die altijd bovenop je game wordt getekend en die niet meebeweegt met de camera. Je kan hier geen child actors in plaatsen maar wel graphics. In dit voorbeeld tonen we text elementen (`Text`) en sprites. De score kan worden aangepast via de `updateScore()` functie.
+De tekst kan achteraf nog worden aangepast via de `updateScore()` functie.
 
 ```javascript
 export class UI extends ScreenElement {
