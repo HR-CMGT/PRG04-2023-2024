@@ -16,7 +16,6 @@ export class UI extends ScreenElement {
     }
 
     onInitialize(engine) {
-        onInitialize(engine) {
 
         this.scoreText = new Text({
             text: 'Score: 0',
