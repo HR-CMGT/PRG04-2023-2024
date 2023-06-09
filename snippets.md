@@ -16,6 +16,7 @@
 - [Tekstveld met score](./tekstveld.md)
 - [UI class](./ui.md)
 - [Random tint](#random-tint)
+- [Pixel Art](#pixel-art)
 - [Health Bar](#health-bar)
 - [Loading Screen aanpassen](#loading-screen-aanpassen)
 - [JSON laden](#json-laden)
@@ -353,6 +354,18 @@ let sprite = Resources.Mario.toSprite()
 sprite.tint = new Color(Math.random() * 255, Math.random() * 255, Math.random() * 255)
 ```
 <br><br><br>
+    
+## Pixel art
+   
+```js   
+export class Game extends Engine {
+    constructor() {
+        super({ width: 480, height: 320 ,antialiasing:false, resolution:Resolution.GameBoyAdvance})
+    }
+}
+```
+    
+<Br><br><br>
 
 ## Health Bar
 
