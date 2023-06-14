@@ -20,6 +20,7 @@
 - [Health Bar](#health-bar)
 - [Loading Screen aanpassen](#loading-screen-aanpassen)
 - [JSON laden](#json-laden)
+- [Fonts](#fonts)
 - [Custom Events](#custom-events)
 
 <br><br><br>
@@ -462,6 +463,31 @@ class Pokemon extends Actor {
 ```
 <br><br><br>
 
+## Fonts
+
+Plaats het gewenste font in je assets map. Je kan het font laden in je `resources.js` file:
+    
+```js
+import fontFile from "../css/PressStart2P-Regular.ttf"
+
+const font = new FontFace("coolFont", `url(${fontFile})`)
+document.fonts.add(font)
+font.load()
+```
+Vervolgens kan je het overal in je game gebruiken :
+    
+```js
+this.scoreText = new Text({
+      text: 'Score: 0',
+      font: new Font({
+           family: 'coolFont',
+           size: 20,
+      }),
+})
+```
+Het kan voorkomen dat je font nog niet is geladen voordat je game start, dit kan je checken via https://fontfaceobserver.com/
+
+<br><br><br>
 
 ## Custom Events
 
