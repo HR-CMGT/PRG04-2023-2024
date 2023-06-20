@@ -22,6 +22,7 @@
 - [JSON laden](#json-laden)
 - [Fonts](#fonts)
 - [Custom Events](#custom-events)
+- [Afstand tussen twee punten](#afstand-tussen-punten)
 
 <br><br><br>
 
@@ -519,3 +520,17 @@ class Fish extends Actor {
 
 
 <br><br><br>
+
+## Afstand tussen punten
+
+De `Vector` class heeft hulpfuncties om afstanden uit te rekenen.
+
+```js
+let ship = new Actor()
+ship.pos = new Vector(200,100)
+
+let enemy = new Actor()
+enemy.pos = new Vector(500,340)
+
+let distance = Vector.distance(ship.pos, enemy.pos)
+```
