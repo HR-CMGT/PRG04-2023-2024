@@ -89,3 +89,50 @@ onPreUpdate(engine, delta) {
     }
 }
 ```
+
+<Br><br><br>
+
+## Edge collider
+
+Soms wil je alleen een rand hebben waar de speler niet langs mag. Dit kan je doen met een *edge collider*.
+In dit voorbeeld loopt de edge van `0,0` naar `200,200`. Via `pos` kan je de edge in je scene plaatsen.
+
+```js
+export class Border extends Actor {
+    constructor(){
+        super({
+            pos:new Vector(100,100),
+            collider: new EdgeCollider({
+                begin: new Vector(0, 0),
+                end: new Vector(200, 200),
+            }),
+            collisionType:CollisionType.Fixed
+        })
+    }
+}
+```
+
+
+<Br><br><br>
+
+## Complexe colliders
+
+Je kan meerdere shapes *(circles, lines en boxes)* samenvoegen tot 1 collider met een complexe vorm. In dit voorbeeld zie je een capsule collider.
+
+```js
+import { Shape, Actor, Vector, CollisionType, CompositeCollider } from "excalibur"
+
+export class ColliderGroup extends Actor {
+    constructor() {
+        super({
+            pos: new Vector(400, 100),
+            collider: new CompositeCollider([
+                Shape.Circle(10, new Vector(0, -20)),
+                Shape.Box(20, 40),
+                Shape.Circle(10, new Vector(0, 20)),
+            ]),
+            collisionType: CollisionType.Fixed
+        })
+    }
+}
+```
