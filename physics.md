@@ -117,7 +117,7 @@ export class Border extends Actor {
 
 ## Complexe colliders
 
-Je kan meerdere shapes *(circles, lines en boxes)* samenvoegen tot 1 collider met een complexe vorm. In dit voorbeeld zie je een capsule collider.
+Je kan meerdere collision shapes *(circles, edges en boxes)* samenvoegen tot 1 collider met een complexe vorm:
 
 ```js
 import { Shape, Actor, Vector, CollisionType, CompositeCollider } from "excalibur"
@@ -130,6 +130,7 @@ export class ColliderGroup extends Actor {
                 Shape.Circle(10, new Vector(0, -20)),
                 Shape.Box(20, 40),
                 Shape.Circle(10, new Vector(0, 20)),
+                Shape.Edge(new Vector(20, 40), new Vector(20, 130))
             ]),
             collisionType: CollisionType.Fixed
         })
