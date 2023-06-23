@@ -95,8 +95,23 @@ onPreUpdate(engine, delta) {
 ## Edge collider
 
 Soms wil je alleen een rand hebben waar de speler niet langs mag. Dit kan je doen met een *edge collider*.
-In dit voorbeeld loopt de edge van `0,0` naar `200,200`. Via `pos` kan je de edge in je scene plaatsen.
+In dit voorbeeld loopt de edge van `0,0` naar `200,200`. 
 
+```js
+export class Border extends Actor {
+    constructor() {
+        super()
+        let edge = new EdgeCollider({
+            begin: new Vector(0, 0),
+            end: new Vector(600, 20),
+        })
+        this.pos = new Vector(100, 500)
+        this.body.collisionType = CollisionType.Fixed
+        this.collider.set(edge)
+    }
+}
+```
+Je kan ook via `super` alle waarden meteen meegeven.
 ```js
 export class Border extends Actor {
     constructor(){
