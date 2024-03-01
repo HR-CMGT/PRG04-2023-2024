@@ -3,8 +3,8 @@
 In week 1 kies je een van onderstaande templates. Je gaat hier tijdens de lessen en in je zelfstudietijd aan werken. 
 
 - De templates dienen om jou een realistisch doel te geven om naartoe te werken.
-- Het is ***niet*** verplicht dat je alle onderdelen van deze templates in je game hebt verwerkt.
-- Het is ***wel*** verplicht dat je de onderwerpen uit de lessen in je game hebt verwerkt. Zie voor de beoordeling de cursushandleiding!
+- Het is ***niet*** verplicht dat je alle suggesties van deze templates in je game hebt verwerkt.
+- Het is ***wel*** de bedoeling dat je de leerdoelen uit de beoordeling kan aantonen met jouw game. Let hier dus op bij het bouwen.
 
 <br>
 <br>
@@ -77,11 +77,21 @@ In week 1 kies je een van onderstaande templates. Je gaat hier tijdens de lessen
 <br>
 <br>
 
+## Inleveren
+
+- Je levert de link naar jouw github repository, én de link naar jouw werkende game, in in Brightspace.
+- Je levert de video met code toelichting ook in in Brightspace.
+- Zie de cursushandleiding voor de leerdoelen en voorwaarden.
+
+<br>
+<br>
+<br>
+
 ## Game Assets
 
 - [Excalibur startproject](https://github.com/HR-CMGT/prg4-startproject-2023), gebruik dit als basis voor je game.
 - [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)
-- [Midjourney](https://enchanting-trader-463.notion.site/Midjourney-AI-Guide-41eca43809dd4d8fa676e648436fc29c)
+- Midjourney, Dall-E, Stable Diffusion
 - [Font Loader](https://fontfaceobserver.com)
 - [Game Icons](https://game-icons.net)
 - [Game Sounds](https://www.zapsplat.com) en [Game Music](https://www.bensound.com)

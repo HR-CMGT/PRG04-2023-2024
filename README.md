@@ -18,8 +18,8 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 |  | 4 | Inheritance en Composition. Extenden van een Excalibur class. Actors en child Actors | [Oefening](./opdrachten/les5.md) |
 | 4 | 5 | Physics | [Oefening](./opdrachten/les6.md) |
 |   | 6 | Schermen wisselen met Scenes. Timers en Spawning. Score en UI. | [Oefening](./opdrachten/les7.md) |
-| 5 | 7 | Werken met npm run build en publiceren naar github pages. Communicatie tussen classes | Werken aan eindopdracht  |
-|  | 8 | Werken aan eindopdracht | Werken aan eindopdracht  |
+| 5 | 7 | Communicatie tussen classes. Waarden doorgeven aan constructor. | Werken aan eindopdracht  |
+|  | 8 | Werken met npm build en publiceren naar github pages. Publiceren op CMGT Arcade Kast.  | Werken aan eindopdracht  |
 |  |  | 🚨 Deadline Week 5 | [inleveropdracht](./opdrachten/inleveropdracht.md)  |
 
 
