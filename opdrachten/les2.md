@@ -1,84 +1,128 @@
-# Les 2 - Week 1 Middag
+# Les 2
 
-## Modern Web development
 
-- Werkomgeving met VS Code en git.
-- Een repository van github clonen.
-- Werken met commit en push in je editor.
-- Op Github pages publiceren.
-- Werken met modules en import / export in javascript.
+## Object Oriented Programming
 
-<Br>
-<Br>
-<Br>
+In de presentatie heb je geleerd wat Object Oriented Programming inhoudt:
 
-## Voorbereiding
+- Maak een `class` file voor elk object dat onderdeel is van je game.
+- Gebruik het `new` keyword om `instances` van een class aan te maken.
+- Een class kan het keyword `this` gebruiken om naar zichzelf te verwijzen.
 
-- Installeer [Node.js](https://nodejs.org/en/download/)
-- Installeer [Visual Studio Code](https://code.visualstudio.com/download)
-- Maak een account op [Github](https://github.com)
+> Hieronder zie je een voorbeeld van een `Car` class.
 
-<Br>
-<Br>
-<Br>
-
-## Git
-
-In VS Code open je een terminal (via terminal > new terminal in het menu). Typ `git version`. Als je geen git blijkt te hebben, kan je [git installeren](https://git-scm.com/downloads)
-
-Om naar github te kunnen pushen moet je je naam en email instellen:
-```bash
-git config --global user.name "jouw naam"
-git config --global user.email "jouw email"
+```javascript
+export class Car {
+    speed
+    sound
+    constructor() {
+        this.speed = 0
+        this.sound = "honk"
+    }
+    makeNoise() {
+        console.log(this.sound)
+    }
+}
 ```
-Je kan nu naar github pushen, maar je moet dan elke keer je wachtwoord typen. Om dat te voorkomen kan je een key instellen.
+Om deze class te gebruiken in je project kan je het importeren en vervolgens een Car aanmaken:
 
-[Bekijk dit youtube filmpje voor instructies](https://www.youtube.com/watch?v=HfTXHrWMGVY)
-
-
+```js
+import { Car } from "car.js"
+let c = new Car()
+c.makeNoise() // dit logt "honk" in de console
+```
 
 <Br>
 <Br>
 <Br>
 
-## Opdracht
+## Object Oriented Programming in Excalibur
 
-In deze oefening ga je kijken of je jouw werkomgeving helemaal op orde hebt. Dit gaat om het pushen naar github, en het werken met de `npm` commando's.
+We gaan dit concept oefenen in Excalibur. In het startproject staat alle code in de main game class:
+
+```js
+export class Game extends Engine {
+
+    constructor() {
+        super({ width: 800, height: 600 })
+        this.start(ResourceLoader).then(() => this.startGame())
+    }
+
+    startGame() {
+        console.log("start de game!")
+        const fish = new Actor()
+        fish.graphics.use(Resources.Fish.toSprite())
+        fish.pos = new Vector(400, 300)
+        fish.vel = new Vector(-10,0)
+        this.add(fish)
+    }
+}
+```
+<br>
+
+### Een Actor class
+
+We beginnen met aparte bestanden aan te maken voor de Actors in onze game. 
+
+- Maak een nieuwe js file met de naam `fish.js`, maak daarin een class met de naam `Fish`. 
+- Omdat we met Excalibur werken moet je `extends Actor` achter de class naam typen.
+- Omdat de class overal in de game gebruikt mag worden moet je `export` gebruiken.
+
+```js
+import { Actor } from "excalibur"
+import { Resources } from './resources'
+
+export class Fish extends Actor {
+    onInitialize(engine) {
+        this.graphics.use(Resources.Fish.toSprite())
+        this.pos = new Vector(400, 300)
+        this.vel = new Vector(-10,0)
+    }
+}
+```
+
+<Br>
+
+### De Game class
+
+Omdat de Fish nu in een eigen class staat, kan je de main game als volgt aanpassen:
+
+```js
+import { Fish } from "fish.js"
+
+export class Game extends Engine {
+
+    constructor() {
+        super({ width: 800, height: 600 })
+        this.start(ResourceLoader).then(() => this.startGame())
+    }
+
+    startGame() {
+        console.log("start de game!")
+        const fish = new Fish()
+        this.add(fish)
+    }
+}
+```
 
 <br>
 
-- Zorg dat je een github account hebt, en dat je lokale git settings gekoppeld zijn
-- Fork het [excalibur startproject](https://github.com/HR-CMGT/prg4-startproject-2023) (use this template)
-- Clone het project naar je computer en open het in je editor.
-- Zet ***github pages*** aan op github. Kies de `main/docs` map en druk op save.
-- Maak een aanpassing en kijk of je `git commit` en `git push` kan doen.
-- Staat je aangepaste html file nu op je github?
-- Start de dev server met `npm run dev` om te zien of de dev server werkt.
-- Stop de dev server met `ctrl + c`
-- Bouw de docs folder met `npm run build`. Kijk wat er in de docs folder staat.
-- Kijk of je de docs folder op ***github pages*** kan plaatsen met `git push`.
+### Opdracht
 
-<Br>
-<Br>
-<Br>
+Fish class:
 
-### Troubleshooting github pages
+- Maak de snelheid en positie random met `Math.random()`
 
-Als github pages wel je HTML file laat zien, maar geen afbeeldingen of CSS, dan kan je de `base url` aanpassen in `package.json`
+Game class:
 
-```json
-"scripts": {
-    "dev": "vite",
-    "build": "vite build --outDir=docs --base=/naam-van-je-repository/",
-},
-```
-
+- Gebruik een `for` loop om 100 vissen te spawnen.
 
 <br><br><br>
 
-
 ## Links
 
-- [Startproject Excalibur](https://github.com/HR-CMGT/prg4-startproject-2023)
-- [Setup instructies voor github pages](./setup.md)
-- [Oefenproject zonder excalibur](https://github.com/HR-CMGT/prg4-javascript-2023)
+- [Setup instructies](https://github.com/HR-CMGT/PRG04-2022-2023/blob/main/setup.md).
+- [Excalibur](https://excaliburjs.com)
+- [Codesandbox Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu)
+- [Documentatie](https://excaliburjs.com/docs/text/).  
+- [Git troubleshooting](../snippets/git.md)

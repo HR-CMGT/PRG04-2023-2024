@@ -1,21 +1,20 @@
-# Les 7 - week 4 ochtend
+# Les 7
 
-## Composition Excalibur
-
-- Begin met het [excalibur chicken on a raft](https://github.com/HR-CMGT/prg4-chicken-on-a-raft)
-- We gaan dit klassendiagram bouwen in excalibur.
-- Plaat `Tree` in de `Game`
-- Plaat `Chicken` op de `Tree`
-- Laat de kippen meebewegen met de boomstammen. Tip: hiervoor kan je `addChild()` gebruiken
-- Laat de kippen heen en weer bewegen op de boomstammen
-- Geef de kippen een hoedje
-
-![composition](../images/les6b.png)
-
-### Resultaat
-
-![result](../images/chicken-result.png)
+- Communicatie tussen classes
+- Waarden doorgeven via de constructor 
+- Via onUpdate de engine aanroepen
+- Vervolgens de UI aanroepen
+- Referenties doorgeven
 
 <Br>
 <Br>
 <Br>
+
+## Communicatie tussen classes
+
+- Laat je classes met elkaar communiceren via het `engine` argument in de `update` of `initialize` functies.
+- Sla de verwijzing naar `engine` op als een property van je class, zodat je er altijd bij kan.
+- Maak een koppeling tussen meerdere classes via de `engine`. Bijvoorbeeld:
+    - fish roept `engine.fishDied()` aan
+    - in de functie `fishDied()` van de game roep je weer een functie van een andere actor aan, bijvoorbeeld `ui.addScore()`
+- Geef een referentie van een class door aan een andere class, bijvoorbeeld: `new Fish(this.ui)`. De Fish weet nu wat de UI is.

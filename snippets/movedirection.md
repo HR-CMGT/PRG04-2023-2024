@@ -1,10 +1,10 @@
 # Moving in a direction
 
-![draaien](./images/carangle.png)
+![draaien](../images/carangle.png)
 
 Gebruik links,rechts om te sturen, en UP om de auto in die richting te bewegen.
 
-![car](./images/car.png)
+![car](../images/car.png)
 
 
 ```javascript
@@ -58,4 +58,4 @@ export class Car extends Actor {
 ```
 Hieronder zie je hoe de rotation (θ, in radians) omgezet wordt naar een X,Y vector.
 
-![angle](./images/angle.png)
+![angle](../images/angle.png)

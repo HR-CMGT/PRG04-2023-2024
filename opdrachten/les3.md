@@ -1,80 +1,212 @@
-# Les 3 - week 2 ochtend
+# Les 3 
+
+- Game Loop en Actors
+- Collision
+- Besturing
+- Tekst en geluid
+- Vector
 
 
-## Opdracht Classes zonder Excalibur
 
-- Fork en clone het [Startproject Javascript](https://github.com/HR-CMGT/prg4-javascript-2023) volgens de [install instructies](../setup.md)
-- Hierin zit geen excalibur
-- Voer `npm install` uit en daarna `npm run dev`.
-- Schrijf onderstaande class in javascript.
-- Elke class krijgt een eigen file. Gebruik het `export` keyword.
-- Importeer de classes in main.js en maak een aantal instances van Player.
-- Geef de instances verschillende waarden, bijvoorbeeld name="mario" en name="luigi"
-- Gebruik `console.log()` in de constructor en de functies om te zien of het werkt.
-- Toon de naam van de player in de console (via de functie `showName()`) en gebruik daarbij de kleur van de speler. 
-  - Om de tekst in de console aan te passen kan je css gebruiken
-  - ```javascript
-    console.log("%c My name", "color: red; font-weight: bold; font-size: 20px");
-    ```
-- Geef (in de Main) een punt aan de speler en toon de score in de console.
-- Verander de kleur van de speler (met de functie `changeColor(color)`) en toon nogmaals zijn naam. 
+<Br><Br><Br>
+
+## Game loop en Actors
+
+- Een excalibur game heeft een ingebouwde gameloop. Dat houdt in dat je alleen maar een `velocity` hoeft aan te geven, waarna je actor automatisch gaat bewegen!
+- Een Actor heeft ingebouwde functies, bv: `kill()` verwijdert de actor uit de game.
+- Een Actor heeft `events`, net zoals een DOM Element, bijvoorbeeld:
+    - Het `postupdate` event vindt 60 keer per seconde plaats.
+    - Het `postkill` event vindt plaats nadat een actor uit de game is verwijderd.
+    - Het `exitviewport` event vindt plaats als de Actor buiten beeld beweegt.
+    - Het `pointerup` event vindt plaats als je op de sprite klikt. 
+- Om een Actor clickable te maken moet je aangeven dat de actor interactief is.
+- 🚨 Om een "pointer" event te kunnen afvuren moet een Actor altijd een `width` en `height` hebben.
 
 <br>
 
-<img width="300" style="background-color: white" src="../images/player-class.png">
-
-<Br>
-
-VOORBEELDCODE
+CODE VOORBEELD
 
 ```javascript
-export class DeLorean {
-    speed
-    time
+class ActionHenk extends Actor {
+
     constructor() {
-        this.speed = 0
-        this.time = 0
+        super({width: 100, height: 100 })
     }
-    timeTravel() {
-        this.time++
+
+    onInitialize(engine){
+        this.enableCapturePointer = true
+        this.pointer.useGraphicsBounds = true
+        this.on("pointerup", () => this.removeCar())
+        this.on("exitviewport", () => this.resetPosition())
+    }
+
+    removeCar() {
+        this.kill()
+    }
+
+    resetPosition(){
+        this.pos = new Vector(500,100)
     }
 }
 ```
-<Br>
-<Br>
-<Br>
 
-## Object Oriented Programming
+- [Uitleg Actor](https://excaliburjs.com/docs/actors)
+- [Uitgebreide documentatie Actor](https://excaliburjs.com/api/class/Actor)
 
-- Classes bedenken voor je eigen project
-- Eigenschappen en gedrag bepalen van de classes
+<br><br><br>
 
-<Br>
-<Br>
+## Collision
 
-## Opdracht 
+Om te weten of een actor een andere actor raakt kan je het `collisionstart` event gebruiken. - 🚨 Om een "collision" event te kunnen afvuren moet een Actor altijd een `width` en `height` hebben.
 
-De eerste stap bij Objectgeoriënteerd programmeren is het bedenken van classes. Noteer voor je eigen 
-game de classes die je nodig hebt. Vervolgens bepaal je per class de eigenschappen (variabelen) en het gedrag (functies).
+```js
+class ActionHenk extends Actor {
 
-Een handig hulpmiddel hierbij is het volgende stappenplan: 
-1. Schrijf de regels van je spel uit en onderstreep de zelfstandige naamwoorden.
-2. Bepaal welke zelfstandige naamwoorden een class kunnen zijn. Is het een zelfstandignaamwoord waarvoor je iets wilt opslaan? Of voer het iets uit in je spel? 
-3. Er zullen zelfstandignaamwoorden afvallen, omdat ze geen class hoeven te zijn of omdat ze een eigenschap zijn van een ander zelfstandignaamwoord. 
-4. De zelfstandignaamwoorden die overblijven zijn de classes.
-5. Noteer de eigenschappen bij de classes. Waar moet deze class over zichzelf onthouden? 
-5. Rond de zelfstandignaamwoorden staan werkwoorden. Dit is vaak het bijbehorende gedrag. 
+    constructor() {
+        super({width: 100, height: 100 })
+    }
 
-Eventueel kan je dit noteren in een klassendiagram (zie voorbeeld van Player hierboven). 
-- De naam van de class staat bovenaan. (Enkelvoud en met een hoofdletter)
-- De eigenschappen staan in het midden.
-- Het gedrag (functies) staat onderaan.
+    onInitialize(engine){
+        this.on('collisionstart', (event) => this.hitSomething(event))
+    }
 
-je kunt het klassendiagram ook digitaal maken in bijvoorbeeld **Miro**. Klik in miro op 'Shapes', 'All shapes' en zoek je op 'UML'. Daar kun je kiezen voor 'Class'.
-  
-<img width="500" src="../images/diagram1.png">
+    hitSomething(event) {
+        console.log(`we hit something! ${event.other}`)
+    }
+}
+```
 
-Eventueel kan de screenshot van ***new super mario bros*** je inspiratie geven voor objecten in je eigen game.  
+<Br><Br><Br>
 
-<img width="500" src="../images/mariobros.jpg">
 
+
+## Elk frame code uitvoeren
+
+Met het "onPostUpdate" event kan je elk frame je eigen code uitvoeren. Hiermee kan je bv. checken waar een actor zich bevindt.
+
+```javascript
+class Henk extends Actor {
+
+    onPostUpdate(){
+        console.log(this.pos)
+    }
+}
+```
+
+<Br><Br><Br>
+
+## Besturing
+
+Om een karakter te kunnen besturen kan je luisteren naar toetsenbord input. Hieronder een voorbeeld van een Car die naar links en rechts kan bewegen.
+
+```js
+export class Car extends Actor {
+  onInitialize(engine) {
+    this.graphics.use(Resources.Car.toSprite());
+    this.pos = new Vector(400, 400);
+    this.vel = new Vector(0, 0);
+  }
+
+  onPreUpdate(engine) {
+    let xspeed = 0;
+    if (engine.input.keyboard.isHeld(Input.Keys.Left)) {
+      xspeed = -1;
+    } 
+
+    if (engine.input.keyboard.isHeld(Input.Keys.Right)) {
+      xspeed = 1;
+    } 
+    this.vel = new Vector(xspeed, 0);
+  }
+}
+```
+
+- [Bekijk hier een volledig voorbeeld met x,y en WASD keys](../snippets/keyboard.md)
+
+<Br><Br><Br>
+
+## Tekst en geluid
+
+Je kan tekst plaatsen met het `Label` object:
+
+```javascript
+import { Actor, Engine, Vector, Label, FontUnit, Font} from "excalibur";
+
+class Game extends Engine {
+    startGame() {
+        const label = new Label({
+            text: 'Action Henk',
+            pos: new Vector(100, 100),
+            font: new Font({
+                family: 'impact',
+                size: 24,
+                unit: FontUnit.Px
+            })
+        });
+        this.add(label)
+    }
+}
+```
+
+Je kan geluiden spelen door eerst een `wav` of `mp3` sound te laden in de resources class.
+
+RESOURCES.JS
+
+```javascript
+import levelStartSound from "../sound/LevelStart0.wav"
+
+const Resources = {
+    LevelStart: new Sound(levelStartSound),
+}
+const ResourceLoader = new Loader([
+    Resources.LevelStart,
+]);
+```
+GAME.JS (de class waar je het geluid wil spelen)
+```javascript
+Resources.LevelStart.play()
+```
+
+<Br><Br><Br>
+
+## Vector
+
+Een vector is een samenvoeging van het `x` en `y` coördinaat. Vectoren worden zowel gebruikt voor positie als voor snelheid. 
+
+```js
+this.pos = new Vector(10,10)
+this.vel = new Vector(3,3)
+```
+In de game wordt automatisch de `vel` elk frame opgeteld bij de `pos`. Zo ontstaat beweging.
+Je kan ook zelf rekenen met vectoren, in dit voorbeeld tellen we twee vectoren bij elkaar op:
+
+```js
+let pos1 = new Vector(4,4)
+let pos2 = new Vector(6,6)
+let newPos = pos1.add(pos2)
+// resultaat: 10,10
+```
+
+<Br><Br><Br>
+
+## Oefening
+
+- Voeg 10 of meer instances van een Actor toe aan je game met een `for` loop.
+- Laat de actors naar rechts bewegen. Als ze uit de viewport gaan, verschijnen ze weer aan de linkerkant.
+- Maak de actors clickable. Speel een geluid na click en verwijder de Actor.
+
+## Oefening
+
+- Ga verder met bovenstaande oefening, maar verwijder de click handlers.
+- Voeg een nieuwe actor toe die je met het toetsenbord kan besturen.
+- Deze actor kan tegen andere actors aan botsen om ze te verwijderen.
+
+
+<br><br><br>
+
+## Links
+
+- [Setup instructies](https://github.com/HR-CMGT/PRG04-2022-2023/blob/main/setup.md).
+- [Excalibur](https://excaliburjs.com)
+- [Codesandbox Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu)
+- [Documentatie](https://excaliburjs.com/docs/text/)

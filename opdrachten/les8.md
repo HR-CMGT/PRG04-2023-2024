@@ -1,8 +1,4 @@
-# Les 8 - week 4 middag
+# Les 8 
 
-## Game development
-
-- Gebruik scenes gebruiken om schermen te wisselen. 
-- Score opslaan met localStorage. 
-- Tekst en graphics gebruiken.
-- Gebruik een timer om objecten te spawnen. 
+- npm run build gebruiken 
+- publiceren naar Github Pages

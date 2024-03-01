@@ -1,102 +1,120 @@
-# Les 4 - week 2 middag
+# Les 4 
 
-## Opdracht
-
-- Maak een lokaal excalibur project met de [startcode](https://github.com/HR-CMGT/prg4-startproject-2023)
-- Maak je game uit les 1 van codesandbox na. 
-- Maak nu een ***class bestand*** voor elke soort Actor. *Bijvoorbeeld: `class Duck` plaats je in de file `duck.js`.*
-- Importeer je classes in game.js door `export` en `import` te gebruiken.
-
-
-<Br>
-<Br>
-<Br>
-
-## Opdracht
-
-- Bekijk de code snippets hieronder en in de presentatie.
-- Plaats de actors op een random positie.
-- Laat de actors met een random snelheid bewegen
-- Check of de actors uit beeld lopen en zet ze weer terug, middels het `exitviewport` event.
-- Maak de actors clickable. Verwijder of verplaats de actor na een klik.
-- Speel een geluidje on click
-- Voeg 10 of meer instances toe aan de game met een `for` loop.
-- Voeg een tekstveld toe aan de game met de titel van het spel.
+- Inheritance
+- Composition
 
 <Br><Br><Br>
 
-## Opdracht
+## Inheritance
 
-- Maak een start met je eigen game door de tot nu toe geleerde stof toe te passen.
-- Zorg voor consistente graphics en bijpassend geluid.
+Dit betekent dat een class automatisch de eigenschappen en functions van een andere class kan overnemen. In dit codevoorbeeld zie je dat de class `Robot` de eigenschappen van een `Actor` krijgt. 
 
-<Br><Br><Br>
+```js
+import { Actor } from "excalibur"
 
-## Click en Exit Screen Events in een class
+class Robot extends Actor {
 
-In classes gebruik je het `this` keyword om op events te reageren. Het is overzichtelijk als je de event handler in een eigen functie zet.
+}
+```
+Omdat de `Robot` nu een Excalibur `Actor` is, kan je de `onInitialize` functie gebruiken. Ook is er nu een `pos` en `vel` beschikbaar:
+```js
+import { Actor } from "excalibur"
 
-```javascript
-class Henk extends Actor {
-
-    onInitialize(engine){
-        this.enableCapturePointer = true
-        this.pointer.useGraphicsBounds = true
-        this.on("pointerup", (event) => this.resetPosition())
-        this.on("exitviewport", (event) => this.resetPosition())
+class Robot extends Actor {
+    onInitialize(){
+        console.log(this.pos)
+        console.log(this.vel)
     }
+}
+```
+### Constructor en super()
 
-    resetPosition(){
-        this.pos = new Vector(500,100)
+Als je in jouw class `extends` gebruikt moet je even opletten of er ook een `constructor` in jouw class aanwezig is. Als je `extends` hebt gebruikt, dan moet je met het `super()` keyword zorgen dat de constructor van de parent class ook aangeroepen wordt:
+
+```js
+import { Actor } from "excalibur"
+
+class Robot extends Actor {
+    constructor() {
+        super()
+        console.log("ik ben een robot")
+    }
+}
+```
+### Super in Excalibur
+
+In Excalibur wordt `super()` gebruikt om de `x,y` en de `width,height` aan de actor class door te geven.
+```js
+import { Actor } from "excalibur"
+
+class Robot extends Actor {
+    constructor() {
+        super({x:10, y:10, width:100, height:100})
+        console.log("ik ben een robot")
     }
 }
 ```
 
-<Br><Br><Br>
 
-## Tekstveld
+### Meer Excalibur classes met inheritance
 
-```javascript
-import { Actor, Engine, Vector, Label, FontUnit, Font} from "excalibur";
+Hieronder nog een aantal voorbeelden waarin je `extends` gebruikt om de functionaliteit van Excalibur aan jouw code toe te voegen.
+
+```js
 class Game extends Engine {
-    startGame() {
-        const label = new Label({
-            text: 'Action Henk',
-            pos: new Vector(100, 100),
-            font: new Font({
-                family: 'impact',
-                size: 24,
-                unit: FontUnit.Px
-            })
-        });
-        this.add(label)
-    }
+}
+class MyText extends Label {
+}
+class MyLoader extends Loader {
 }
 ```
 
 <Br><Br><Br>
 
-## Geluid laden en spelen
+## Composition 
 
-RESOURCES.JS
+Composition houdt in dat je nadenkt over hoe je game is opgebouwd. Zitten al je actors in de main game class, of is het handiger dat een actor zelf ook weer child actors heeft? 
 
-```javascript
-import levelStartSound from "../sound/LevelStart0.wav"
+### Code voorbeeld
 
-const Resources = {
-    LevelStart: new Sound(levelStartSound),
+In dit code voorbeeld plaatsen we een `Car` Actor op een `Road` Actor.
+
+```js
+class Road extends Actor {
+    onInitialize(){
+        let c = new Car()
+        this.addChild(c)
+    }
 }
-const ResourceLoader = new Loader([
-    Resources.LevelStart,
-]);
 ```
-GAME.JS (of een andere class)
-```javascript
-Resources.LevelStart.play()
-```
+<br>
+
+## Oefening
+
+In de volgende oefening plaatsen we kippen op een boomstam om te oefenen met inheritance en composition. 
+
+- Kip en Boomstam zijn Actors ***(Inheritance)***
+- Game is Engine ***(Inheritance)***
+- Game heeft Boomstammen ***(Composition)***
+- Boomstam heeft kippen ***(Composition)***
+
+![composition](../images/les6b.png)
 
 <br><br><br>
 
-## Links
+## 🐔 Chicken on a raft
 
--  [Setup instructies](https://github.com/HR-CMGT/PRG04-2022-2023/blob/main/setup.md).
+- Begin met het [excalibur chicken on a raft](https://github.com/HR-CMGT/prg4-chicken-on-a-raft)
+- Plaat `Tree` in de `Game`
+- Plaat `Chicken` op de `Tree`
+- Laat de kippen meebewegen met de boomstammen. Tip: hiervoor kan je `addChild()` gebruiken
+- Laat de kippen heen en weer bewegen op de boomstammen
+- Geef de kippen een hoedje
+- [Speel de theme song](https://www.youtube.com/watch?v=yVihOxP2QeY)
+
+
+### Resultaat
+
+![result](../images/chicken-result.png)
+
+<Br><Br><Br>

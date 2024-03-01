@@ -51,6 +51,7 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 ## Links
 
 - [Codesandbox Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu?file=/game.js)
+- [Video tutorial Erik Onarheim](https://www.youtube.com/watch?v=_srmco_KQeE) en [slides](https://slides.com/erikonarheim/build-your-first-game-in-javascript)
 - [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 - [Git instellen](https://www.youtube.com/watch?v=HfTXHrWMGVY)
 - [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)

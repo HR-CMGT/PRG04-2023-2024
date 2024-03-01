@@ -1,8 +1,5 @@
-# Les 6 - week 3 middag
+# Les 6 
 
-## Inheritance, collision en besturing
-
-- Voeg inheritance toe aan je game middels `extends Actor` in al je eigen game actors.
-- Bouw collision detection in je game
-- Laat actors verdwijen, respawnen of verplaatsen na een collision
-- Bouw een bestuurbaar karakter in je game
+- Wisselen tussen schermen
+- Timers en spawning
+- Health bar bouwen met rectangles, UI class
