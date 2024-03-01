@@ -1,8 +1,7 @@
-# Les 1 - Week 1 Ochtend
+# Les 1
 
 - Introductie vak, cursushandleiding, toetsing
-- Introductie Excalibur library
-- Experimenteren in [Codesandbox Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu)
+- Introductie modern web development. Uitchecken van het Vite Excalibur template project in VS Code. Werken met npm run dev
 
 <br>
 <br>

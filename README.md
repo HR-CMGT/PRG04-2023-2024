@@ -12,14 +12,14 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 
 | Week | Les | College | Praktijk | 
 |---|------|---------|----------|
-| 2 | 1 | Introductie vak en Excalibur. Wat is canvas. Uitleg eindopdracht. | [Oefening](./opdrachten/les1.md) en lees alvast de [Inleveropdracht](./opdrachten/inleveropdracht.md) | 
-|  | 2 | Werken met Modern Web development met npm install, modules en import / export. Development server met Vite. Publiceren op github pages met commit en push. Editor linken met github. | [Oefening](./opdrachten/les2.md) |
-| 3 | 3 | Object Oriented Programming met Classes en instances. Properties en methods. Constructor en `this`. De Excalibur Actor class.| [Oefening](./opdrachten/les3.md) |
-|  | 4 | Wat is de game loop. Actor lifecycle. Besturing en collision. | [Oefening](./opdrachten/les4.md) |
-| 4 | 5 | Inheritance en Composition. Extenden van een Excalibur class. Actors en child Actors | [Oefening](./opdrachten/les5.md) |
-|  | 6 | Physics | [Oefening](./opdrachten/les6.md) |
-| 5 | 7 | Schermen wisselen met Scenes. Timers en Spawning. Score en UI. | [Oefening](./opdrachten/les7.md) |
-|  | 8 | Communicatie tussen classes | Werken aan eindopdracht  |
+| 2 | 1 | Introductie vak en cursushandleiding, web development. Uitchecken van het Vite Excalibur template project in VS Code. Werken met npm run dev. | [Oefening](./opdrachten/les1.md) en lees alvast de [Inleveropdracht](./opdrachten/inleveropdracht.md) | 
+|  | 2 | Object Oriented Programming met Classes en instances. Properties en methods. Constructor en `this`. De Excalibur Actor class.| [Oefening](./opdrachten/les3.md) |
+| 3 | 3 | Wat is de game loop. Actor lifecycle. Besturing en collision. | [Oefening](./opdrachten/les4.md) |
+|  | 4 | Inheritance en Composition. Extenden van een Excalibur class. Actors en child Actors | [Oefening](./opdrachten/les5.md) |
+| 4 | 5 | Physics | [Oefening](./opdrachten/les6.md) |
+|   | 6 | Schermen wisselen met Scenes. Timers en Spawning. Score en UI. | [Oefening](./opdrachten/les7.md) |
+| 5 | 7 | Werken met npm run build en publiceren naar github pages. Communicatie tussen classes | Werken aan eindopdracht  |
+|  | 8 | Werken aan eindopdracht | Werken aan eindopdracht  |
 |  |  | 🚨 Deadline Week 5 | [inleveropdracht](./opdrachten/inleveropdracht.md)  |
 
 
