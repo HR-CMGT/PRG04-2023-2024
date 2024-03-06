@@ -32,7 +32,8 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 - [Startproject Excalibur](https://github.com/HR-CMGT/prg4-startproject-2024)
 - [Voorbeeldproject op Codesandbox](https://codesandbox.io/p/sandbox/excalibur-vite-testproject-olk4bu)
 - [Setup instructies voor github pages](./setup.md)
-- [Code snippets](./snippets.md)
+- [Code snippets](./snippets/snippets.md)
+- [Chrome Devtool plugin](https://chromewebstore.google.com/detail/excalibur-dev-tools/dinddaeielhddflijbbcmpefamfffekc)
 - [Arcade Kast](https://github.com/HR-CMGT/arcade-game)
 
 ## Excalibur
