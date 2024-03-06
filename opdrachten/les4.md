@@ -29,7 +29,7 @@ class Robot extends Actor {
 ```
 ### Constructor en super()
 
-Als je in jouw class `extends` gebruikt moet je even opletten of er ook een `constructor` in jouw class aanwezig is. Als je `extends` hebt gebruikt, dan moet je met het `super()` keyword zorgen dat de constructor van de parent class ook aangeroepen wordt:
+Als je in jouw class `extends` gebruikt dan moet je het `super()` keyword toevoegen aan je constructor. Dit zorgt dat de constructor van de parent class ook aangeroepen wordt:
 
 ```js
 import { Actor } from "excalibur"
@@ -55,8 +55,11 @@ class Robot extends Actor {
 }
 ```
 
+> *🚨 Als je class geen constructor heeft, dan kan je `super()` ook weglaten.*
 
-### Meer Excalibur classes met inheritance
+<br><br><br>
+
+### Excalibur classes met inheritance
 
 Hieronder nog een aantal voorbeelden waarin je `extends` gebruikt om de functionaliteit van Excalibur aan jouw code toe te voegen.
 
@@ -91,22 +94,22 @@ class Road extends Actor {
 
 ## Oefening
 
-In de volgende oefening plaatsen we kippen op een boomstam om te oefenen met inheritance en composition. 
+In de volgende oefening plaatsen we kippen op een boomstam om te oefenen met inheritance en composition. De relaties tussen de classes kan je als diagram tekenen:
+
+![composition](../images/les6b.png)
 
 - Kip en Boomstam zijn Actors ***(Inheritance)***
 - Game is Engine ***(Inheritance)***
 - Game heeft Boomstammen ***(Composition)***
 - Boomstam heeft kippen ***(Composition)***
 
-![composition](../images/les6b.png)
-
 <br><br><br>
 
 ## 🐔 Chicken on a raft
 
-- Begin met het [excalibur chicken on a raft](https://github.com/HR-CMGT/prg4-chicken-on-a-raft)
-- Plaat `Tree` in de `Game`
-- Plaat `Chicken` op de `Tree`
+- Begin met [excalibur chicken on a raft](https://github.com/HR-CMGT/prg4-chicken-on-a-raft)
+- Plaats `Tree` in de `Game`
+- Plaats `Chicken` op de `Tree`
 - Laat de kippen meebewegen met de boomstammen. Tip: hiervoor kan je `addChild()` gebruiken
 - Laat de kippen heen en weer bewegen op de boomstammen
 - Geef de kippen een hoedje
