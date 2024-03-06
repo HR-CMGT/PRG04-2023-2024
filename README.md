@@ -62,8 +62,6 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 - [Online Multiplayer met Socket.IO](https://socket.io) of [Lance](https://lance-gg.github.io)
 - [Create Game Sounds](https://sfxr.me)
 - [Net Ninja OOP Javascript course](https://www.youtube.com/playlist?list=PL4cUxeGkcC9i5yvDkJgt60vNVWffpblB7)
-- [Genereer je Class Diagram met markdown](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp9kc1uwyAMgF8F-bS1zQtEO1XddtmtVy5OcFs0_sSPtKjruy8JBaWZNi6gD_PZ2FforSBooVcYwkHi2aPmhhs2rnfUxDZNw_ap6xSt4JsMlxJ5dF5GYi_fla9pUeSbOVtWXTOZ1tYk3ZFnobeeFvjDohixmrcFT05gpKfnBRLW0BQuzbnw22PSXEjN2pScjkgU-Mu8dcq6P4TTf__XNY-61fvcpWooTfhag6ECQSF6O1Qf7ECT1yjFOMhZxCFeSBOHdjwK9J8cuJniMEV7HEwPbfSJdpAru88d2hOqUOmrkNH6O7z9AKopqB4)
-- [Javascript project zonder excalibur](https://github.com/HR-CMGT/prg4-javascript-2024)
 
 ## Advanced
 
