@@ -20,9 +20,8 @@
 ## Excalibur project
 
 - Ga naar het [excalibur startproject](https://github.com/HR-CMGT/prg4-startproject-2024)
-- Je gaat deze repository eerst kopiëren naar je eigen github:
-    - Klik op ***use this template > Create a new repository***
-    - Ga naar het project toe in je eigen github pagina.
+- Klik op ***use this template > Create a new repository***
+- Ga naar het project toe in je eigen github pagina.
 - Klik op ***Code*** en kopieer de `.git` url.
 - Open Visual Studio Code, klik op ***Files > Clone repository***
 - Het project wordt nu gedownload naar je eigen projectmap.
@@ -34,14 +33,25 @@
 <br>
 <br>
 
+## VS Code Tip
+
+- Open "File > Preferences > Settings"
+- Search "npm script"
+- Toggle "Npm: Enable Script Explorer"
+
+
+<br>
+<br>
+<br>
+
 ## Opdracht
 
-- Voeg een aantal PNG's toe aan je project
-- Voeg je afbeeldingen toe via `import` aan `resources.js`
+- Voeg een aantal PNG's toe aan je project in de `public` folder. 
+- Laad de afbeeldingen in `resources.js`
 - Maak een Actor voor de achtergrondafbeelding
 - Plaats Actors op de voorgrond met een position en een velocity
 - Verwijder of verplaats de actors als er op geklikt wordt
-- Kan je een FOR loop gebruiken om heel veel actors te plaatsen? Hoe zorg je dat ze allemaal ergens anders staan / anders bewegen?
+- Maak een FOR loop om heel veel actors te plaatsen. Zorg dat ze allemaal ergens anders staan en anders bewegen.
 
 <br>
 <br>

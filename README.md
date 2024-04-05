@@ -42,6 +42,7 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 
 - [Excalibur](https://excaliburjs.com)
 - [Excalibur API documentation](https://excaliburjs.com/docs/api/edge/index.html)
+- [Excalibur version 0.29 update notes](https://github.com/excaliburjs/Excalibur/releases/tag/v0.29.0)
 - [Excalibur forum](https://github.com/excaliburjs/Excalibur/discussions)
 
 ## Excalibur Code Examples
@@ -58,15 +59,11 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 - [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 - [Git instellen](https://www.youtube.com/watch?v=HfTXHrWMGVY)
 - [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)
-- [Font Loader](https://fontfaceobserver.com)
 - [Een excalibur project opzetten zonder het startproject](./snippets/advanced.md)
 - [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [MDN Object Oriented Programming](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
 - [Online Multiplayer met Socket.IO](https://socket.io) of [Lance](https://lance-gg.github.io)
 - [Create Game Sounds](https://sfxr.me)
 - [Net Ninja OOP Javascript course](https://www.youtube.com/playlist?list=PL4cUxeGkcC9i5yvDkJgt60vNVWffpblB7)
-
-## Advanced
-
 - [Javascript Game Design Patterns](https://designpatternsgame.com/patterns)
 - [Type Checking](./snippets/typechecking.md)

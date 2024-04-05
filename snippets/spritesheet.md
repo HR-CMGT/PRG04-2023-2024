@@ -2,11 +2,12 @@
 
 Met een `SpriteSheet` kan je meerdere sprites knippen uit een enkel PNG bestand. Deze kan je vervolgens in een `Animation` gebruiken.
 
-PNG FILE <br>
-![sheet](./images/player.png)
+Animatie frames in een png file <br>
+![anim](./player.png)
 
-RESULTAAT <br>
-![anim](./images/running.gif)
+Een heel kaartendek in een png file <br>
+![sheet](./cards.png)
+
 
 <br>
 <br>
@@ -89,11 +90,11 @@ export class Player extends Actor {
         let xspeed = 0
         this.graphics.use('idle')
     
-        if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
+        if (engine.input.keyboard.isHeld(Keys.A) || engine.input.keyboard.isHeld(Keys.Left)) {
             xspeed = -300
             this.graphics.use('runleft')
         }
-        if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right)) {
+        if (engine.input.keyboard.isHeld(Keys.D) || engine.input.keyboard.isHeld(Keys.Right)) {
             xspeed = 300
             this.graphics.use('runright')
         }

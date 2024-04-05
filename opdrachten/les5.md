@@ -21,11 +21,19 @@ In de ***Game.js*** zet je physics aan en bepaal je de world gravity. Voor een s
 GAME
 
 ```js
+const options = { 
+    width: 800, height: 600, 
+    backgroundColor: Color.White,
+    physics: {
+        solver: SolverStrategy.Realistic,
+        gravity: new Vector(0, 800),
+    }
+}
+
 export class Game extends Engine {
     constructor() {
-        super()
-        Physics.useRealisticPhysics()
-        Physics.gravity = new Vector(0, 800)
+        super(options)
+        this.start(ResourceLoader).then(() => this.startGame())
     }
 }
 ```

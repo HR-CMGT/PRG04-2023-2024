@@ -125,46 +125,47 @@ export class Car extends Actor {
 
 <Br><Br><Br>
 
-## Tekst en geluid
+## Resources laden
 
-Je kan tekst plaatsen met het `Label` object:
-
-```javascript
-import { Actor, Engine, Vector, Label, FontUnit, Font} from "excalibur";
-
-class Game extends Engine {
-    startGame() {
-        const label = new Label({
-            text: 'Action Henk',
-            pos: new Vector(100, 100),
-            font: new Font({
-                family: 'impact',
-                size: 24,
-                unit: FontUnit.Px
-            })
-        });
-        this.add(label)
-    }
-}
-```
-
-Je kan geluiden spelen door eerst een `wav` of `mp3` sound te laden in de resources class.
+Plaats je resources in de `public` folder. Je kan daarbinnen submappen aanmaken.
 
 RESOURCES.JS
 
 ```javascript
-import levelStartSound from "../sound/LevelStart0.wav"
-
+import { ImageSource, Sound, Resource, Loader, FontSource } from 'excalibur'
 const Resources = {
-    LevelStart: new Sound(levelStartSound),
+    Ship: new ImageSource('images/ship.png'),
+    LevelStart: new Sound("sound/LevelStart0.wav"),
+    PixelFont: new FontSource('PressStart2P-Regular.ttf', 'PressStart')
 }
 const ResourceLoader = new Loader([
+    Resources.Ship,
     Resources.LevelStart,
+    Resources.PixelFont,
 ]);
 ```
-GAME.JS (de class waar je het geluid wil spelen)
+
+### Fonts en sounds gebruiken
+
 ```javascript
-Resources.LevelStart.play()
+import { Actor, Engine, Vector, Label, FontUnit, Font} from "excalibur"
+import { Resources } from "resources"
+
+class Game extends Engine {
+    startGame() {
+        Resources.LevelStart.play()
+        const label = new Label({
+            text: 'Score: 0',
+            pos: new Vector(0, 0),
+            font: Resources.PixelFont.toFont({
+                unit: FontUnit.Px,
+                size: 20,
+                color: Color.White
+            })
+        })
+        this.add(label)
+    }
+}
 ```
 
 <Br><Br><Br>

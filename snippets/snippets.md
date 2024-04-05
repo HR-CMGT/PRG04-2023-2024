@@ -9,18 +9,14 @@
 - [Sturen en draaien](#sturen-en-draaien)
 - [Scenes](#scenes)
 - [Physics](./physics.md)
-- [Sprites wisselen in een actor](#sprites-wisselen-binnen-een-actor)
-- [Meerdere sprites tegelijk](#meerdere-sprites-tegelijk)
 - [Flip sprite](#flip-sprite)
 - [Object spawner en timer](#object-spawner-en-timer)
 - [Tekstveld met score](./tekstveld.md)
 - [UI class](./ui.md)
 - [Random tint](#random-tint)
 - [Pixel Art](#pixel-art)
-- [Health Bar](#health-bar)
 - [Loading Screen aanpassen](#loading-screen-aanpassen)
 - [JSON laden](#json-laden)
-- [Fonts](#fonts)
 - [Custom Events](#custom-events)
 - [Afstand tussen twee punten](#afstand-tussen-punten)
 
@@ -59,25 +55,25 @@ class Shark extends Actor {
 
         let kb = engine.input.keyboard
 
-        if (kb.isHeld(Input.Keys.W) || kb.isHeld(Input.Keys.Up)) {
+        if (kb.isHeld(Keys.W) || kb.isHeld(Keys.Up)) {
             yspeed = -300
         }
-        if (kb.isHeld(Input.Keys.S) || kb.isHeld(Input.Keys.Down)) {
+        if (kb.isHeld(Keys.S) || kb.isHeld(Keys.Down)) {
             yspeed = 300
         }
-        if (kb.isHeld(Input.Keys.A) || kb.isHeld(Input.Keys.Left)) {
+        if (kb.isHeld(Keys.A) || kb.isHeld(Keys.Left)) {
             xspeed = -300
             // optioneel, flip de sprite
             // this.sprite.flipHorizontal = true
         }
-        if (kb.isHeld(Input.Keys.D) || kb.isHeld(Input.Keys.Right)) {
+        if (kb.isHeld(Keys.D) || kb.isHeld(Keys.Right)) {
             xspeed = 300
             // optioneel, flip de sprite
             // this.sprite.flipHorizontal = false
         }
         
         // schieten en springen gebeurt maar 1 keer na een press
-        if (engine.input.keyboard.wasPressed(Input.Keys.Space)) {
+        if (engine.input.keyboard.wasPressed(Keys.Space)) {
             console.log("jump!")
         }
 
@@ -218,70 +214,6 @@ onActivate(ctx) {
 <br><br><br>
 
 
-
-
-
-## Sprites wisselen binnen een actor
-
-Je kan meerdere sprites in een graphic zetten met `add`. Je kan deze sprites tonen en verbergen met `show` en `hide`.
-Of, je kan via `use` aangeven welke sprite op een bepaald moment getoond moet worden.
-
-```javascript
-export class Mario extends Actor {
-
-    onInitialize(engine) {
-        this.graphics.add('walk', Resources.Walk.toSprite())
-        this.graphics.add('jump', Resources.Jump.toSprite())
-    }
-
-    walk() {
-        this.graphics.show('walk') 
-        this.graphics.hide('jump') 
-        
-        // of
-        this.graphics.use('walk')
-    }
-
-    jump() {
-        this.graphics.show('jump') 
-        this.graphics.hide('walk') 
-        
-        // of
-        this.graphics.use('jump')
-    }
-}
-```
-
-
-
-<br><br><br>
-
-## Meerdere sprites tegelijk
-
-Soms wil je meerdere plaatjes tegelijk tekenen binnen dezelfde actor. Dan heb je een graphics group nodig. In dit voorbeeld tonen we mario en luigi.
-
-```js
-onInitialize(engine) {
-
-    const group = new GraphicsGroup({
-        members: [
-            {
-                graphic: Resources.Mario.toSprite(),
-                pos: new Vector(0, 0),
-            },
-            {
-                graphic: Resources.Luigi.toSprite(),
-                pos: new Vector(50, 50),
-            }
-        ],
-    })
-    this.graphics.use(group)
-}
-```
-[Bekijk ook de UI](./ui.md) code voor een voorbeeld van een graphics group met tekstvelden.
-
-<br><br><br>
-
 ## Flip sprite
 
 MARIO.JS
@@ -369,47 +301,10 @@ export class Game extends Engine {
     
 <Br><br><br>
 
-## Health Bar
-
-Hieronder zie je een actor class die met behulp van `Rectangle` een health bar tekent. Je kan de health bar aanmaken met `new HealthBar()`
-
-```javascript
-import { Actor, Vector, Color, Sprite, Rectangle, clamp } from 'excalibur'
-
-export class HealthBar extends Actor {
-
-    healthrectangle
-
-    constructor() {
-        super({ width: 165, height: 30 })
-        this.healthrectangle = new Rectangle({
-            width: 165,
-            height: 30,
-            color: Color.Red,
-        })
-        this.anchor = new Vector(0, 0)
-        this.graphics.use(this.healthrectangle)
-    }
-
-    resetHealth(){
-        this.timerectangle.width = 165
-    } 
-
-    loseHealth(damage) {
-        this.healthrectangle.width = this.healthrectangle.width - damage
-        
-        if (this.healthrectangle.width <= 0) {
-            console.log("game over")
-        }
-    }
-}
-```
-[zie ook het UI voorbeeld](./ui.md)
-
-<br><br><br>
-
 
 ## Loading Screen aanpassen
+
+LET OP, DIT IS VERANDERD IN EXCALIBUR 0.29, ZIE DE DOCUMENTATIE 
 
 RESOURCES.JS
 ```javascript
@@ -462,32 +357,6 @@ class Pokemon extends Actor {
     }
 }
 ```
-<br><br><br>
-
-## Fonts
-
-Plaats het gewenste font in je assets map. Je kan het font laden in je `resources.js` file:
-    
-```js
-import fontFile from "../css/PressStart2P-Regular.ttf"
-
-const font = new FontFace("coolFont", `url(${fontFile})`)
-document.fonts.add(font)
-font.load()
-```
-Vervolgens kan je het overal in je game gebruiken :
-    
-```js
-this.scoreText = new Text({
-      text: 'Score: 0',
-      font: new Font({
-           family: 'coolFont',
-           size: 20,
-      }),
-})
-```
-Het kan voorkomen dat je font nog niet is geladen voordat je game start, dit kan je checken via https://fontfaceobserver.com/
-
 <br><br><br>
 
 ## Custom Events

@@ -59,52 +59,31 @@ Je kan onderstaande twee classes toevoegen aan de SRC map. Let op dat je `game.j
 GAME.JS
 
 ```javascript
-import { Actor, Engine, Vector, Label, Font, Color } from "excalibur"
+import { Actor, Engine, Vector } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 
 export class Game extends Engine {
-
     constructor() {
         super({ width: 800, height: 600 })
         this.start(ResourceLoader).then(() => this.startGame())
-        // als je geen plaatjes wil laden:
-        // this.start().then(() => this.startGame())
     }
-
     startGame(){
-        // voorbeeld tekstlabel
-        let textField = new Label({
-            font: new Font({
-                family: "Arial",
-                size: 32,
-                color: Color.White
-            })
-        })
-        textField.text = `Score: 0`
-        textField.pos = new Vector(20, 30)
-        this.add(textField)
-
-        // voorbeeld actor
-        const fish = new Actor()
-        fish.graphics.use(Resources.Fish.toSprite())
-        fish.pos = new Vector(400, 300)
-        fish.vel = new Vector(-50, 0)
-        this.add(fish)
+        console.log("start de game!")
     }
 }
 
 new Game()
 ```
 RESOURCES.JS
+
+Plaats je resources in de `public` folder. Daarbinnen kan je subfolders aanmaken voor images, sounds, fonts, etc.
+
 ```javascript
 import { ImageSource, Sound, Resource, Loader } from 'excalibur'
-import fishImage from '../images/fish.png'
-
 const Resources = {
-    Fish: new ImageSource(fishImage)
+    Fish: new ImageSource('images/fish.png')
 }
 const ResourceLoader = new Loader([Resources.Fish])
-
 export { Resources, ResourceLoader }
 ```
 

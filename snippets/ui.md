@@ -1,94 +1,57 @@
 # UI
 
-Het Excalibur `ScreenElement` is een Actor class die altijd bovenop je game wordt getekend en die niet meebeweegt met de camera. 
-
-Je kan hier geen child actors in plaatsen maar wel graphics. In dit voorbeeld tonen we een `Text` element en twee sprites. 
-
-De tekst kan achteraf nog worden aangepast via de `updateScore()` functie.
+Het Excalibur [ScreenElement](https://excaliburjs.com/api/class/ScreenElement/) is een Actor class die altijd bovenop je game wordt getekend en die niet meebeweegt met de camera. In dit voorbeeld tekenen we een tekstveld en een healthbar in een screenelement. Dit kan je ook in een `Scene` doen als je geen camera hebt. De tekst en healthbar kunnen achteraf nog worden aangepast via de `updateScore()` functie.
 
 ```javascript
 export class UI extends ScreenElement {
 
     scoreText
-
-    constructor() {
-        super({ x: 10, y: 10 })
-    }
+    healthbar
 
     onInitialize(engine) {
-
-        this.scoreText = new Text({
+        this.scoreText = new Label({
             text: 'Score: 0',
-            font: new Font({
+            pos: new Vector(0, 0),
+            font: Resources.PixelFont.toFont({
                 unit: FontUnit.Px,
-                family: 'PressStart',
                 size: 20,
-            }),
+                color: Color.White
+            })
         })
+        this.addChild(this.scoreText)
 
-        const group = new GraphicsGroup({
-            members: [
-                {
-                    graphic: Resources.Mario.toSprite(),
-                    pos: new Vector(0, 0),
-                },
-                {
-                    graphic: this.scoreText,
-                    pos: new Vector(50, 0),
-                },
-                {
-                    graphic: Resources.Luigi.toSprite(),
-                    pos: new Vector(50, 50),
-                }
-            ],
-        })
-        this.graphics.use(group)
+        this.healthbar = new Actor({x: 10, y: 40, color: Color.Green, width: 200, height: 20})
+        this.healthbar.graphics.anchor = Vector.Zero
+        this.addChild(this.healthbar)
     }
 
     updateScore() {
         this.scoreText.text = `Score: 200`
+        this.healthbar.scale = new Vector(0.5, 1)
     }
 }
 ```
+- [Screenelement docs](https://excaliburjs.com/api/class/ScreenElement/)
+
 <br><br><br>
 
 ## De UI in de game plaatsen
 
 ```javascript
 class Game extends Engine {
-    ...
-    startGame() {
-        this.add(new Enemy())
-        this.add(new Player())
-        this.add(new UI())
+    ui
+    startGame() {       
+        this.ui = new UI()
+        this.add(this.ui)
+    }
+    nextLevel(){
+        this.ui.updateScore()
     }
 }
 ```
 
 <br><br><br>
 
-## Healthbar
-
-Excalibur heeft `Rectangle` en `Circle` om vormen te tekenen, deze kan je ook aan de graphics group toevoegen.
-
-```js
-this.healthrectangle = new Rectangle({
-    width: 165,
-    height: 30,
-    color: Color.Red,
-})
-
-const group = new GraphicsGroup({
-    members: [
-        {
-            graphic: this.healthrectangle,
-            pos: new Vector(0, 0),
-        }
-    ],
-})
-```
-
-<br><br><br>
 
 ## UI altijd boven de game tekenen
 

@@ -17,11 +17,19 @@ In de main game zet je physics aan en bepaal je de world gravity. Voor een space
 GAME
 
 ```js
+const options = { 
+    width: 800, height: 600, 
+    backgroundColor: Color.White,
+    physics: {
+        solver: SolverStrategy.Realistic,
+        gravity: new Vector(0, 800),
+    }
+}
+
 export class Game extends Engine {
     constructor() {
-        super()
-        Physics.useRealisticPhysics()
-        Physics.gravity = new Vector(0, 800)
+        super(options)
+        this.start(ResourceLoader).then(() => this.startGame())
     }
 }
 ```
@@ -70,16 +78,16 @@ onInitialize(engine) {
     this.body.mass = 7    
 }
 onPreUpdate(engine, delta) {
-    if (engine.input.keyboard.isHeld(Input.Keys.D)) {
+    if (engine.input.keyboard.isHeld(Keys.D)) {
         this.body.applyLinearImpulse(new Vector(15 * delta, 0))
     }
 
-    if (engine.input.keyboard.isHeld(Input.Keys.A)) {
+    if (engine.input.keyboard.isHeld(Keys.A)) {
         this.body.applyLinearImpulse(new Vector(-15 * delta, 0))
     }
 
     if (this.grounded) {
-        if (engine.input.keyboard.wasPressed(Input.Keys.Space)) {
+        if (engine.input.keyboard.wasPressed(Keys.Space)) {
             this.body.applyLinearImpulse(new Vector(0, -250 * delta))
             this.grounded = false           // grounded weer op true zetten na collision met ground
     

@@ -26,22 +26,22 @@ export class Car extends Actor {
 
     // UP = forward
     if (
-      engine.input.keyboard.isHeld(Input.Keys.Up) ||
-      engine.input.keyboard.isHeld(Input.Keys.Up)
+      engine.input.keyboard.isHeld(Keys.Up) ||
+      engine.input.keyboard.isHeld(Keys.Up)
     ) {
       speed = -150;
     }
 
     // cursor keys is direction
     if (
-      engine.input.keyboard.isHeld(Input.Keys.D) ||
-      engine.input.keyboard.isHeld(Input.Keys.Right)
+      engine.input.keyboard.isHeld(Keys.D) ||
+      engine.input.keyboard.isHeld(Keys.Right)
     ) {
       this.rotation += 0.05;
     }
     if (
-      engine.input.keyboard.isHeld(Input.Keys.A) ||
-      engine.input.keyboard.isHeld(Input.Keys.Left)
+      engine.input.keyboard.isHeld(Keys.A) ||
+      engine.input.keyboard.isHeld(Keys.Left)
     ) {
       this.rotation -= 0.05;
     }
