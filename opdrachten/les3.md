@@ -109,11 +109,11 @@ export class Car extends Actor {
 
   onPreUpdate(engine) {
     let xspeed = 0;
-    if (engine.input.keyboard.isHeld(Input.Keys.Left)) {
+    if (engine.input.keyboard.isHeld(Keys.Left)) {
       xspeed = -1;
     } 
 
-    if (engine.input.keyboard.isHeld(Input.Keys.Right)) {
+    if (engine.input.keyboard.isHeld(Keys.Right)) {
       xspeed = 1;
     } 
     this.vel = new Vector(xspeed, 0);
