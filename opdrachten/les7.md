@@ -2,9 +2,43 @@
 
 ## Communicatie tussen classes
 
+  - Waarden doorgeven
   - Communicatie tussen game en player
   - Communicatie tussen meerdere classes
-  - Referenties doorgeven
+
+<Br>
+<Br>
+<Br>
+
+## Waarden doorgeven
+
+Als je met `new` een instance van je `Player` aanmaakt (of een andere `Actor`), dan kan je waarden doorgeven, bijvoorbeeld: `let bullet = new Bullet(20,10)`. De waarden `20,10` komen vervolgens binnen in de `constructor` van jouw class.
+
+BULLET.JS
+
+```js
+class Bullet extends Actor {
+    constructor(x,y){
+        super({x, y})
+        console.log(`Ik sta nu op de positie ${x}, ${y}`)
+    }
+    onInitialize(engine) {       
+        
+    }
+}
+```
+GAME.JS
+
+```javascript
+class Game extends Engine {
+    
+    startGame() {       
+        let bullet = new Bullet(20,10)
+        this.add(bullet)
+    }
+}
+```
+
 
 <Br>
 <Br>
@@ -28,8 +62,7 @@ class Player extends Actor {
     
     onInitialize(engine) {       
         this.mygame = engine
-        this.sprite = Resources.Mario.toSprite()
-        this.graphics.use(this.sprite)
+        this.graphics.use(Resources.Mario.toSprite())
     }
     hitSomething(event){
         if(event.other instanceof Coin) {
@@ -112,37 +145,3 @@ class Game extends Engine {
 }
 ```
 
-
-
-<Br>
-<Br>
-<Br>
-
-## Waarden doorgeven
-
-Als je met `new` een instance van je `Player` aanmaakt (of een andere `Actor`), dan kan je waarden doorgeven, bijvoorbeeld: `let bullet = new Bullet(20,10)`. De waarden `20,10` komen vervolgens binnen in de `constructor` van jouw class.
-
-BULLET.JS
-
-```js
-class Bullet extends Actor {
-    constructor(x,y){
-        super({x, y})
-    }
-    onInitialize(engine) {       
-        
-    }
-}
-```
-GAME.JS
-
-```javascript
-class Game extends Engine {
-    
-    startGame() {       
-        let bullet = new Bullet(20,10)
-        this.add(bullet)
-    }
-}
-```
-```
