@@ -41,17 +41,8 @@ Nu wordt je project live gezet en kan je het online spelen!
 
 ### Troubleshooting
 
-Als je project een `dist` folder heeft gemaakt in plaats van een `docs` folder dan kan je die folder met de hand hernoemen. Je kan ook een `vite.config.js` file maken waarin je aangeeft dat je `docs` wil gebruiken.
-
-```js
-module.exports = {
-  root: 'src',
-  build: {
-    outDir: '../docs'
-  }
-}
-```
-Als je afbeeldingen en css niet geladen kunnen worden in github pages, dan kan je je github repository toevoegen aan `package.json`
+- Als je project een `dist` folder heeft gemaakt in plaats van een `docs` folder, dan moet je de `outDir` aanpassen via `package.json`.
+- Als je afbeeldingen en css niet geladen kunnen worden in github pages, dan kan je je github repository naam toevoegen aan `package.json`
 
 ```json
 "scripts": {
