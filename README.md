@@ -35,7 +35,8 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 - [Code snippets](./snippets/snippets.md)
 - [Chrome Devtool plugin](https://chromewebstore.google.com/detail/excalibur-dev-tools/dinddaeielhddflijbbcmpefamfffekc)
 - [Arcade Kast](https://github.com/HR-CMGT/arcade-game)
-- [Prompting AI](./snippets/ai.md)
+- [CMGT AI chatbot voor Excalibur](https://ai-assistent-mu.vercel.app)
+- [Prompting AI tips](./snippets/ai.md)
 
 ## Excalibur
 
