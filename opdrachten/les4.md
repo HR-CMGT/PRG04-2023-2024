@@ -110,11 +110,19 @@ In de volgende oefening plaatsen we kippen op een boomstam om te oefenen met inh
 - Begin met [excalibur chicken on a raft](https://github.com/HR-CMGT/prg4-chicken-on-a-raft)
 - Plaats `Tree` in de `Game`
 - Plaats `Chicken` op de `Tree`
-- Laat de kippen meebewegen met de boomstammen. Tip: hiervoor kan je `addChild()` gebruiken
+- Laat de kippen meebewegen met de boomstammen.
 - Laat de kippen heen en weer bewegen op de boomstammen
 - Geef de kippen een hoedje
 - [Speel de theme song](https://www.youtube.com/watch?v=yVihOxP2QeY)
 
+<br>
+
+### Composition
+
+- Om `Actors` toe te voegen aan de `Game` (of aan een `Scene`) gebruik je `this.add()`.
+- Om `Actors` toe te voegen aan een andere `Actor` gebruik je `this.addChild()`.
+
+<br>
 
 ### Resultaat
 
