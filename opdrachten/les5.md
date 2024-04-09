@@ -82,16 +82,16 @@ onInitialize(engine) {
     this.body.mass = 7    
 }
 onPreUpdate(engine, delta) {
-    if (engine.input.keyboard.isHeld(Input.Keys.D)) {
+    if (engine.input.keyboard.isHeld(Keys.D)) {
         this.body.applyLinearImpulse(new Vector(15 * delta, 0))
     }
 
-    if (engine.input.keyboard.isHeld(Input.Keys.A)) {
+    if (engine.input.keyboard.isHeld(Keys.A)) {
         this.body.applyLinearImpulse(new Vector(-15 * delta, 0))
     }
 
     if (this.grounded) {
-        if (engine.input.keyboard.wasPressed(Input.Keys.Space)) {
+        if (engine.input.keyboard.wasPressed(Keys.Space)) {
             // optie 1: impulse geeft realistische beweging
             this.body.applyLinearImpulse(new Vector(0, -250 * delta))
 
