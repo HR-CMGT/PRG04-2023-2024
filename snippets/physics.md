@@ -1,6 +1,11 @@
 # Physics
 
-In de game kan je `useRealisticPhysics` of `useArcadePhysics` physics aanzetten. Per object kan je het type physics collision aanpassen. 
+In de game kan je `Realistic Physics` of `Arcade Physics` physics aanzetten. 
+
+- "Arcade" style physics which is good for basic collision detection for non-rotated rectangular areas. Example: platformers, tile based games, top down, etc
+- "Realistic" style physics which is good for rigid body games where realistic collisions are desired. Example: block stacking, angry bird's style games, etc
+
+Per object kan je het type physics collision aanpassen. 
 
 - `CollisionType.Active` (volledige physics simulatie)
 - `CollisionType.Passive` (wel events, geen physics)
@@ -15,7 +20,6 @@ In de main game zet je physics aan en bepaal je de world gravity. Voor een space
 ## Voorbeeld
 
 GAME
-
 ```js
 const options = { 
     width: 800, height: 600, 
@@ -33,7 +37,7 @@ export class Game extends Engine {
     }
 }
 ```
-PLAYER
+PLAYER - BOX COLLIDER
 ```js
 export class Player extends Actor {
     constructor(x, y) {
@@ -42,7 +46,7 @@ export class Player extends Actor {
     }
 }
 ```
-PLATFORM
+PLATFORM - STATIC BOX COLLIDER
 ```js
 export class Platform extends Actor {
     constructor(x, y) {
@@ -52,7 +56,7 @@ export class Platform extends Actor {
 }
 ```
 
-<br>
+<br><br><br>
 
 ## Physics properties
 
@@ -63,9 +67,9 @@ Je kan een physics body de volgende properties meegeven:
 - `this.body.bounciness`  *(alleen bij useRealisticPhysics)*
 - `this.body.friction`  *(alleen bij useRealisticPhysics)*
     
-<br>
+<br><br><br>
 
-## Physics movement
+## Player controls
     
 De physics engine regelt de `velocity` van je objecten zoals de speler. Effecten zoals stuiteren zal je niet zien als je handmatig de `velocity` van een object gaat aanpassen. 
 
@@ -98,6 +102,43 @@ onPreUpdate(engine, delta) {
 }
 ```
 
+<br><br><br>
+
+## Bouncy ball
+
+```js
+export class Ball extends Actor {
+    constructor(){
+        super({ radius: 50 })
+        this.graphics.use(Resources.Ball.toSprite())
+        this.body.collisionType = CollisionType.Active
+        this.body.mass = 6
+        this.body.bounciness = 0.7
+        this.pos = new Vector(350, -50)
+    }
+}
+```
+
+<Br><br><br>
+
+## Polygon collider
+
+In dit voorbeeld maken we een triangle collider in de `onInitialize()`.
+
+```js
+export class Triangle extends Actor {
+    onInitialize(engine) {
+        const triangle = new PolygonCollider({
+            points: [new Vector(-50, 0), new Vector(0, -80), new Vector(50, 0)]
+        });
+        this.body.collisionType = CollisionType.Fixed
+        this.collider.set(triangle)
+        this.pos = new Vector(120, 480)
+    }
+}
+```
+
+
 <Br><br><br>
 
 ## Edge collider
@@ -119,26 +160,11 @@ export class Border extends Actor {
     }
 }
 ```
-Je kan ook via `super` alle waarden meteen meegeven.
-```js
-export class Border extends Actor {
-    constructor(){
-        super({
-            pos:new Vector(100,100),
-            collider: new EdgeCollider({
-                begin: new Vector(0, 0),
-                end: new Vector(200, 200),
-            }),
-            collisionType:CollisionType.Fixed
-        })
-    }
-}
-```
 
 
 <Br><br><br>
 
-## Complexe colliders
+## Collision group
 
 Je kan meerdere collision shapes *(circles, edges en boxes)* samenvoegen tot 1 collider met een complexe vorm. Hieronder een voorbeeld van een capsule (twee circles en een box) en een coastline (onregelmatige lijnen).
 
@@ -147,35 +173,33 @@ Je kan meerdere collision shapes *(circles, edges en boxes)* samenvoegen tot 1 c
 ```js
 import { Shape, Actor, Vector, CollisionType, CompositeCollider } from "excalibur"
 
-export class ColliderGroup extends Actor {
-    constructor() {
-        super({
-            pos: new Vector(400, 100),
-            collider: new CompositeCollider([
-                Shape.Circle(10, new Vector(0, -20)),
-                Shape.Box(20, 40),
-                Shape.Circle(10, new Vector(0, 20)),
-            ]),
-            collisionType: CollisionType.Fixed
-        })
+export class Player extends Actor {
+    onInitialize(engine) {
+        let capsule = new CompositeCollider([
+            Shape.Circle(10, new Vector(0, -20)),
+            Shape.Box(20, 40),
+            Shape.Circle(10, new Vector(0, 20)),
+        ])
+        this.body.collisionType = CollisionType.Active
+        this.collider.set(capsule)
+        this.pos = new Vector(400, 100)
     }
 }
 ```
 *coastline*
 
 ```js
-export class ColliderGroup extends Actor {
-    constructor() {
-        super({
-            pos: new Vector(400, 350),
-            collider: new CompositeCollider([
-                Shape.Edge(new Vector(0, 0), new Vector(120, 30)),
-                Shape.Edge(new Vector(120, 30), new Vector(240, 50)),
-                Shape.Edge(new Vector(240, 50), new Vector(320, 10)),
-                Shape.Edge(new Vector(320, 10), new Vector(430, 35))
-            ]),
-            collisionType: CollisionType.Fixed
-        })
+export class CoastLine extends Actor {
+    onInitialize(engine) {
+        let landscape = new CompositeCollider([
+            Shape.Edge(new Vector(0, 0), new Vector(120, 30)),
+            Shape.Edge(new Vector(120, 30), new Vector(240, 50)),
+            Shape.Edge(new Vector(240, 50), new Vector(320, 10)),
+            Shape.Edge(new Vector(320, 10), new Vector(430, 35))
+        ])
+        this.body.collisionType = CollisionType.Fixed
+        this.collider.set(landscape)
+        this.pos = new Vector(400, 350)
     }
 }
 ```

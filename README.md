@@ -30,13 +30,11 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 ## Startcode
 
 - [Startproject Excalibur](https://github.com/HR-CMGT/prg4-startproject-2024)
-- [Voorbeeldproject op Codesandbox](https://codesandbox.io/p/sandbox/excalibur-vite-testproject-olk4bu)
+- [Troubleshooting](./snippets/troubleshooting.md)
+- [Chrome Devtool plugin](https://chromewebstore.google.com/detail/excalibur-dev-tools/dinddaeielhddflijbbcmpefamfffekc)
 - [Setup instructies voor github pages](./setup.md)
 - [Code snippets](./snippets/snippets.md)
-- [Chrome Devtool plugin](https://chromewebstore.google.com/detail/excalibur-dev-tools/dinddaeielhddflijbbcmpefamfffekc)
 - [Arcade Kast](https://github.com/HR-CMGT/arcade-game)
-- [CMGT AI chatbot voor Excalibur](https://ai-assistent-mu.vercel.app)
-- [Prompting AI tips](./snippets/ai.md)
 
 ## Excalibur
 
@@ -44,9 +42,11 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 - [Excalibur API documentation](https://excaliburjs.com/docs/api/edge/index.html)
 - [Excalibur version 0.29 update notes](https://github.com/excaliburjs/Excalibur/releases/tag/v0.29.0)
 - [Excalibur forum](https://github.com/excaliburjs/Excalibur/discussions)
+- [CMGT AI chatbot voor Excalibur](https://ai-assistent-mu.vercel.app) en [Prompting AI tips](./snippets/ai.md)
 
 ## Excalibur Code Examples
 
+- [Voorbeeldproject op Codesandbox](https://codesandbox.io/p/sandbox/excalibur-vite-testproject-olk4bu)
 - [Excalibur Gallery](https://excaliburjs.com/gallery/)
 - [Excalibur Show and Tell](https://github.com/excaliburjs/Excalibur/discussions/categories/show-and-tell)
 - [Tenpa Excalibur Examples](https://github.com/tenpaMk2/excalibur-examples)

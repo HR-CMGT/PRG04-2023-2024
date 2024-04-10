@@ -15,6 +15,7 @@
 - [UI class](./ui.md)
 - [Random tint](#random-tint)
 - [Pixel Art](#pixel-art)
+- [Fullscreen](#fullscreen)
 - [Loading Screen aanpassen](#loading-screen-aanpassen)
 - [JSON laden](#json-laden)
 - [Custom Events](#custom-events)
@@ -301,42 +302,29 @@ export class Game extends Engine {
     
 <Br><br><br>
 
+## Fullscreen
+
+Starten in fullscreen
+
+```js
+const Resources = {
+    Bird: new ImageSource('images/bird.png'),
+    Tree: new ImageSource('images/tree.png'),
+}
+
+const ResourceLoader = new Loader({fullscreenAfterLoad: true})
+for (let res of Object.values(Resources)) {
+    ResourceLoader.addResource(res)
+}
+
+export { Resources, ResourceLoader }
+```
+
+<br><br><br>
 
 ## Loading Screen aanpassen
 
-LET OP, DIT IS VERANDERD IN EXCALIBUR 0.29, ZIE DE DOCUMENTATIE 
-
-RESOURCES.JS
-```javascript
-import titleImage from '../images/loadingscreen.png'
-
-const ResourceLoader = new Loader([Resources.Fish, Resources.Mario])
-ResourceLoader.logo = titleImage
-ResourceLoader.logoWidth = 659
-ResourceLoader.logoHeight = 203
-ResourceLoader.backgroundColor = Color.White
-ResourceLoader.loadingBarColor = Color.Black
-```
-### Starbutton aanpassen via CSS
-```css
-#excalibur-play {
-    background: rgb(0, 0, 0) !important;
-}
-```
-### Geheel eigen startbutton
-```javascript
-ResourceLoader.startButtonFactory = () => {
-    let btn = document.createElement('button')
-    btn.classList.add("my-own-cool-button")
-    return btn
-}
-```
-### Geen startbutton
-
-De game gaat automatisch naar de eerste scene als de loading bar vol is. Dit kan gevolgen hebben voor het afspelen van audio in mobile devices.
-```js
-ResourceLoader.suppressPlayButton = true
-```
+https://excaliburjs.com/docs/loaders
 
 <br><br><br>
 
