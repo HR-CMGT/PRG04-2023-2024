@@ -17,25 +17,21 @@
 - Je kan de game vanuit een actor ook altijd aanroepen via `this.scene.engine`.
 
 ```javascript
-class Player extends Actor {
-    
-    onPreUpdate(engine) {       
-        if(this.pos.y > 1000) {
-            engine.gameOver()
-        }
-    }
-}
-```
-
-```javascript
 class Mario extends Actor {
     
     onInitialize(engine) {       
         engine.resetScore()
     }
 
+    onPreUpdate(engine) {       
+        if(this.pos.y > 1000) {
+            engine.gameOver()
+        }
+    }
+
     hitCoin(){
-        this.scene.engine.findCoin()
+        // in je eigen functies krijg je geen "engine", dus dan moet je "this.scene.engine" gebruiken.
+        this.scene.engine.addPoint()
     }
 }
 ```
@@ -50,7 +46,7 @@ class Game extends Engine {
         this.score = 0
     }
 
-    findCoin(){
+    addPoint(){
         this.score++
     }
 
