@@ -64,13 +64,13 @@ class Shark extends Actor {
         }
         if (kb.isHeld(Keys.A) || kb.isHeld(Keys.Left)) {
             xspeed = -300
-            // optioneel, flip de sprite
-            // this.sprite.flipHorizontal = true
+            // flip de sprite
+            this.graphics.flipHorizontal = true
         }
         if (kb.isHeld(Keys.D) || kb.isHeld(Keys.Right)) {
             xspeed = 300
-            // optioneel, flip de sprite
-            // this.sprite.flipHorizontal = false
+            // flip de sprite
+            this.graphics.flipHorizontal = false
         }
         
         // schieten en springen gebeurt maar 1 keer na een press
@@ -225,9 +225,8 @@ import { Resources, ResourceLoader } from './resources.js'
 export class Sprite extends Actor {
 
     onInitialize(engine) {
-        let sprite = Resources.Mario.toSprite()
-        sprite.flipHorizontal = true
-        this.graphics.use(sprite)
+        this.graphics.use(Resources.Mario.toSprite())
+        this.graphics.flipHorizontal = true
     }
 }
 ```
