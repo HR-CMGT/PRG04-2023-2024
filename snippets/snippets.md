@@ -4,13 +4,13 @@
 - [Scrolling Background](./scrolling.md)
 - [Spritesheet](./spritesheet.md)
 - [Click en Exit Screen Events](#click-en-exit-screen-events)
+- [Collision Events](#collision)
 - [Keyboard besturing](#keyboard-besturing)
-- [Collision](#collision)
 - [Sturen en draaien](#sturen-en-draaien)
 - [Scenes](#scenes)
 - [Physics](./physics.md)
 - [Flip sprite](#flip-sprite)
-- [Object spawner en timer](#object-spawner-en-timer)
+- [Spawner en Timer](#object-spawner-en-timer)
 - [Tekstveld met score](./tekstveld.md)
 - [UI class](./ui.md)
 - [Random tint](#random-tint)
@@ -25,18 +25,30 @@
 
 ## Click en Exit Screen Events
 
-On Exit Screen
+On Exit Screen Event
 ```javascript
 class Fish extends Actor {
     onInitialize(engine) { 
+        // capture mouse clicks
         this.enableCapturePointer = true
         this.pointer.useGraphicsBounds = true
-        this.on("exitviewport", (event) => this.resetPosition())
         this.on("pointerup", (event) => this.resetPosition())
+        // event als actor buiten beeld gaat
+        this.on("exitviewport", (event) => this.resetPosition())
     }
     resetPosition(){
         this.pos = new Vector(1000,10)      // verplaatsen
         this.kill()                         // verwijderen
+    }
+}
+```
+Je kan ook handmatig checken of een Actor off screen is
+```js
+class Fish extends Actor {
+    onPostUpdate(engine){
+        if (this.isOffScreen) {
+            this.kill()
+        }
     }
 }
 ```
@@ -49,11 +61,13 @@ In dit voorbeeld kijken we in de `update` loop welke toetsen zijn ingedrukt. Aan
 ```javascript
 class Shark extends Actor {
 
-    onPreUpdate(engine) {
+    shoot() {
+        console.log("💥 Shoot!")
+    }
 
+    onPreUpdate(engine) {
         let xspeed = 0
         let yspeed = 0
-
         let kb = engine.input.keyboard
 
         if (kb.isHeld(Keys.W) || kb.isHeld(Keys.Up)) {
@@ -64,21 +78,19 @@ class Shark extends Actor {
         }
         if (kb.isHeld(Keys.A) || kb.isHeld(Keys.Left)) {
             xspeed = -300
-            // flip de sprite
-            this.graphics.flipHorizontal = true
+            this.graphics.flipHorizontal = true       // flip de sprite
         }
         if (kb.isHeld(Keys.D) || kb.isHeld(Keys.Right)) {
             xspeed = 300
-            // flip de sprite
-            this.graphics.flipHorizontal = false
+            this.graphics.flipHorizontal = false      // flip de sprite
         }
+        this.vel = new Vector(xspeed, yspeed)
         
-        // schieten en springen gebeurt maar 1 keer na een press
+        // schieten of springen gebeurt maar 1 keer na een press
         if (engine.input.keyboard.wasPressed(Keys.Space)) {
-            console.log("jump!")
+            this.shoot()
         }
 
-        this.vel = new Vector(xspeed, yspeed)
     }
 }
 ```
@@ -92,8 +104,6 @@ import { clamp } from "excalibur"
 class Shark extends Actor {
     onPreUpdate(engine) {
         //...keyboard code hier
-
-        // blijf binnen beeld
         this.pos.x = clamp(this.pos.x, this.width/2, engine.drawWidth - this.width/2);
         this.pos.y = clamp(this.pos.y, this.height/2, engine.drawHeight - this.height/2);
     }
@@ -109,7 +119,6 @@ Met de collision events kan je checken of je Actor ergens tegenaan botst. Let op
 export class Ship extends Actor {
 
     constructor() {
-        // collision box!
         super({ width: Resources.Ship.width, height: Resources.Ship.height }) 
     }
     
@@ -132,7 +141,7 @@ Een [Collision Group](https://excaliburjs.com/docs/collisiongroups/) zorgt dat a
 
 ## Sturen en draaien
 
-![draaien](./images/carangle.png)
+![draaien](../images/carangle.png)
 
 In plaats van in vier richtingen te bewegen met W A S D kan je ook in de richting bewegen waar je naartoe gedraaid staat. Je kan dan de `rotation` omrekenen naar de `velocity`.
 
@@ -151,44 +160,42 @@ this.vel = new Vector(
 
 ## Scenes
 
-GAME has SCENES
+Je plaatst je `Actors` in `Scenes`, waardoor de `Game` kan wisselen tussen scenes. 
+Een scene heeft een `onActivate` functie, deze wordt elke keer aangeroepen dat de scene actief wordt.
+
+Een `Actor` weet altijd in welke scene de actor zit, via `this.scene`. Je kan via `this.scene.engine` de game aanroepen om van scene te kunnen wisselen. 
+
+Let op dat als je *uit* een scene gaat, dat alle actors en variabelen "bevriezen". Zodra je terug naar de scene gaat, ga je verder waar je gebleven was.
+
 ```javascript
 import { Level1 } from './scenes/level1'
 import { GameOver } from './scenes/gameover'
 
 class Game extends Engine {
-
-    everythingLoaded() {
-        this.add('level1', new Level1())
+    startGame() {
+        this.add('level', new Level())
         this.add('gameover', new GameOver())
-
-        this.goToScene('level1')
+        this.goToScene('level')
     }
 }
 ```
-Je bouwt nu je levels in een SCENE in plaats van rechtstreeks in de game.
-
-Een scene heeft een `onActivate` functie, deze wordt elke keer aangeroepen dat de scene actief wordt.
-
-Gebruik de `engine` variabele om van scene te wisselen. Omdat je die variabele niet altijd beschikbaar hebt maak je er een property van.
+LEVEL
 
 ```javascript
-import { Scene } from "excalibur"
-
-export class Help extends Scene {
-
-    game
+export class Level extends Scene {
 
     onInitialize(engine) {
-        this.game = engine
+        console.log("this level is created only once.")
+        let player = new Player()
+        this.add(player)
     }
 
     onActivate(ctx) {
-        console.log("the scene has started!")
+        console.log("the game has switched to this level.")
     }
 
     gameOver() {
-        this.game.goToScene('gameover')
+        this.scene.engine.goToScene('gameover')
     }
 }
 ```
@@ -199,7 +206,7 @@ export class Help extends Scene {
 Het is mogelijk om waarden zoals een score van de ene scene naar de andere door te geven via de `onActivate` functie.
 
 ```javascript
-this.game.goToScene('gameover', { level: 4, score: 12 })
+this.scene.engine.goToScene('gameover', { level: 4, score: 12 })
 ```
 Dit kan je dan als volgt uitlezen:
 ```javascript
@@ -241,40 +248,28 @@ right.flipHorizontal = true
 <br><br><br>
 
     
-## Object Spawner en timer
+## Object Spawner en Timer
 
-De `Random` instance wordt één keer aangemaakt in de constructor. Deze wordt meerdere keren gebruikt bij spawn om een object een random plek te geven binnen de afmeting van 800 x 600. In onInitialize wordt een `Timer` aangemaakt die elke 1000 miliseconden this.spawn() uitvoert. 
+Een `Timer` moet je toevoegen aan de `Game` (of `Scene`). Dat zorgt dat de Timer synchroon loopt met je gameloop framerate. Je kan geen `setInterval` of `setTimeout` gebruiken omdat daarbij geen rekening met de gameloop wordt gehouden.
+
+> *🚨 Als je objecten spawned, moet je opletten dat die objecten aan de huidige game/scene worden toegevoegd!*
+
+Om bij de huidige game te komen vanuit een `Actor` kan je `this.scene.engine` gebruiken. Om bij de huidige scene te komen vanuit een `Actor` kan je `this.scene` gebruiken.
 
 ```js
-import {Actor, Random, Timer} from "excalibur";
-import {Rock} from "./rock.js";
-
-export class Spawner extends Actor{
-
-    constructor() {
-        super();
-
-        this.random = new Random(1337)
-
-    }
-
-    onInitialize(engine) {
+export class Game extends Engine {
+    startGame() {
         this.timer = new Timer({
-            fcn: () => this.spawn(engine),
-            interval: 1000,
+            fcn: () => this.spawn(),
+            interval: 800,
             repeats: true
         })
-        engine.currentScene.add(this.timer)
+        this.add(this.timer)
         this.timer.start()
     }
 
-    spawn(engine) {
-        console.log("spawn")
-        const rock = new Rock(
-            this.random.integer(0, 800),
-            this.random.integer(0, 600)
-        )
-        engine.currentScene.add(rock)
+    spawn() {
+        this.add(new Ball())
     }
 }
 ```

@@ -16,9 +16,9 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 |  | 2 | Object Oriented Programming met Classes en instances. Properties en methods. Constructor en `this`. De Excalibur Actor class.| [Oefening](./opdrachten/les2.md) |
 | 3 | 3 | Wat is de game loop. Actor lifecycle. Besturing en collision. | [Oefening](./opdrachten/les3.md) |
 |  | 4 | Inheritance en Composition. Extenden van een Excalibur class. Actors en child Actors | [Oefening](./opdrachten/les4.md) |
-| 4 | 5 | Physics | [Oefening](./opdrachten/les5.md) |
+| 4 | 5 | Communicatie tussen classes. | [Oefening](./opdrachten/les5.md) |
 |   | 6 | Schermen wisselen met Scenes. Timers en Spawning. Score en UI. | [Oefening](./opdrachten/les6.md) |
-| 5 | 7 | Communicatie tussen classes. Waarden doorgeven aan constructor. | [Oefening](./opdrachten/les7.md), werken aan eindopdracht  |
+| 5 | 7 | Physics | [Oefening](./opdrachten/les7.md), werken aan eindopdracht  |
 |  | 8 | Werken met npm build en publiceren naar github pages. Publiceren op CMGT Arcade Kast.  | [Oefening](./opdrachten/les8.md), werken aan eindopdracht  |
 |  |  | 🚨 Deadline Week 5 | [inleveropdracht](./opdrachten/inleveropdracht.md)  |
 
@@ -30,27 +30,27 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 ## Startcode
 
 - [Startproject Excalibur](https://github.com/HR-CMGT/prg4-startproject-2024)
-- [Troubleshooting](./snippets/troubleshooting.md)
 - [Chrome Devtool plugin](https://chromewebstore.google.com/detail/excalibur-dev-tools/dinddaeielhddflijbbcmpefamfffekc)
-- [Setup instructies voor github pages](./setup.md)
+- [Troubleshooting](./snippets/troubleshooting.md)
 - [Code snippets](./snippets/snippets.md)
+
+## Project publiceren
+
+- [Setup instructies voor github pages](./setup.md)
 - [Arcade Kast](https://github.com/HR-CMGT/arcade-game)
 
-## Excalibur
+## Excalibur documentatie
 
 - [Excalibur](https://excaliburjs.com)
-- [Excalibur API documentation](https://excaliburjs.com/docs/api/edge/index.html)
-- [Excalibur version 0.29 update notes](https://github.com/excaliburjs/Excalibur/releases/tag/v0.29.0)
+- [Excalibur API documentation](https://excaliburjs.com/docs/api/edge/index.html) en  [V0.29 notes](https://github.com/excaliburjs/Excalibur/releases/tag/v0.29.0)
 - [Excalibur forum](https://github.com/excaliburjs/Excalibur/discussions)
 - [CMGT AI chatbot voor Excalibur](https://ai-assistent-mu.vercel.app) en [Prompting AI tips](./snippets/ai.md)
 
 ## Excalibur Code Examples
 
 - [Voorbeeldproject op Codesandbox](https://codesandbox.io/p/sandbox/excalibur-vite-testproject-olk4bu)
-- [Excalibur Gallery](https://excaliburjs.com/gallery/)
-- [Excalibur Show and Tell](https://github.com/excaliburjs/Excalibur/discussions/categories/show-and-tell)
-- [Tenpa Excalibur Examples](https://github.com/tenpaMk2/excalibur-examples)
-- [Terrible Games Examples](https://github.com/dcgw)
+- [Excalibur Gallery](https://excaliburjs.com/gallery/), [Show and Tell](https://github.com/excaliburjs/Excalibur/discussions/categories/show-and-tell)
+- [Tenpa Examples](https://github.com/tenpaMk2/excalibur-examples), [Terrible Games](https://github.com/dcgw)
 
 ## Links
 

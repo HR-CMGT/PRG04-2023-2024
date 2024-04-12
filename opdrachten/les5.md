@@ -1,205 +1,174 @@
-# Physics
+# Les 5
 
-In de game kan je `Realistic Physics` of `Arcade Physics` physics aanzetten. 
+## Communicatie tussen classes
 
-- "Arcade" style physics which is good for basic collision detection for non-rotated rectangular areas. Example: platformers, tile based games, top down, etc
-- "Realistic" style physics which is good for rigid body games where realistic collisions are desired. Example: block stacking, angry bird's style games, etc
+  - Communicatie tussen game en actor
+  - Waarden doorgeven
+  - Communicatie tussen meerdere classes
 
-Per object kan je het type physics collision aanpassen. 
+<Br>
+<Br>
+<Br>
 
-- `CollisionType.Active` (volledige physics simulatie)
-- `CollisionType.Passive` (wel events, geen physics)
-- `CollisionType.Fixed` (collision events, kan niet bewegen)
 
-In de main game zet je physics aan en bepaal je de world gravity. Voor een space game of top-down game zet je de gravity op 0. Je kan ook per object de `body.useGravity` op true of false zetten. 
+## Communicatie tussen game en actor
 
-⚠️ Let op dat al je objecten een [collision](./snippets.md#collision) box hebben! Je kan ook gebruik maken van *collision groups* om te bepalen welke objecten met elkaar kunnen colliden.
+- Een `Actor` krijgt het `engine` argument in de `update` en `initialize` functies, dit verwijst naar jouw `game` class. 
+- Je kan de game vanuit een actor ook altijd aanroepen via `this.scene.engine`.
 
-<br><br><br>
-
-## Voorbeeld
-
-GAME
-```js
-const options = { 
-    width: 800, height: 600, 
-    backgroundColor: Color.White,
-    physics: {
-        solver: SolverStrategy.Realistic,
-        gravity: new Vector(0, 800),
-    }
-}
-
-export class Game extends Engine {
-    constructor() {
-        super(options)
-        this.start(ResourceLoader).then(() => this.startGame())
-    }
-}
-```
-PLAYER - BOX COLLIDER
-```js
-export class Player extends Actor {
-    constructor(x, y) {
-        super({ width: 50, height: 10 })
-        this.body.collisionType = CollisionType.Active
-    }
-}
-```
-PLATFORM - STATIC BOX COLLIDER
-```js
-export class Platform extends Actor {
-    constructor(x, y) {
-        super({ width: 500, height: 100 })
-        this.body.collisionType = CollisionType.Fixed
-    }
-}
-```
-
-<br><br><br>
-
-## Physics properties
-
-Je kan een physics body de volgende properties meegeven:
-
-- `this.body.mass` 
-- `this.body.inertia`
-- `this.body.bounciness`  *(alleen bij useRealisticPhysics)*
-- `this.body.friction`  *(alleen bij useRealisticPhysics)*
+```javascript
+class Mario extends Actor {
     
-<br><br><br>
-
-## Player controls
-    
-De physics engine regelt de `velocity` van je objecten zoals de speler. Effecten zoals stuiteren zal je niet zien als je handmatig de `velocity` van een object gaat aanpassen. 
-
-Je kan `impulse` gebruiken om een *richting* aan de bestaande `velocity` te geven. Dit wordt beïnvloed door `mass`. Een zwaarder object zal moeizamer op snelheid komen. 
-
-VOORBEELD
-    
-```js
-onInitialize(engine) {
-    this.body.mass = 7    
-}
-onPreUpdate(engine, delta) {
-    if (engine.input.keyboard.isHeld(Keys.D)) {
-        this.body.applyLinearImpulse(new Vector(15 * delta, 0))
+    onInitialize(engine) {       
+        engine.resetScore()
     }
 
-    if (engine.input.keyboard.isHeld(Keys.A)) {
-        this.body.applyLinearImpulse(new Vector(-15 * delta, 0))
-    }
-
-    if (this.grounded) {
-        if (engine.input.keyboard.wasPressed(Keys.Space)) {
-            this.body.applyLinearImpulse(new Vector(0, -250 * delta))
-            this.grounded = false           // grounded weer op true zetten na collision met ground
-    
-            // alternatief voor springen met velocity
-            // this.vel = new Vector(this.vel.x, this.vel.y - 400)
+    onPreUpdate(engine) {       
+        if(this.pos.y > 1000) {
+            engine.gameOver()
         }
     }
+
+    hitCoin(){
+        // in je eigen functies krijg je geen "engine", dus dan moet je "this.scene.engine" gebruiken.
+        this.scene.engine.addPoint()
+    }
+}
+```
+GAME.JS
+
+```javascript
+class Game extends Engine {
+    
+    score = 0
+
+    resetScore() {       
+        this.score = 0
+    }
+
+    addPoint(){
+        this.score++
+    }
+
+    gameOver(){
+        console.log("game over!")
+    }
 }
 ```
 
-<br><br><br>
+<Br>
+<Br>
+<Br>
 
-## Bouncy ball
+
+## Waarden doorgeven
+
+Als je met `new` een instance aanmaakt dan kan je waarden doorgeven, die waarden komen binnen in de `constructor` van jouw class.
+
+Positie meegeven aan BULLET.JS
 
 ```js
-export class Ball extends Actor {
+class Bullet extends Actor {
+    constructor(x,y){
+        super()
+        this.pos = new Vector(x,y)
+    }
+}
+```
+alternatief
+```js
+class Bullet extends Actor {
+    constructor(x,y){
+        super({x, y})
+    }
+}
+```
+GAME.JS
+
+```javascript
+class Game extends Engine {
+    
+    startGame() {       
+        let bullet = new Bullet(20,10)
+        this.add(bullet)
+    }
+}
+```
+
+
+<Br>
+<Br>
+<Br>
+
+## Communicatie tussen meerdere classes
+
+### Collision
+
+Bij een collision krijg je een verwijzing naar de class waar je mee botst.
+
+SHARK.JS
+```js
+export class Shark extends Actor {
     constructor(){
         super({ radius: 50 })
-        this.graphics.use(Resources.Ball.toSprite())
-        this.body.collisionType = CollisionType.Active
-        this.body.mass = 6
-        this.body.bounciness = 0.7
-        this.pos = new Vector(350, -50)
+        this.on("collisionstart", (event) => this.onCollide(event))
+    }
+
+    onCollide(event) {
+       if(event.other instanceof Fish) {
+           event.other.hitByShark()
+       }
+    }
+}
+```
+FISH.JS
+```js
+export class Fish extends Actor {
+    hitByShark() {
+       console.log("ARRGHH I was hit by a sharky boy 🦈")
     }
 }
 ```
 
-<Br><br><br>
+### Classes vinden via de Game
 
-## Polygon collider
+Je kan via `this.scene.engine` ook classes aanroepen die in de game beschikbaar zijn, zoals een `UI` class.
 
-In dit voorbeeld maken we een triangle collider in de `onInitialize()`.
+GAME.JS
 
-```js
-export class Triangle extends Actor {
-    onInitialize(engine) {
-        const triangle = new PolygonCollider({
-            points: [new Vector(-50, 0), new Vector(0, -80), new Vector(50, 0)]
-        });
-        this.body.collisionType = CollisionType.Fixed
-        this.collider.set(triangle)
-        this.pos = new Vector(120, 480)
+```javascript
+class Game extends Engine {
+    
+    ui   // ui moet een property zijn als je er van buitenaf bij wil kunnen
+    
+    startGame() {       
+        this.ui = new UI()
+        this.add(this.ui)
+
+        let player = new Player()
+        this.add(player)
     }
 }
 ```
-
-
-<Br><br><br>
-
-## Edge collider
-
-Soms wil je alleen een rand hebben waar de speler niet langs mag. Dit kan je doen met een *edge collider*.
-In dit voorbeeld loopt de edge van `0,0` naar `200,200`. 
-
-```js
-export class Border extends Actor {
-    constructor() {
-        super()
-        let edge = new EdgeCollider({
-            begin: new Vector(0, 0),
-            end: new Vector(600, 20),
-        })
-        this.pos = new Vector(100, 500)
-        this.body.collisionType = CollisionType.Fixed
-        this.collider.set(edge)
+UI.JS
+```javascript
+class UI extends Actor {
+    
+    score = 0
+    
+    showScore(){
+        console.log(this.score)
     }
 }
 ```
-
-
-<Br><br><br>
-
-## Collision group
-
-Je kan meerdere collision shapes *(circles, edges en boxes)* samenvoegen tot 1 collider met een complexe vorm. Hieronder een voorbeeld van een capsule (twee circles en een box) en een coastline (onregelmatige lijnen).
-
-*capsule*
-
-```js
-import { Shape, Actor, Vector, CollisionType, CompositeCollider } from "excalibur"
-
-export class Player extends Actor {
-    onInitialize(engine) {
-        let capsule = new CompositeCollider([
-            Shape.Circle(10, new Vector(0, -20)),
-            Shape.Box(20, 40),
-            Shape.Circle(10, new Vector(0, 20)),
-        ])
-        this.body.collisionType = CollisionType.Active
-        this.collider.set(capsule)
-        this.pos = new Vector(400, 100)
-    }
-}
-```
-*coastline*
-
-```js
-export class CoastLine extends Actor {
-    onInitialize(engine) {
-        let landscape = new CompositeCollider([
-            Shape.Edge(new Vector(0, 0), new Vector(120, 30)),
-            Shape.Edge(new Vector(120, 30), new Vector(240, 50)),
-            Shape.Edge(new Vector(240, 50), new Vector(320, 10)),
-            Shape.Edge(new Vector(320, 10), new Vector(430, 35))
-        ])
-        this.body.collisionType = CollisionType.Fixed
-        this.collider.set(landscape)
-        this.pos = new Vector(400, 350)
+PLAYER.JS
+```javascript
+class Player extends Actor {
+    
+    hitSomething(event){
+        if(event.other instanceof Coin) {
+            this.scene.engine.ui.showScore()
+        }
     }
 }
 ```

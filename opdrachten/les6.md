@@ -48,7 +48,7 @@ export class Level extends Scene {
 ```
 <br><br><br>
 
-## Timers en spawning
+## Spawning
 
 Met spawning bedoelen we dat er tijdens de game nieuwe actors worden aangemaakt. Als je schiet dan spawned er een bullet. Meestal geef je de `x,y` waarden mee, dat is waar de bullet moet verschijnen:
 
@@ -64,21 +64,31 @@ export class Bullet extends Actor {
     }
 }
 ```
-Als je op een vast moment een Actor wil spawnen heb je een timer nodig. In javascript zou je dit met `setTimeout` kunnen doen, maar dan wordt er geen rekening gehouden met het pauzeren van de game of wisselen tussen scenes. Daarom gebruiken we de `Timer`:
+
+<br><br><br>
+
+## Timers
+
+Een `Timer` moet je toevoegen aan de `Game` (of `Scene`). Dat zorgt dat de Timer synchroon loopt met je gameloop framerate. Je kan geen `setInterval` of `setTimeout` gebruiken omdat daarbij geen rekening met de gameloop wordt gehouden.
+
+> *🚨 Als je objecten spawned, moet je opletten dat die objecten aan de huidige game/scene worden toegevoegd!*
+
+Om bij de huidige game te komen vanuit een `Actor` kan je `this.scene.engine` gebruiken. Om bij de huidige scene te komen vanuit een `Actor` kan je `this.scene` gebruiken.
 
 ```js
-export class Level extends Scene {
-    onInitialize(engine) {
-        const timer = new Timer({
-            fcn: () => this.doSomething(),
-            repeats: true,
-            interval: 100,
+export class Game extends Engine {
+    startGame() {
+        this.timer = new Timer({
+            fcn: () => this.spawn(),
+            interval: 800,
+            repeats: true
         })
-        this.add(timer)
-        timer.start()
+        this.add(this.timer)
+        this.timer.start()
     }
-    doSomething(){
-        console.log('Elke 100 milliseconden')
+
+    spawn() {
+        this.add(new Ball())
     }
 }
 ```
