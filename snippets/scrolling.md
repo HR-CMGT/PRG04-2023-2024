@@ -8,7 +8,7 @@ const Resources = {
 }
 ```
 
-In een Actor kan je een deel van je graphic als sprite gebruiken *(dit kan ook zonder wrapping)*. Maar omdat *wrapping* nu aan staat kan je het *nulpunt* en/of de width/height van de graphic aanpassen. Als je op een coördinaat komt dat buiten de afmeting van het origineel komt dan wordt de afbeelding herhaald *(tiling)*.
+In een Actor kan je een deel van je graphic als sprite gebruiken *(dit kan ook zonder wrapping)*. Maar omdat *wrapping* nu aan staat kan je het *nulpunt* aanpassen in een animatie. Zodra de graphic buiten beeld valt wordt de graphic herhaald.
 
 ```javascript
 export class Background extends Actor {

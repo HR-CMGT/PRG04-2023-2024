@@ -53,13 +53,17 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 - [Excalibur Gallery](https://excaliburjs.com/gallery/), [Show and Tell](https://github.com/excaliburjs/Excalibur/discussions/categories/show-and-tell)
 - [Tenpa Examples](https://github.com/tenpaMk2/excalibur-examples), [Terrible Games](https://github.com/dcgw)
 
+## Assets
+
+- [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)
+- [AI Pixel Art generator](https://aipixelartgenerator.com/)
+
 ## Links
 
 - [Codesandbox Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu?file=/game.js)
 - [Video tutorial Erik Onarheim](https://www.youtube.com/watch?v=_srmco_KQeE) en [slides](https://slides.com/erikonarheim/build-your-first-game-in-javascript)
 - [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 - [Git instellen](https://www.youtube.com/watch?v=HfTXHrWMGVY)
-- [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)
 - [Een excalibur project opzetten zonder het startproject](./snippets/advanced.md)
 - [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [MDN Object Oriented Programming](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
