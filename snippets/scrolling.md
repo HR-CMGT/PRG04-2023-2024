@@ -1,37 +1,40 @@
 # Scrolling Background
 
-Binnen *één* actor plaats je twee keer dezelfde Sprite naast elkaar. Dat doen we door twee child actors aan te maken die naast elkaar staan. Gebruik `addChild` om een Actor aan de background toe te voegen.
+Om een achtergrond eindeloos te kunnen herhalen moet je ***wrapping*** aanzetten in de image loader.
 
-Vervolgens scroll je de background actor langzaam naar links. Als de ***eerste*** afbeelding buiten beeld is plaats je de gehele background weer op de startpositie.
+```js
+const Resources = {
+    Background: new ImageSource('images/background.png', { wrapping: ImageWrapping.Repeat}),
+}
+```
+
+In een Actor kan je een deel van je graphic als sprite gebruiken *(dit kan ook zonder wrapping)*. Maar omdat *wrapping* nu aan staat kan je het *nulpunt* en/of de width/height van de graphic aanpassen. Als je op een coördinaat komt dat buiten de afmeting van het origineel komt dan wordt de afbeelding herhaald *(tiling)*.
 
 ```javascript
 export class Background extends Actor {
 
-    offset
+    sprite
 
     onInitialize(engine){
-        const spaceImage = Resources.Background.toSprite()
-        this.offset = spaceImage.width
-        
-        const bgleft = new Actor({ z: -1 })
-        bgleft.graphics.use(spaceImage)
-        bgleft.pos = new Vector(engine.screen.resolution.width / 2, engine.screen.resolution.height / 2)
-
-        const bgright = new Actor({ z: -1 })
-        bgright.graphics.use(spaceImage)
-        bgright.pos = new Vector(engine.screen.resolution.width / 2 + spaceImage.width, engine.screen.resolution.height / 2)
-
-        this.addChild(bgleft)
-        this.addChild(bgright)
-    
-        this.pos = new Vector(0, 0)
-        this.vel = new Vector(-110, 0)
+        this.sprite = new Sprite({
+            image: Resources.Background,
+            sourceView: {
+                x: 0,
+                y: 0,
+                width: 500,
+                height: 500
+            },
+            destSize: {
+                width: 1000,
+                height: 1000
+            }
+        })
+        this.anchor = Vector.Zero
+        this.graphics.use(this.sprite)
     }
 
     onPostUpdate(engine, delta) {
-        if (this.pos.x < -this.offset) {
-            this.pos = new Vector(0, 0)
-        }
+        this.sprite.sourceView.x += .05 * delta;
     }
 }
 ```

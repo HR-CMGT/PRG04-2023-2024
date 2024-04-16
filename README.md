@@ -37,6 +37,7 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 ## Project publiceren
 
 - [Setup instructies voor github pages](./setup.md)
+- [Plaats je game op itch.io](https://itch.io/docs/creators/html5)
 - [Arcade Kast](https://github.com/HR-CMGT/arcade-game)
 
 ## Excalibur documentatie
