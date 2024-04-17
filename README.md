@@ -57,6 +57,9 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 
 - [Open Game Art](https://opengameart.org) en [Kenney Assets](https://www.kenney.nl/assets)
 - [AI Pixel Art generator](https://aipixelartgenerator.com/)
+- [itch.io assets](https://itch.io/game-assets)
+- [Create Game Sounds](https://sfxr.me)
+- [Tiled game map editor](https://www.mapeditor.org) en [Excalibur plugin](https://excaliburjs.com/docs/tiled-plugin)
 
 ## Links
 
@@ -68,7 +71,6 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 - [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [MDN Object Oriented Programming](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
 - [Online Multiplayer met Socket.IO](https://socket.io) of [Lance](https://lance-gg.github.io)
-- [Create Game Sounds](https://sfxr.me)
 - [Net Ninja OOP Javascript course](https://www.youtube.com/playlist?list=PL4cUxeGkcC9i5yvDkJgt60vNVWffpblB7)
 - [Javascript Game Design Patterns](https://designpatternsgame.com/patterns)
 - [Type Checking](./snippets/typechecking.md)

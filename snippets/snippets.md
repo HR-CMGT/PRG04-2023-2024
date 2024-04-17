@@ -6,6 +6,7 @@
 - [Click en Exit Screen Events](#click-en-exit-screen-events)
 - [Collision Events](#collision)
 - [Keyboard besturing](#keyboard-besturing)
+- [Gamepad besturing](./gamepad.md)
 - [Sturen en draaien](#sturen-en-draaien)
 - [Scenes](#scenes)
 - [Physics](./physics.md)
