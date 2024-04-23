@@ -319,6 +319,20 @@ export { Resources, ResourceLoader }
 
 ## Loading Screen aanpassen
 
+Op de CMGT Arcade kast heb je geen starbutton nodig. 
+
+GAME.JS
+
+```js
+export class Game extends Engine {
+    constructor(){
+        super({
+            suppressPlayButton: true
+        })
+    }
+}
+```
+
 https://excaliburjs.com/docs/loaders
 
 <br><br><br>

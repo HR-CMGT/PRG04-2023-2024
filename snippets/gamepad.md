@@ -81,3 +81,7 @@ export class Player extends Actor {
 <br>
 <Br>
 <br>
+
+## Next steps
+
+Je kan in `game.js` de player pas aanmaken zodra een gamepad is gedetecteerd.
