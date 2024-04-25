@@ -1,89 +1,98 @@
 # Les 2
 
-## Code uit één file omzetten naar Object Oriented Code
+Werken met classes en instances.
 
-Gebruik de volgende code: [Whack a Mole](https://github.com/HR-CMGT/PRG04-whack-a-mole)
+- Opdracht 1: Whack a mole
+- Object Oriented Programming in Excalibur
+- Opdracht 2: Pixel Aquarium
 
+<br><br><br>
+
+## Opdracht 1: Whack a Mole
+
+*Code uit één file omzetten naar Object Oriented Code*
+
+Gebruik de volgende code: [Whack a Mole](https://github.com/HR-CMGT/PRG04-whack-a-mole). 
 De code van dit spelletje staat allemaal in `src/game.js`. 
-Samen met een medestudent 
+
+Samen met een medestudent:
 - bekijk je deze code en gaan jullie regel-voor-regel na wat de code doet.
 - Bedenk welke class(es) je nodig hebt om de code op te delen in losse stukken.
 - Bepaal wat de verantwoordelijkheid van deze class wordt.
 - Schrijf hiervoor eerst de basis van de class
-  ```javascript
-  import {Actor} from "excalibur";
-  import {Resources} from "./resources.js";
 
-  export class NameOfTheClass extends Actor {
-      constructor() {
-          super();
+```javascript
+import {Actor} from "excalibur";
+import {Resources} from "./resources.js";
+
+export class NameOfTheClass extends Actor {
+    constructor() {
+        super();
     }
 
     onInitialize(engine) {
-     
+        
     }
-  }
-  ```
+}
+```
+
 - Gebruik commentaar om aan te geven welk gedrag en welke eigenschappen de class moet gaan krijgen.
-  ```javascript
-  import {Actor} from "excalibur";
-  import {Resources} from "./resources.js";
 
-  export class NameOfTheClass extends Actor {
+```javascript
+import {Actor} from "excalibur";
+import {Resources} from "./resources.js";
 
-      // the class needs speed
-      
-      constructor() {
-          super();
+export class NameOfTheClass extends Actor {
+
+    // the class needs speed
+    constructor() {
+        super();
     }
 
     onInitialize(engine) {
-         // the car needs to use a sprite
+        // the car needs to use a sprite
     }
 
     // the class needs to move
-  }
-  ```
+}
+```
 - Werk nu samen de class uit en maak het spelletje werkend. 
+
+<br><br><br>
 
 ## Object Oriented Programming
 
-In de presentatie heb je geleerd wat Object Oriented Programming inhoudt:
-
-- Maak een `class` file voor elk object dat onderdeel is van je game.
-- Gebruik het `new` keyword om `instances` van een class aan te maken.
+- Maak een `Actor class` file voor elk object dat onderdeel is van je game.
+- Gebruik het `new` keyword om `instances` van een Actor class aan te maken in je `Game`.
 - Een class kan het keyword `this` gebruiken om naar zichzelf te verwijzen.
 
-> Hieronder zie je een voorbeeld van een `Car` class.
+> *Hieronder zie je een voorbeeld van een `Car` class.*
 
 ```javascript
-export class Car {
-    speed
+export class Car extends Actor {
+
     sound
-    constructor() {
-        this.speed = 0
+
+    onInitialize(engine) {
+        this.graphics.use(Resources.CarImage.toSprite())
         this.sound = "honk"
     }
+
     makeNoise() {
         console.log(this.sound)
     }
 }
 ```
-Om deze class te gebruiken in je project kan je het importeren en vervolgens een Car aanmaken:
-
-```js
-import { Car } from "car.js"
-let c = new Car()
-c.makeNoise() // dit logt "honk" in de console
-```
 
 <Br>
 <Br>
 <Br>
 
-## Object Oriented Programming in Excalibur
+## Excalibur voorbeeld
 
-We gaan dit concept oefenen in Excalibur. In het startproject staat alle code in de main game class:
+In het volgende voorbeeld beginnen we met een `Actor` in de game class, en vervolgens verplaatsen we die naar een eigen `Fish` class:
+
+#### Start
 
 ```js
 export class Game extends Engine {
@@ -103,15 +112,7 @@ export class Game extends Engine {
     }
 }
 ```
-<br>
-
-### Een Actor class
-
-We beginnen met aparte bestanden aan te maken voor de Actors in onze game. 
-
-- Maak een nieuwe js file met de naam `fish.js`, maak daarin een class met de naam `Fish`. 
-- Omdat we met Excalibur werken moet je `extends Actor` achter de class naam typen.
-- Omdat de class overal in de game gebruikt mag worden moet je `export` gebruiken.
+#### Actor verplaatst naar eigen class
 
 ```js
 import { Actor } from "excalibur"
@@ -125,12 +126,7 @@ export class Fish extends Actor {
     }
 }
 ```
-
-<Br>
-
-### De Game class
-
-Omdat de Fish nu in een eigen class staat, kan je de main game als volgt aanpassen:
+#### De Game class importeert de Actor
 
 ```js
 import { Fish } from "fish.js"
@@ -150,17 +146,12 @@ export class Game extends Engine {
 }
 ```
 
-<br>
+<br><br><Br>
 
-### Opdracht
-
-Fish class:
-
-- Maak de snelheid en positie random met `Math.random()`
-
-Game class:
+### Opdracht 2 : Pixel Aquarium
 
 - Gebruik een `for` loop om 100 vissen te spawnen.
+- Maak de snelheid en positie van elke vis random met `Math.random()`
 
 <br><br><br>
 
