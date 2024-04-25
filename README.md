@@ -32,7 +32,7 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 - [Startproject Excalibur](https://github.com/HR-CMGT/prg4-startproject-2024)
 - [Chrome Devtool plugin](https://chromewebstore.google.com/detail/excalibur-dev-tools/dinddaeielhddflijbbcmpefamfffekc)
 - [Troubleshooting](./snippets/troubleshooting.md)
-- [Code snippets](./snippets/snippets.md)
+- [Code snippets](./snippets/README.md)
 
 ## Project publiceren
 

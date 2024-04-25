@@ -41,8 +41,12 @@ export class Car extends Actor {
     ) {
       xspeed = -1
     }
-    
     this.vel = new Vector(xspeed, yspeed);
+
+
+    if (engine.input.keyboard.wasPressed(Keys.Space)) {
+        console.log("shoot!")
+    }
   }
 }
 ```

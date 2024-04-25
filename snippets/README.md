@@ -57,14 +57,10 @@ class Fish extends Actor {
 
 ## Keyboard besturing
 
-In dit voorbeeld kijken we in de `update` loop welke toetsen zijn ingedrukt. Aan de hand daarvan veranderen we de `velocity` van de speler.
+In dit voorbeeld kijken we in elke `update` frame welke toetsen zijn ingedrukt. Doordat je in de `update` naar de toetsenbord status kijkt, weet je zeker dat alleen de huidige `scene` naar het toetsenbord luistert *(inactieve scenes worden niet geupdate).*
 
 ```javascript
 class Shark extends Actor {
-
-    shoot() {
-        console.log("💥 Shoot!")
-    }
 
     onPreUpdate(engine) {
         let xspeed = 0
@@ -87,14 +83,39 @@ class Shark extends Actor {
         }
         this.vel = new Vector(xspeed, yspeed)
         
-        // schieten of springen gebeurt maar 1 keer na een press
-        if (engine.input.keyboard.wasPressed(Keys.Space)) {
+        // als er maar 1x iets gebeurt check je of die key was ingedrukt in dit frame
+        if (kb.wasPressed(Keys.Space)) {
             this.shoot()
         }
-
+    }
+    
+    shoot() {
+        console.log("💥 Shoot!")
     }
 }
 ```
+
+### Keyboard events 
+
+Het is wel mogelijk om te subscriben aan keyboard events. Dit werkt goed voor events die door alle scenes heen altijd hetzelfde moeten doen. Deze events blijven actief ook als je een scene verlaat. 
+
+```js
+class Shark extends Actor {
+    onInitialize(engine) {
+        this.game.input.keyboard.on("press", (evt) => {
+            if (evt.key === Keys.Space) {
+                console.log("space was pressed")
+            }
+        })
+        engine.input.keyboard.on("release", (evt) => {...})
+        engine.input.keyboard.on("hold", (evt) => {...})
+    }
+}
+
+```
+
+<br><br><br>
+
 ### Binnen beeld blijven
 
 Als je karakter niet uit beeld mag lopen kan je `clamp` gebruiken.

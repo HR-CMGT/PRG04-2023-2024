@@ -13,7 +13,7 @@ Per object kan je het type physics collision aanpassen.
 
 In de main game zet je physics aan en bepaal je de world gravity. Voor een space game of top-down game zet je de gravity op 0. Je kan ook per object de `body.useGravity` op true of false zetten. 
 
-⚠️ Let op dat al je objecten een [collision](./snippets.md#collision) box hebben! Je kan ook gebruik maken van *collision groups* om te bepalen welke objecten met elkaar kunnen colliden.
+⚠️ Let op dat al je objecten een [collision](./README.md#collision) box hebben! Je kan ook gebruik maken van *collision groups* om te bepalen welke objecten met elkaar kunnen colliden.
 
 <br><br><br>
 
