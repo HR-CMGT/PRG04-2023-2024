@@ -6,20 +6,10 @@ Het is handig om tekstvelden, healthbars en dergelijke in een eigen `Actor` clas
 
 Een `Label` is de makkelijkste manier om tekst te plaatsen, zie [tekstveld en fonts](./tekstveld.md)
 
-### Healthbar
-
-Omdat een `Actor` een achtergrondkleur heeft kan je makkelijk een healthbar tekenen.
-
-### Graphics tekenen
-
-Als je zelf lijnen, cirkels en rechthoeken wil tekenen maak je eerst een lege actor, en vervolgens kan je tekenen via `graphics.use`.
-
-
 ```javascript
 export class UI extends ScreenElement {
 
     scoreText
-    healthbar
 
     onInitialize(engine) {
         this.scoreText = new Label({
@@ -32,13 +22,35 @@ export class UI extends ScreenElement {
             })
         })
         this.addChild(this.scoreText)
+    }
 
-        // healthbar is een actor met achtergrond kleur
+    updateScore() {
+        this.scoreText.text = `Score: 200`
+    }
+}
+```
+- [Screenelement docs](https://excaliburjs.com/api/class/ScreenElement/)
+
+<br><br><br>
+
+### Healthbar en graphics
+
+Omdat een `Actor` een achtergrondkleur heeft kan je makkelijk een healthbar tekenen.
+
+Als je zelf lijnen, cirkels en rechthoeken wil tekenen maak je eerst een lege actor, en vervolgens kan je daarin tekenen via `graphics.use`.
+
+
+```javascript
+export class UI extends ScreenElement {
+
+    healthbar
+
+    onInitialize(engine) {
         this.healthbar = new Actor({x: 10, y: 40, color: Color.Green, width: 200, height: 20})
         this.healthbar.graphics.anchor = Vector.Zero
         this.addChild(this.healthbar)
 
-        // zelf vormen tekenen: Circle, Polygon, Rectangle
+
         const whiteborder = new Rectangle({
             width: 300,
             height: 40,
@@ -50,12 +62,30 @@ export class UI extends ScreenElement {
     }
 
     updateScore() {
-        this.scoreText.text = `Score: 200`
         this.healthbar.scale = new Vector(0.5, 1)
     }
 }
 ```
-- [Screenelement docs](https://excaliburjs.com/api/class/ScreenElement/)
+
+<br><br><br>
+
+## Hartjes
+
+Een voorbeeld van een UI met 6 hartjes naast elkaar:
+
+```js
+export class UI extends ScreenElement {
+
+    onInitialize(engine) {
+        for (let i = 0; i < 6; i++) {
+            const heart = new Actor()
+            heart.graphics.use(Resources.HeartImage.toSprite())
+            heart.pos = new Vector(30 + (i * 80), 90)
+            this.addChild(heart)
+        }
+    }
+}
+```
 
 <br><br><br>
 
