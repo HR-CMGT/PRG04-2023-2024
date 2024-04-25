@@ -272,7 +272,7 @@ right.flipHorizontal = true
     
 ## Object Spawner en Timer
 
-Een `Timer` moet je toevoegen aan de `Game` (of `Scene`). Dat zorgt dat de Timer synchroon loopt met je gameloop framerate. Je kan geen `setInterval` of `setTimeout` gebruiken omdat daarbij geen rekening met de gameloop wordt gehouden.
+Je kan geen `setInterval` of `setTimeout` gebruiken in Excalibur daarbij geen rekening met de gameloop wordt gehouden. In plaats van `setInterval` gebruik je `Timer`. In plaats van `setTimeout` gebruik je `engine.clock.schedule`.
 
 > *🚨 Als je objecten spawned, moet je opletten dat die objecten aan de huidige game/scene worden toegevoegd!*
 
@@ -292,6 +292,15 @@ export class Game extends Engine {
 
     spawn() {
         this.add(new Ball())
+    }
+}
+```
+Als je maar één keer een functie wil uitvoeren na een X aantal seconden gebruik je `clock`:
+
+```js
+export class Game extends Engine {
+    startGame() {
+        this.clock.schedule(() => this.spawn(), 1000)
     }
 }
 ```

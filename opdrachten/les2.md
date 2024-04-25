@@ -84,35 +84,11 @@ export class Car extends Actor {
 }
 ```
 
-<Br>
-<Br>
-<Br>
+### Excalibur voorbeeld
 
-## Excalibur voorbeeld
+In het volgende voorbeeld maken we een `Fish` class die wordt ingeladen in de `Game` class.
 
-In het volgende voorbeeld beginnen we met een `Actor` in de game class, en vervolgens verplaatsen we die naar een eigen `Fish` class:
-
-#### Start
-
-```js
-export class Game extends Engine {
-
-    constructor() {
-        super({ width: 800, height: 600 })
-        this.start(ResourceLoader).then(() => this.startGame())
-    }
-
-    startGame() {
-        console.log("start de game!")
-        const fish = new Actor()
-        fish.graphics.use(Resources.Fish.toSprite())
-        fish.pos = new Vector(400, 300)
-        fish.vel = new Vector(-10,0)
-        this.add(fish)
-    }
-}
-```
-#### Actor verplaatst naar eigen class
+#### Fish Actor
 
 ```js
 import { Actor } from "excalibur"
