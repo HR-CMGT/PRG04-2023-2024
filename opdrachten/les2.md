@@ -2,13 +2,46 @@
 
 Werken met classes en instances.
 
-- Opdracht 1: Whack a mole
-- Object Oriented Programming in Excalibur
-- Opdracht 2: Pixel Aquarium
+- Klassikaal voorbeeld: Pixel Aquarium
+- Individuele opdracht: Whack a mole
+- Code voorbeeld
+
+
+<br><br><Br>
+
+## Klassikaal voorbeeld: Pixel Aquarium
+
+Gezamenlijk oefenen met het aanmaken van een individuele `Actor` class. Begin met onderstaande startcode
+
+```js
+import {Engine,Actor,Vector} from "excalibur";
+import {Resources} from "./resources.js";
+
+export class Game extends Engine {
+
+    constructor() {
+        super({ width: 800, height: 600 })
+        this.start(ResourceLoader).then(() => this.startGame())
+    }
+
+    startGame() {
+        console.log("start de game!")
+        const fish = new Actor()
+        this.add(fish)
+        fish.graphics.use(Resources.Fish.toSprite())
+        fish.pos = new Vector(20,20)
+        fish.vel = new Vector(10,5)
+    }
+}
+```
+
+- Gebruik een `for` loop om 100 vissen te spawnen.
+- Maak de snelheid en positie van elke vis random met `Math.random()`
+
 
 <br><br><br>
 
-## Opdracht 1: Whack a Mole
+## Individuele opdracht: Whack a Mole
 
 *Code uit één file omzetten naar Object Oriented Code*
 
@@ -60,74 +93,35 @@ export class NameOfTheClass extends Actor {
 
 <br><br><br>
 
-## Object Oriented Programming
+## Code voorbeeld
 
-- Maak een `Actor class` file voor elk object dat onderdeel is van je game.
-- Gebruik het `new` keyword om `instances` van een Actor class aan te maken in je `Game`.
-- Een class kan het keyword `this` gebruiken om naar zichzelf te verwijzen.
-
-> *Hieronder zie je een voorbeeld van een `Car` class.*
-
-```javascript
-export class Car extends Actor {
-
-    sound
-
-    onInitialize(engine) {
-        this.graphics.use(Resources.CarImage.toSprite())
-        this.sound = "honk"
-    }
-
-    makeNoise() {
-        console.log(this.sound)
-    }
-}
-```
-
-### Excalibur voorbeeld
-
-In het volgende voorbeeld maken we een `Fish` class die wordt ingeladen in de `Game` class.
-
-#### Fish Actor
+In het volgende voorbeeld maken we een `SuperMario` Actor class.
 
 ```js
 import { Actor } from "excalibur"
 import { Resources } from './resources'
 
-export class Fish extends Actor {
+export class SuperMario extends Actor {
     onInitialize(engine) {
-        this.graphics.use(Resources.Fish.toSprite())
+        this.graphics.use(Resources.SuperMario.toSprite())
         this.pos = new Vector(400, 300)
         this.vel = new Vector(-10,0)
     }
 }
 ```
-#### De Game class importeert de Actor
-
+Deze kan je in de game laden met
 ```js
-import { Fish } from "fish.js"
+import {Engine,Actor,Vector} from "excalibur";
+import {Resources} from "./resources.js";
+import {SuperMario} from "./supermario.js";
 
 export class Game extends Engine {
-
-    constructor() {
-        super({ width: 800, height: 600 })
-        this.start(ResourceLoader).then(() => this.startGame())
-    }
-
     startGame() {
-        console.log("start de game!")
-        const fish = new Fish()
-        this.add(fish)
+        const mario = new SuperMario()
+        this.add(mario)
     }
 }
 ```
-
-<br><br><Br>
-
-### Opdracht 2 : Pixel Aquarium
-
-- Gebruik een `for` loop om 100 vissen te spawnen.
-- Maak de snelheid en positie van elke vis random met `Math.random()`
 
 <br><br><br>
 
