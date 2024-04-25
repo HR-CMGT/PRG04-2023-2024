@@ -1,6 +1,19 @@
 # UI
 
-Het Excalibur [ScreenElement](https://excaliburjs.com/api/class/ScreenElement/) is een Actor class die altijd bovenop je game wordt getekend en die niet meebeweegt met de camera. In dit voorbeeld tekenen we een tekstveld en een healthbar in een screenelement. Dit kan je ook in een `Scene` doen als je geen camera hebt. De tekst en healthbar kunnen achteraf nog worden aangepast via de `updateScore()` functie.
+Het is handig om tekstvelden, healthbars en dergelijke in een eigen `Actor` class te plaatsen zodat je alles bij elkaar hebt. Het Excalibur [ScreenElement](https://excaliburjs.com/api/class/ScreenElement/) is een Actor class die niet meebeweegt met de camera. Gebruik `this.addChild` om elementen aan je UI toe te voegen.
+
+### Tekstveld
+
+Een `Label` is de makkelijkste manier om tekst te plaatsen, zie [tekstveld en fonts](./tekstveld.md)
+
+### Healthbar
+
+Omdat een `Actor` een achtergrondkleur heeft kan je makkelijk een healthbar tekenen.
+
+### Graphics tekenen
+
+Als je zelf lijnen, cirkels en rechthoeken wil tekenen maak je eerst een lege actor, en vervolgens kan je tekenen via `graphics.use`.
+
 
 ```javascript
 export class UI extends ScreenElement {
@@ -20,9 +33,20 @@ export class UI extends ScreenElement {
         })
         this.addChild(this.scoreText)
 
+        // healthbar is een actor met achtergrond kleur
         this.healthbar = new Actor({x: 10, y: 40, color: Color.Green, width: 200, height: 20})
         this.healthbar.graphics.anchor = Vector.Zero
         this.addChild(this.healthbar)
+
+        // zelf vormen tekenen: Circle, Polygon, Rectangle
+        const whiteborder = new Rectangle({
+            width: 300,
+            height: 40,
+            color: Color.fromRGB(255, 255, 255, 0.4)
+        })
+        this.border = new Actor()
+        this.border.graphics.use(whiteborder)
+        this.border.pos = new Vector(800, 200)
     }
 
     updateScore() {

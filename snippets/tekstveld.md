@@ -1,4 +1,4 @@
-# Tekstveld met score
+# Tekstveld en font laden
 
 - Label
 - Score aanpassen vanuit andere class
@@ -14,17 +14,43 @@ Een `Label` is een `Actor` met een child `Text`. Hiermee kan je een stukje tekst
 import { Label, FontUnit, Font} from "excalibur";
 
 let label = new Label({
-  text: 'Score: 0',
-  pos: new Vector(100, 100),
-  font: new Font({
-    family: 'impact',
-    size: 24,
-    unit: FontUnit.Px
-  })
+    text: 'Score: 0',
+    pos: new Vector(100, 100),
+    font: new Font({
+        family: 'impact',
+        size: 24,
+        unit: FontUnit.Px
+    })
 })
 
 this.add(label)
 label.text = 'Score: 100'
+```
+<br>
+
+### Font laden
+
+Je kan je eigen `.ttf` font laden:
+
+```js
+import { ImageSource, FontSource } from 'excalibur'
+
+const Resources = {
+    Enemy: new ImageSource('images/enemy_red.png'),
+    PixelFont: new FontSource('fonts/PressStart2P-Regular.ttf', 'PressStart')
+}
+```
+label
+```js
+const score = new Label({
+    text: 'Score: 0',
+    pos: new Vector(0, 0),
+    font: Resources.PixelFont.toFont({
+        unit: FontUnit.Px,
+        size: 20,
+        color: Color.White
+    })
+})
 ```
 
 <br><br><br>
@@ -76,19 +102,12 @@ ACTOR roept UPDATESCORE aan
 ```javascript
 export class Fish extends Actor {
 
-    engine
-
-    constructor(){
-        super()
-    }
-
     onInitialize(engine){
-        this.engine = engine
         this.on("exitviewport", ()=>this.resetPosition())
     }
 
     resetPosition(){
-        this.engine.updateScore()
+        this.scene.engine.updateScore()
     }
 }
 ```
