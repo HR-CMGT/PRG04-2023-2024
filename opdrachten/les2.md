@@ -47,6 +47,11 @@ export class Game extends Engine {
 
 Gebruik de volgende code: [Whack a Mole](https://github.com/HR-CMGT/PRG04-whack-a-mole). 
 De code van dit spelletje staat allemaal in `src/game.js`. 
+Wanneer je deze repository cloned of gebruik maakt van het [startproject](https://github.com/HR-CMGT/prg4-startproject-2024), voer dan nog het volgende uit in de terminal
+```bash
+npm install
+npm run dev
+```
 
 Samen met een medestudent:
 - bekijk je deze code en gaan jullie regel-voor-regel na wat de code doet.
