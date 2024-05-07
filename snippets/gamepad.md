@@ -41,7 +41,7 @@ export class Player extends Actor {
         const yValue = engine.gamepad.getAxes(Axes.LeftStickY)
         this.vel = new Vector(xValue * 10, yValue * 10)
 
-        if (engine.input.gamepads.at(0).isButtonPressed(Buttons.Face1)) {
+        if (engine.input.gamepads.at(0).wasButtonReleased(Buttons.Face1)) {
             console.log('Controller A button 1 was pressed')
         }
     }
