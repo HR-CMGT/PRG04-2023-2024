@@ -2,15 +2,11 @@
 
 Je kan de [Excalibur Gamepad](https://excaliburjs.com/docs/gamepad) gebruiken om gebruikersinput te lezen. Dit werkt zowel voor PS4 / XBox controllers als voor de arcade kast / joysticks.
 
-- Check de gamepad in de `update` functie. Dit werkt goed als je meerdere scenes hebt omdat je dan zeker weet dat alleen de update van de huidige scene wordt aangeroepen.
-
-- Events: deze vuren af op het moment dat een event gebeurt. Dit werkt goed voor shooting/jumping met controller buttons. Het nadeel van events is dat ze door alle scenes heen afgevuurd kunnen worden. Je moet event listeners dus weer verwijderen als je naar een andere scene gaat.
-
-
 <br><br><br>
 
-
 ## Voorbeeld Update
+
+Check de gamepad in de `update` functie. Dit werkt goed als je meerdere scenes hebt omdat je dan zeker weet dat alleen de update van de huidige scene wordt aangeroepen.
 
 In de player is een property voor de gamepad. Als de property gevuld is, dan kan je in de `onPreUpdate` elk frame kijken wat de positie van de sticks is, en of de buttons zijn ingedrukt.
 
@@ -58,6 +54,8 @@ export class Player extends Actor {
 
 
 ## Voorbeeld Events
+
+Events: deze vuren af op het moment dat een event gebeurt. Dit werkt goed voor shooting/jumping met controller buttons. Het nadeel van events is dat ze door alle scenes heen afgevuurd zullen worden. In dit voorbeeld luistert de main game class naar alle events.
 
 ```javascript
 export class Game extends Engine {
