@@ -74,17 +74,17 @@ export class Game extends Engine {
         this.input.gamepads.on('connect', (connectevent) => {
             console.log("gamepad detected")
             this.gamepad = connectevent.gamepad
-        })
 
-        this.gamepad.on('button', (buttonevent) => {
-            if (buttonevent.button === Buttons.Face1) {
-                console.log("jump")
-            }
-        })
-        this.gamepad.on('axis', (axisevent) => {
-            if (axisevent.value > 0.5) {
-                console.log("move right")
-            }
+            this.gamepad.on('button', (buttonevent) => {
+                if (buttonevent.button === Buttons.Face1) {
+                    console.log("jump")
+                }
+            })
+            this.gamepad.on('axis', (axisevent) => {
+                if (axisevent.value > 0.5) {
+                    console.log("move right")
+                }
+            })
         })
     }
 }
