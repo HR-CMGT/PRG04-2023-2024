@@ -37,12 +37,16 @@ export class Player extends Actor {
         if (engine.gamepad === null) {
             return
         }
-        const xValue = engine.gamepad.getAxes(Axes.LeftStickX)
-        const yValue = engine.gamepad.getAxes(Axes.LeftStickY)
-        this.vel = new Vector(xValue * 10, yValue * 10)
+        const x = engine.gamepad.getAxes(Axes.LeftStickX)
+        const y = engine.gamepad.getAxes(Axes.LeftStickY)
+        this.vel = new Vector(x * 10, y * 10)
 
         if (engine.input.gamepads.at(0).wasButtonReleased(Buttons.Face1)) {
-            console.log('Controller A button 1 was pressed')
+            console.log('Controller A button 1 was just released')
+        }
+
+        if (_engine.input.gamepads.at(0).isButtonPressed(Buttons.Face1)) {
+            console.log('Controller A button 1 is currently being pressed')
         }
     }
 }
@@ -55,7 +59,7 @@ export class Player extends Actor {
 
 ## Voorbeeld Events
 
-Events: deze vuren af op het moment dat een event gebeurt. Dit werkt goed voor shooting/jumping met controller buttons. Het nadeel van events is dat ze door alle scenes heen afgevuurd zullen worden. In dit voorbeeld luistert de main game class naar alle events.
+Events: deze vuren af op het moment dat een event gebeurt. Met `on` kan je een event listener toevoegen. Let op dat events door ***alle scenes*** heen afgevuurd zullen worden. Je kan met `off` een listener weer verwijderen als je die niet meer nodig hebt. 
 
 ```javascript
 export class Game extends Engine {
@@ -75,12 +79,12 @@ export class Game extends Engine {
 
             this.gamepad.on('button', (buttonevent) => {
                 if (buttonevent.button === Buttons.Face1) {
-                    console.log("jump")
+                    console.log("button event is triggered")
                 }
             })
             this.gamepad.on('axis', (axisevent) => {
                 if (axisevent.value > 0.5) {
-                    console.log("move right")
+                    console.log("move right event is triggered")
                 }
             })
         })
