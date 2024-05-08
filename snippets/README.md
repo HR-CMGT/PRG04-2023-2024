@@ -9,8 +9,9 @@
 - [Gamepad besturing](./gamepad.md)
 - [Sturen en draaien](#sturen-en-draaien)
 - [Scenes](#scenes)
-- [Physics](./physics.md)
+- [Physics en hitbox](./physics.md)
 - [Flip sprite](#flip-sprite)
+- [Actors zoeken in een Scene](#actors-zoeken)
 - [Spawner en Timer](#object-spawner-en-timer)
 - [Tekst met score](./tekstveld.md)
 - [UI met healthbar](./ui.md)
@@ -268,7 +269,21 @@ right.flipHorizontal = true
 ```
 
 <br><br><br>
+    
+## Actors zoeken
 
+Je kan via de `scene.actors` alle actors uit een scene opvragen. Je kan met `filter` naar een specifiek *type* actor zoeken.
+
+```js
+export class Game extends Engine {
+    logEnemies() {
+        let allEnemies = this.currentScene.actors.filter(actor => actor instanceof Enemy)
+        console.log(allEnemies)
+    }
+}
+```
+
+<br><br><br>
     
 ## Object Spawner en Timer
 

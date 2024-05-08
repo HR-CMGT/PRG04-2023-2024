@@ -1,4 +1,4 @@
-# Physics
+# Physics en hitbox
 
 In de game kan je `Realistic Physics` of `Arcade Physics` physics aanzetten. 
 
@@ -55,6 +55,24 @@ export class Platform extends Actor {
     }
 }
 ```
+<br><br><br>
+
+## Hitbox 
+
+De hitbox hoeft niet hetzelfde te zijn als de `width,height` van de sprite. In dit voorbeeld maken we een custom hitbox.
+
+```js
+export class Triangle extends Actor {
+    onInitialize(engine) {
+        this.graphics.use(Resources.Triangle.toSprite())
+        this.pos = new Vector(120, 480)
+        this.body.collisionType = CollisionType.Fixed
+        const customHitbox = Shape.Box(100, 10)
+        this.collider.set(customHitbox)
+    }
+}
+```
+
 
 <br><br><br>
 

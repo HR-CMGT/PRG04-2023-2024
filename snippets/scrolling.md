@@ -7,7 +7,7 @@ const Resources = {
     Background: new ImageSource('images/background.png', { wrapping: ImageWrapping.Repeat}),
 }
 ```
-Je kan nu een kleine afbeelding laten herhalen door de afmeting groter te maken dan de afbeelding.
+Je kan nu een kleine afbeelding laten herhalen door de afmeting groter te maken dan de afbeelding. Bv. een afbeelding van 100x100 pixels toon je in een scherm van 800x600 pixels.
 
 ```js
 export class Background extends Actor {
