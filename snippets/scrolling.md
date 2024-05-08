@@ -1,4 +1,4 @@
-# Scrolling Background
+# Repeating and scrolling Background
 
 Om een achtergrond eindeloos te kunnen herhalen moet je ***wrapping*** aanzetten in de image loader.
 
@@ -7,8 +7,31 @@ const Resources = {
     Background: new ImageSource('images/background.png', { wrapping: ImageWrapping.Repeat}),
 }
 ```
+Je kan nu een kleine afbeelding laten herhalen door de afmeting groter te maken dan de afbeelding.
 
-In een Actor kan je een deel van je graphic als sprite gebruiken *(dit kan ook zonder wrapping)*. Maar omdat *wrapping* nu aan staat kan je het *nulpunt* aanpassen in een animatie. Zodra de graphic buiten beeld valt wordt de graphic herhaald.
+```js
+export class Background extends Actor {
+
+    onInitialize(engine) {
+        let sprite = new Sprite({
+            image: Resources.Grass,
+            sourceView: {
+                x: 0,
+                y: 0,
+                width: engine.drawWidth,
+                height: engine.drawHeight,
+            },
+        })
+        this.anchor = Vector.Zero
+        this.graphics.use(sprite)
+    }
+}
+```
+<br>
+
+## Scrolling background
+
+Zodra de graphic links buiten beeld valt wordt de graphic rechts herhaald, omdat je `wrapping` aan hebt staan. Als je nu het nulpunt van de graphic animeert krijg je een scrolling effect.
 
 ```javascript
 export class Background extends Actor {
@@ -21,12 +44,12 @@ export class Background extends Actor {
             sourceView: {
                 x: 0,
                 y: 0,
-                width: 500,
-                height: 500
+                width: engine.drawWidth,
+                height: engine.drawHeight,
             },
             destSize: {
-                width: 1000,
-                height: 1000
+                width: engine.drawWidth,
+                height: engine.drawHeight,
             }
         })
         this.anchor = Vector.Zero
