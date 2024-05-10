@@ -138,20 +138,21 @@ class Level extends Scene {
 
 ### Camera volgt speler
 
+Om een top-down RPG of een sidescroller te maken doe je de volgende stappen:
+
+- Maak een `player` met besturing.
+- Maak een level dat groter is dan de game *(In dit voorbeeld is de game `800x450` en het level is `2000x1200`)*.
+- Laat de camera de speler volgen. 
+
 GAME.JS
 ```js
 export class Game extends Engine {
+    constructor(){
+        super({width:800, height:450})
+    }
     startGame(){
-        this.player = new Player()
-        this.add(this.player)
-
-        // camera volgt player. elastic betekent dat de camera vertraging heeft
-        // this.currentScene.camera.strategy.lockToActor(this.player)
-        this.currentScene.camera.strategy.elasticToActor(this.player, 0.2, 0.6)
-
-        // camera kan niet buiten het level kijken. dit level is 2000x1200 pixels groot. dit moet minimaal de afmeting van je game zijn.
-        let boundingBox = new BoundingBox(0, 0, 2000, 1200)
-        this.currentScene.camera.strategy.limitCameraBounds(boundingBox)
+        this.currentScene.camera.strategy.lockToActor(this.player)
+        this.currentScene.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 2000, 1200))
     }
 }
 
