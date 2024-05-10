@@ -172,8 +172,8 @@ import { clamp } from "excalibur"
 class Shark extends Actor {
     onPreUpdate(engine) {
         //...keyboard code hier
-        this.pos.x = clamp(this.pos.x, this.width/2, engine.drawWidth - this.width/2);
-        this.pos.y = clamp(this.pos.y, this.height/2, engine.drawHeight - this.height/2);
+        this.pos.x = clamp(this.pos.x, 1280);   // afmeting van het level, bv. engine.drawWidth
+        this.pos.y = clamp(this.pos.y, 720);    // afmeting van het level, bv. engine.drawHeight
     }
 }
 ```
