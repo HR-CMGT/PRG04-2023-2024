@@ -1,7 +1,7 @@
 
 # Code Snippets
 
-- [Scrolling Background](./scrolling.md)
+- [Tiling en Scrolling Background](./scrolling.md)
 - [Spritesheet](./spritesheet.md)
 - [Click en Exit Screen Events](#click-en-exit-screen-events)
 - [Collision Events](#collision)
@@ -17,7 +17,7 @@
 - [UI met healthbar](./ui.md)
 - [Random tint](#random-tint)
 - [Pixel Art](#pixel-art)
-- [Fullscreen](#fullscreen)
+- [Schermafmeting en fullscreen](#fullscreen)
 - [Loading Screen aanpassen](#loading-screen-aanpassen)
 - [JSON laden](#json-laden)
 - [Custom Events](#custom-events)
@@ -60,6 +60,9 @@ class Fish extends Actor {
 
 In dit voorbeeld kijken we in elke `update` frame welke toetsen zijn ingedrukt. Doordat je in de `update` naar de toetsenbord status kijkt, weet je zeker dat alleen de huidige `scene` naar het toetsenbord luistert *(inactieve scenes worden niet geupdate).*
 
+- Via `isHeld` kan je continu op een keypress reageren (movement). 
+- Via `wasPressed` kan je eenmalig op een keypress reageren (shooting / jumping).
+
 ```javascript
 class Shark extends Actor {
 
@@ -95,24 +98,40 @@ class Shark extends Actor {
     }
 }
 ```
+<br>
 
 ### Keyboard events 
 
-Het is wel mogelijk om te subscriben aan keyboard events. Dit werkt goed voor events die door alle scenes heen altijd hetzelfde moeten doen. Deze events blijven actief ook als je een scene verlaat. 
+Het is mogelijk om te subscriben aan keyboard events. Hierbij moet je goed opletten of je de event listener toevoegt aan de `Game`, aan een `Scene`, of aan een `Actor`. De listeners blijven namelijk altijd actief, ook als je wisselt tussen scenes of als een actor doodgaat. In dit voorbeeld heeft de game drie listeners:
 
 ```js
-class Shark extends Actor {
-    onInitialize(engine) {
-        this.game.input.keyboard.on("press", (evt) => {
-            if (evt.key === Keys.Space) {
-                console.log("space was pressed")
-            }
-        })
-        engine.input.keyboard.on("release", (evt) => {...})
-        engine.input.keyboard.on("hold", (evt) => {...})
+class Game extends Engine {
+    startGame() {
+        this.input.keyboard.on("press", (evt) => this.keyPressed(evt))
+        this.input.keyboard.on("release", (evt) => this.keyReleased(evt))
+        this.input.keyboard.on("hold", (evt) => this.keyHeld(evt))
+    }
+    keyPressed(evt){
+        if (evt.key === Keys.Space) {
+            console.log("space was pressed")
+        }
+    }
+    keyReleased(evt){
+        console.log(evt.key)
+    }
+    keyHeld(evt){
+        console.log(evt.key)
     }
 }
+```
+🚨 Je kan event listeners uitzetten met `off`. Dit is nodig als een actor met listeners doodgaat, of als je een scene verlaat waar listeners in zaten. 
 
+```js
+class Level extends Scene {
+    onDeactivate(engine){
+        this.input.keyboard.off("press", (evt) => this.keyPressed(evt))
+    }
+}
 ```
 
 <br><br><br>
@@ -272,7 +291,7 @@ right.flipHorizontal = true
     
 ## Actors zoeken
 
-Je kan via de `scene.actors` alle actors uit een scene opvragen. Je kan met `filter` naar een specifiek *type* actor zoeken.
+Je kan via `scene.actors` alle actors uit een scene opvragen. Je kan met `filter` naar een specifiek *type* actor zoeken.
 
 ```js
 export class Game extends Engine {
@@ -342,9 +361,30 @@ export class Game extends Engine {
     
 <Br><br><br>
 
-## Fullscreen
+## Schermafmeting en fullscreen
 
-Starten in fullscreen
+#### Schermafmeting
+
+In `game.js` geef je een schermafmeting aan in 16/9 verhouding. Als je game heel groot is moeten je afbeeldingen ook groter / scherper zijn. Een kleine game kan je op een groot scherm tonen met `displayMode: DisplayMode.FitScreen`. Een aantal geschikte afmetingen:
+
+- 800 x 450
+- 1280 x 720 
+- 1600 x 900 
+- 1920 x 1080
+
+```js
+export class Game extends Engine {
+    constructor() {
+        super({
+            width: 1280,
+            height: 720,
+            displayMode: DisplayMode.FitScreen
+        })
+    }
+}
+```
+
+#### Starten in fullscreen
 
 ```js
 const Resources = {
@@ -359,6 +399,7 @@ for (let res of Object.values(Resources)) {
 
 export { Resources, ResourceLoader }
 ```
+> *Note: de arcadekast start al in fullscreen, dit hoef je niet toe te voegen*.
 
 <br><br><br>
 
