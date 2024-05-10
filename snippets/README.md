@@ -7,6 +7,7 @@
 - [Collision Events](#collision)
 - [Keyboard besturing](#keyboard-besturing)
 - [Gamepad besturing](./gamepad.md)
+- [Camera volgt speler](#camera-volgt-speler)
 - [Sturen en draaien](#sturen-en-draaien)
 - [Scenes](#scenes)
 - [Physics en hitbox](./physics.md)
@@ -133,12 +134,36 @@ class Level extends Scene {
     }
 }
 ```
+<br><br><br>
+
+### Camera volgt speler
+
+GAME.JS
+```js
+export class Game extends Engine {
+    startGame(){
+        this.player = new Player()
+        this.add(this.player)
+
+        // camera volgt player. elastic betekent dat de camera vertraging heeft
+        // this.currentScene.camera.strategy.lockToActor(this.player)
+        this.currentScene.camera.strategy.elasticToActor(this.player, 0.2, 0.6)
+
+        // camera kan niet buiten het level kijken. dit level is 2000x1200 pixels groot. dit moet minimaal de afmeting van je game zijn.
+        let boundingBox = new BoundingBox(0, 0, 2000, 1200)
+        this.currentScene.camera.strategy.limitCameraBounds(boundingBox)
+    }
+}
+
+```
+
+- [Camera](https://excaliburjs.com/docs/cameras/)
 
 <br><br><br>
 
 ### Binnen beeld blijven
 
-Als je karakter niet uit beeld mag lopen kan je `clamp` gebruiken.
+Als je karakter niet uit beeld mag lopen kan je `clamp` gebruiken. 
 
 ```js
 import { clamp } from "excalibur"

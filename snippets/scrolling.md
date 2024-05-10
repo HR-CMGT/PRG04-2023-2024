@@ -1,4 +1,6 @@
-# Repeating and scrolling Background
+# Tiling en scrolling Background
+
+### Tiling background
 
 Om een achtergrond eindeloos te kunnen herhalen moet je ***wrapping*** aanzetten in de image loader.
 
@@ -18,7 +20,7 @@ export class Background extends Actor {
             sourceView: {
                 x: 0,
                 y: 0,
-                width: engine.drawWidth,
+                width: engine.drawWidth,    // kan ook groter als de achtergrond groter dan het scherm moet zijn
                 height: engine.drawHeight,
             },
         })
@@ -29,7 +31,7 @@ export class Background extends Actor {
 ```
 <br>
 
-## Scrolling background
+### Scrolling background
 
 Zodra de graphic links buiten beeld valt wordt de graphic rechts herhaald, omdat je `wrapping` aan hebt staan. Als je nu het nulpunt van de graphic animeert krijg je een scrolling effect.
 
