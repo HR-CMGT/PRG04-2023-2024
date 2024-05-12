@@ -1,19 +1,19 @@
 # Les 3 
 
-- Game Loop en Actors
-- Collision
+- Lifecycle
 - Besturing
-- Tekst en geluid
-- Vector
+- Collision
+- Oefening
+- Improving the game
+- Fonts en geluid
 
 
 
 <Br><Br><Br>
 
-## Game loop en Actors
+## Lifecycle
 
-- Een excalibur game heeft een ingebouwde gameloop. Dat houdt in dat je alleen maar een `velocity` hoeft aan te geven, waarna je actor automatisch gaat bewegen!
-- Een Actor heeft ingebouwde functies, bv: `kill()` verwijdert de actor uit de game.
+- Een Actor heeft ingebouwde *lifecycle* functies, bv: `kill()` verwijdert de actor uit de game.
 - Een Actor heeft `lifecycle` methods. Dit zijn methods die automatisch worden aangeroepen als er een bepaald event gebeurt.
     - De `onInitialize` method wordt aangeroepen als de Actor in de Game is geplaatst.
     - De `onPostUpdate` en `onPreUpdate` methods vinden 60 keer per seconde plaats *(je framerate)*.
@@ -50,12 +50,7 @@ class Car extends Actor {
 }
 ```
 
-- [Uitleg Actor](https://excaliburjs.com/docs/actors)
-- [Uitgebreide documentatie Actor](https://excaliburjs.com/api/class/Actor)
-
-<br><br><br>
-
-## Elk frame code uitvoeren
+Elk frame code uitvoeren
 
 Met het "onPostUpdate" event kan je elk frame je eigen code uitvoeren. Hiermee kan je bv. checken waar een actor zich bevindt.
 
@@ -69,6 +64,38 @@ class Car extends Actor {
     }
 }
 ```
+
+- [Uitleg Actor](https://excaliburjs.com/docs/actors) en [Uitgebreide documentatie](https://excaliburjs.com/api/class/Actor)
+
+<Br><Br><Br>
+
+## Besturing
+
+Om een karakter te kunnen besturen kan je luisteren naar toetsenbord input. Hieronder een voorbeeld van een Car die naar links en rechts kan bewegen.
+
+```js
+export class Car extends Actor {
+  onInitialize(engine) {
+    this.graphics.use(Resources.Car.toSprite());
+    this.pos = new Vector(400, 400);
+    this.vel = new Vector(0, 0);
+  }
+
+  onPreUpdate(engine) {
+    let xspeed = 0;
+    if (engine.input.keyboard.isHeld(Keys.Left)) {
+      xspeed = -1;
+    } 
+
+    if (engine.input.keyboard.isHeld(Keys.Right)) {
+      xspeed = 1;
+    } 
+    this.vel = new Vector(xspeed, 0);
+  }
+}
+```
+
+- [Bekijk hier een volledig voorbeeld met x,y en WASD keys](../snippets/keyboard.md)
 
 <Br><Br><Br>
 
@@ -116,38 +143,6 @@ class Car extends Actor {
 <Br><Br><Br>
 
 
-
-
-
-## Besturing
-
-Om een karakter te kunnen besturen kan je luisteren naar toetsenbord input. Hieronder een voorbeeld van een Car die naar links en rechts kan bewegen.
-
-```js
-export class Car extends Actor {
-  onInitialize(engine) {
-    this.graphics.use(Resources.Car.toSprite());
-    this.pos = new Vector(400, 400);
-    this.vel = new Vector(0, 0);
-  }
-
-  onPreUpdate(engine) {
-    let xspeed = 0;
-    if (engine.input.keyboard.isHeld(Keys.Left)) {
-      xspeed = -1;
-    } 
-
-    if (engine.input.keyboard.isHeld(Keys.Right)) {
-      xspeed = 1;
-    } 
-    this.vel = new Vector(xspeed, 0);
-  }
-}
-```
-
-- [Bekijk hier een volledig voorbeeld met x,y en WASD keys](../snippets/keyboard.md)
-
-<Br><Br><Br>
 
 
 # Oefening 
