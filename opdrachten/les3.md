@@ -47,19 +47,10 @@ class Car extends Actor {
     resetCar(){
         this.pos = new Vector(500,100)
     }
-}
-```
-
-Elk frame code uitvoeren
-
-Met het "onPostUpdate" event kan je elk frame je eigen code uitvoeren. Hiermee kan je bv. checken waar een actor zich bevindt.
-
-```javascript
-class Car extends Actor {
 
     onPostUpdate(){
-        if(this.pos.x < -1000) {
-             this.kill()
+        if(this.pos.x < 100) {
+             console.log("de auto is links")
         }
     }
 }
