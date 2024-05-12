@@ -301,7 +301,12 @@ export class Sprite extends Actor {
 
     onInitialize(engine) {
         this.graphics.use(Resources.Mario.toSprite())
+        // start flipped
         this.graphics.flipHorizontal = true
+    }
+    // flip afhankelijk van richting
+    onPreUpdate(engine){
+        this.graphics.flipHorizontal = (this.vel.x > 0)
     }
 }
 ```

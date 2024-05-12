@@ -14,35 +14,24 @@ export class Car extends Actor {
     let xspeed = 0;
     let yspeed = 0;
 
-    if (
-      engine.input.keyboard.isHeld(Keys.W) ||
-      engine.input.keyboard.isHeld(Keys.Up)
-    ) {
+    if (engine.input.keyboard.isHeld(Keys.W) || engine.input.keyboard.isHeld(Keys.Up)) {
       yspeed = -1;
     }
 
-    if (
-      engine.input.keyboard.isHeld(Keys.S) ||
-      engine.input.keyboard.isHeld(Keys.Down)
-    ) {
+    if (engine.input.keyboard.isHeld(Keys.S) || engine.input.keyboard.isHeld(Keys.Down)) {
       yspeed = 1;
     }
 
-    if (
-      engine.input.keyboard.isHeld(Keys.D) ||
-      engine.input.keyboard.isHeld(Keys.Right)
-    ) {
+    if (engine.input.keyboard.isHeld(Keys.D) || engine.input.keyboard.isHeld(Keys.Right)) {
       xspeed = 1
     }
 
-    if (
-      engine.input.keyboard.isHeld(Keys.A) ||
-      engine.input.keyboard.isHeld(Keys.Left)
-    ) {
+    if (engine.input.keyboard.isHeld(Keys.A) || engine.input.keyboard.isHeld(Keys.Left)) {
       xspeed = -1
     }
-    this.vel = new Vector(xspeed, yspeed);
 
+    this.vel = new Vector(xspeed, yspeed);
+    this.graphics.flipHorizontal = (this.vel.x > 0)
 
     if (engine.input.keyboard.wasPressed(Keys.Space)) {
         console.log("shoot!")
