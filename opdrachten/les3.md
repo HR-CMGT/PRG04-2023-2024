@@ -14,20 +14,20 @@
 
 - Een excalibur game heeft een ingebouwde gameloop. Dat houdt in dat je alleen maar een `velocity` hoeft aan te geven, waarna je actor automatisch gaat bewegen!
 - Een Actor heeft ingebouwde functies, bv: `kill()` verwijdert de actor uit de game.
-- Een Actor heeft `events`, net zoals een DOM Element, bijvoorbeeld:
-    - Het `postupdate` event vindt 60 keer per seconde plaats.
-    - Het `postkill` event vindt plaats nadat een actor uit de game is verwijderd.
+- Een Actor heeft `lifecycle` methods. Dit zijn methods die automatisch worden aangeroepen als er een bepaald event gebeurt.
+    - De `onInitialize` method wordt aangeroepen als de Actor in de Game is geplaatst.
+    - De `onPostUpdate` en `onPreUpdate` methods vinden 60 keer per seconde plaats *(je framerate)*.
+    - De `onPostKill` en `onPreKill` methods worden aangeroepen als een actor uit de game wordt verwijderd.
+- Een Actor heeft `events`. Hier kan je listeners voor aanmaken via `this.on()`. Dit is vergelijkbaar met PRG3.
     - Het `exitviewport` event vindt plaats als de Actor buiten beeld beweegt.
-    - Het `pointerup` event vindt plaats als je op de sprite klikt. 
-- Om een Actor clickable te maken moet je aangeven dat de actor interactief is.
-- 🚨 Om een "pointer" event te kunnen afvuren moet een Actor altijd een `width` en `height` hebben.
+    - Het `pointerup` event vindt plaats als je op de sprite klikt.
 
 <br>
 
 CODE VOORBEELD
 
 ```javascript
-class ActionHenk extends Actor {
+class Car extends Actor {
 
     constructor() {
         super({width: 100, height: 100 })
@@ -36,15 +36,15 @@ class ActionHenk extends Actor {
     onInitialize(engine){
         this.enableCapturePointer = true
         this.pointer.useGraphicsBounds = true
-        this.on("pointerup", () => this.removeCar())
-        this.on("exitviewport", () => this.resetPosition())
+        this.on("pointerup", () => this.kill())
+        this.on("exitviewport", () => this.resetCar())
     }
 
-    removeCar() {
-        this.kill()
+    onPostKill() {
+        console.log("car was removed")
     }
 
-    resetPosition(){
+    resetCar(){
         this.pos = new Vector(500,100)
     }
 }
@@ -55,9 +55,26 @@ class ActionHenk extends Actor {
 
 <br><br><br>
 
+## Elk frame code uitvoeren
+
+Met het "onPostUpdate" event kan je elk frame je eigen code uitvoeren. Hiermee kan je bv. checken waar een actor zich bevindt.
+
+```javascript
+class Car extends Actor {
+
+    onPostUpdate(){
+        if(this.pos.x < -1000) {
+             this.kill()
+        }
+    }
+}
+```
+
+<Br><Br><Br>
+
 ## Collision
 
-Om te weten of een actor een andere actor raakt kan je het `collisionstart` event gebruiken. - 🚨 Om een "collision" event te kunnen afvuren moet een Actor altijd een `width` en `height` hebben.
+Om te weten of een actor een andere actor raakt kan je het `collisionstart` event gebruiken. 🚨 Om een "collision" event te kunnen afvuren moet een Actor altijd een `width` en `height` hebben.
 
 ```js
 class ActionHenk extends Actor {
@@ -75,25 +92,32 @@ class ActionHenk extends Actor {
     }
 }
 ```
+<br>
 
-<Br><Br><Br>
+### Wat heb je geraakt?
 
+Om te weten wat je hebt geraakt kan je `instanceof` gebruiken.
 
+```js
+import { Tree } from "./tree.js"
 
-## Elk frame code uitvoeren
+class Car extends Actor {
 
-Met het "onPostUpdate" event kan je elk frame je eigen code uitvoeren. Hiermee kan je bv. checken waar een actor zich bevindt.
-
-```javascript
-class Henk extends Actor {
-
-    onPostUpdate(){
-        console.log(this.pos)
+    hitSomething(event) {
+        if(event.other instanceof Tree) {
+             console.log("the car hits the tree")
+             this.kill()           // remove the car
+             event.other.kill()    // remove the tree
+        }
     }
 }
 ```
 
 <Br><Br><Br>
+
+
+
+
 
 ## Besturing
 
@@ -125,9 +149,90 @@ export class Car extends Actor {
 
 <Br><Br><Br>
 
-## Resources laden
 
-Plaats je resources in de `public` folder. Je kan daarbinnen submappen aanmaken.
+# Oefening 
+
+- Voeg 10 of meer instances van een Actor class toe aan je game met een `for` loop, bv. `new Fish()`.
+- De actors krijgen een random positie. Laat de actors door het beeld bewegen. Als ze uit de viewport gaan, verschijnen ze weer aan de linkerkant.
+
+```js
+this.pos.x =  Math.random() * 800
+this.pos.y =  Math.random() * 600
+```
+
+## Besturing toevoegen
+
+- Maak een player character Actor aan die je met WASD/Cursorkeys kan laten bewegen door het scherm
+
+## Collision toevoegen
+
+- Voeg een collision handler aan de player character toe. Als er een collision is, verwijder je het object waar je tegenaan botst via `event.other.kill()`. 
+
+## Pickups and enemies
+
+Maak een nieuwe class voor een Actor waar je tegenaan kan botsen, bv. een coin. *Een coin geeft punten, maar een enemy kost health*. Zowel de pickup als enemy verwijder je uit de game na een collision. met `event.other.kill()` Als je health 0 is verwijder je de player met `this.kill()`.
+
+```js
+class Player extends Actor {
+    onInitialize(){
+        this.score = 0
+        this.health = 100
+    }
+
+    hitSomething(event) {
+        if(...) { ... }
+    }
+}
+```
+
+<br><br><br>
+
+# Improvements
+
+Als je tijd over hebt kan je naar eigen inzicht een of meer van de onderstaande verbeteringen toevoegen.
+
+## Geluidjes
+
+Een pickup of botsing met een vijand heeft meer impact als het geluid maakt. Zie hieronder voor het laden van geluid.
+
+## Binnen beeld blijven
+
+Om binnen beeld te blijven kan je in de `onPreUpdate` functie controleren dat de `pos` van de player niet buiten de afmeting van de game gaat.
+
+```js
+import { clamp } from "excalibur"
+
+class Shark extends Actor {
+    onPreUpdate(engine) {
+        this.pos.x = clamp(this.pos.x, 0, 1280)
+        this.pos.y = clamp(this.pos.y, 0, 720)
+    }
+}
+```
+
+## Camera follow
+
+Een andere optie is om de camera de speler te laten volgen. Je level kan dan ineens veel groter zijn dan het scherm.
+
+```js
+export class Game extends Engine {
+    constructor(){
+        super({width:800, height:450})
+    }
+    startGame(){
+        let player = new Player()
+        this.add(player)
+        this.currentScene.camera.strategy.lockToActor(player)
+        this.currentScene.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 2000, 1200))
+    }
+}
+```
+
+<br><br><br>
+
+# Resources
+
+Plaats je resources in de `public` folder. Je kan daarbinnen submappen aanmaken. Hieronder zie je een voorbeeld waarin afbeeldingen, geluid en fonts worden geladen.
 
 RESOURCES.JS
 
@@ -138,19 +243,16 @@ const Resources = {
     LevelStart: new Sound("sound/LevelStart0.wav"),
     PixelFont: new FontSource('PressStart2P-Regular.ttf', 'PressStart')
 }
-const ResourceLoader = new Loader([
-    Resources.Ship,
-    Resources.LevelStart,
-    Resources.PixelFont,
-]);
+
+const ResourceLoader = new Loader()
+for (let res of Object.values(Resources)) {
+    ResourceLoader.addResource(res)
+}
 ```
 
-### Fonts en sounds gebruiken
+Fonts en sounds gebruiken
 
 ```javascript
-import { Actor, Engine, Vector, Label, FontUnit, Font} from "excalibur"
-import { Resources } from "resources"
-
 class Game extends Engine {
     startGame() {
         Resources.LevelStart.play()
@@ -170,44 +272,8 @@ class Game extends Engine {
 
 <Br><Br><Br>
 
-## Vector
-
-Een vector is een samenvoeging van het `x` en `y` coördinaat. Vectoren worden zowel gebruikt voor positie als voor snelheid. 
-
-```js
-this.pos = new Vector(10,10)
-this.vel = new Vector(3,3)
-```
-In de game wordt automatisch de `vel` elk frame opgeteld bij de `pos`. Zo ontstaat beweging.
-Je kan ook zelf rekenen met vectoren, in dit voorbeeld tellen we twee vectoren bij elkaar op:
-
-```js
-let pos1 = new Vector(4,4)
-let pos2 = new Vector(6,6)
-let newPos = pos1.add(pos2)
-// resultaat: 10,10
-```
-
-<Br><Br><Br>
-
-## Oefening
-
-- Voeg 10 of meer instances van een Actor toe aan je game met een `for` loop.
-- Laat de actors naar rechts bewegen. Als ze uit de viewport gaan, verschijnen ze weer aan de linkerkant.
-- Maak de actors clickable. Speel een geluid na click en verwijder de Actor.
-
-## Oefening
-
-- Ga verder met bovenstaande oefening, maar verwijder de click handlers.
-- Voeg een nieuwe actor toe die je met het toetsenbord kan besturen.
-- Deze actor kan tegen andere actors aan botsen om ze te verwijderen.
-
-
-<br><br><br>
-
 ## Links
 
 - [Setup instructies](https://github.com/HR-CMGT/PRG04-2022-2023/blob/main/setup.md).
 - [Excalibur](https://excaliburjs.com)
-- [Codesandbox Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu)
 - [Documentatie](https://excaliburjs.com/docs/text/)
