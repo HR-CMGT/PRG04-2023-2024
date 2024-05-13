@@ -62,15 +62,20 @@ export class Platform extends Actor {
 De hitbox hoeft niet hetzelfde te zijn als de `width,height` van de sprite. In dit voorbeeld maken we een custom hitbox.
 
 ```js
-export class Triangle extends Actor {
+export class Player extends Actor {
     onInitialize(engine) {
-        this.graphics.use(Resources.Triangle.toSprite())
-        this.pos = new Vector(120, 480)
-        this.body.collisionType = CollisionType.Fixed
-        const customHitbox = Shape.Box(100, 10)
+        const customHitbox = Shape.Box(100, 100, new Vector(10,10)) // width, height, offset
         this.collider.set(customHitbox)
     }
 }
+```
+### Gecentreerde afbeeldingen
+
+Een afbeelding wordt standaard in het midden van een Actor neergezet. Dit kan je aanpassen met ***this.anchor***. Als dit doet, moet je opletten dat de hitbox ook verplaatst wordt:
+
+```js
+this.anchor = new Vector(0,0)
+this.collider.set(Shape.Box(this.width, this.height, new Vector(0, 0)))
 ```
 
 
@@ -87,7 +92,7 @@ Je kan een physics body de volgende properties meegeven:
     
 <br><br><br>
 
-## Player controls
+## Player controls en physics
     
 De physics engine regelt de `velocity` van je objecten zoals de speler. Effecten zoals stuiteren zal je niet zien als je handmatig de `velocity` van een object gaat aanpassen. 
 
