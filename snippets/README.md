@@ -11,6 +11,7 @@
 - [Sturen en draaien](#sturen-en-draaien)
 - [Scenes](#scenes)
 - [Physics en hitbox](./physics.md)
+- [Sprite roteren en nulpunt](#rotate-sprite)
 - [Flip sprite](#flip-sprite)
 - [Actors zoeken in een Scene](#actors-zoeken)
 - [Spawner en Timer](#object-spawner-en-timer)
@@ -285,7 +286,35 @@ onActivate(ctx) {
     }
 }
 ```
+<br><br><br>
 
+## Rotate sprite
+
+Standaard wordt een afbeelding gecentreerd op een Actor. Als je de actor roteert draait de afbeelding dus mooi om het middelpunt:
+
+```js
+export class Goomba extends Actor {
+    constructor() {
+        super({ width: Resources.Goomba.width, height: Resources.Goomba.height })
+        this.pos = new Vector(100,100) 
+        this.rotation = 0.5
+        this.angularVelocity = 0.2
+    }
+}
+```
+Als je niet om het middelpunt wil roteren maar om een hoek, dan kan je een `anchor` gebruiken. Dit moet je via de constructor doorgeven.
+```js
+export class Goomba extends Actor {
+    constructor() {
+        super({
+            anchor: new Vector(0, 0),
+            width: Resources.Goomba.width, 
+            height: Resources.Goomba.height 
+        })
+        this.pos = new Vector(0,0) 
+    }
+}
+```
 
 <br><br><br>
 

@@ -69,15 +69,6 @@ export class Player extends Actor {
     }
 }
 ```
-### Gecentreerde afbeeldingen
-
-Een afbeelding wordt standaard in het midden van een Actor neergezet. Dit kan je aanpassen met ***this.anchor***. Als dit doet, moet je opletten dat de hitbox ook verplaatst wordt:
-
-```js
-this.anchor = new Vector(0,0)
-this.collider.set(Shape.Box(this.width, this.height, new Vector(0, 0)))
-```
-
 
 <br><br><br>
 
