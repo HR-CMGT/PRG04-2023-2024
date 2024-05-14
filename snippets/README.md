@@ -189,6 +189,9 @@ export class Ship extends Actor {
 
     constructor() {
         super({ width: Resources.Ship.width, height: Resources.Ship.height }) 
+
+        // alternatief
+        // super({radius: Resources.Ship.width/2})
     }
     
     onInitialize(engine) {

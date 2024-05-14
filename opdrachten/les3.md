@@ -113,6 +113,9 @@ class ActionHenk extends Actor {
 
     constructor() {
         super({width: 100, height: 100 })
+
+        // alternatief, een cirkel hitbox
+        // super({radius: 50})
     }
 
     onInitialize(engine){
