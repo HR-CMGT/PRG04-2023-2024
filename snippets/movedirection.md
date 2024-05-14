@@ -25,24 +25,15 @@ export class Car extends Actor {
     let speed = 0;
 
     // UP = forward
-    if (
-      engine.input.keyboard.isHeld(Keys.Up) ||
-      engine.input.keyboard.isHeld(Keys.Up)
-    ) {
+    if (engine.input.keyboard.isHeld(Keys.Up)) {
       speed = -150;
     }
 
     // cursor keys is direction
-    if (
-      engine.input.keyboard.isHeld(Keys.D) ||
-      engine.input.keyboard.isHeld(Keys.Right)
-    ) {
+    if (engine.input.keyboard.isHeld(Keys.Right)) {
       this.rotation += 0.05;
     }
-    if (
-      engine.input.keyboard.isHeld(Keys.A) ||
-      engine.input.keyboard.isHeld(Keys.Left)
-    ) {
+    if (engine.input.keyboard.isHeld(Keys.Left)) {
       this.rotation -= 0.05;
     }
 
@@ -56,6 +47,25 @@ export class Car extends Actor {
   }
 }
 ```
-Hieronder zie je hoe de rotation (θ, in radians) omgezet wordt naar een X,Y vector.
+In deze afbeelding zie je hoe de rotation (θ, in radians) omgezet wordt naar een X,Y vector.
 
-![angle](../images/angle.png)
+<img src="../images/angle.png" width="330">
+
+<br><br><br>
+
+## Vector Math
+
+De `Vector` class biedt mogelijkheden om te rekenen met afstanden:
+
+```js
+// afstand tussen ship en enemy
+let distance = Vector.distance(ship.pos, enemy.pos)
+// verschil in vector tussen ship en enemy
+let vectorDifference = enemy.pos.sub(player.pos) 
+// direction van ship naar enemy
+let direction = vectorDifference.normalize()
+// het schip beweegt nu naar de vijand
+ship.vel = direction
+// of je kan handmatig elk frame de direction naar de enemy optellen bij ship
+ship.pos = ship.pos.add(direction)
+```

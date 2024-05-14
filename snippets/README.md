@@ -8,7 +8,7 @@
 - [Keyboard besturing](#keyboard-besturing)
 - [Gamepad besturing](./gamepad.md)
 - [Camera volgt speler](#camera-volgt-speler)
-- [Sturen en draaien](#sturen-en-draaien)
+- [Sturen, draaien en werken met vectoren](#sturen-en-draaien)
 - [Scenes](#scenes)
 - [Physics en hitbox](./physics.md)
 - [Sprite roteren en nulpunt](#rotate-sprite)
