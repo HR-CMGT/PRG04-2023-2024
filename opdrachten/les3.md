@@ -62,7 +62,7 @@ class Car extends Actor {
 
 ## Besturing
 
-Om een karakter te kunnen besturen kan je luisteren naar toetsenbord input. Hieronder een voorbeeld van een Car die naar links en rechts kan bewegen.
+Om een karakter te kunnen besturen kan je luisteren naar toetsenbord input. Hieronder een voorbeeld van een Car die naar links en rechts kan bewegen. Als een `key` is ingedrukt pas je de `velocity` aan.
 
 ```js
 export class Car extends Actor {
@@ -85,6 +85,20 @@ export class Car extends Actor {
   }
 }
 ```
+### Shooting, jumping
+
+De `keyboard.isHeld` wordt 60 keer per seconde uitgevoerd, dit is dus niet handig voor schieten of springen. Dat moet maar 1 keer gebeuren op het moment dat een knop wordt ingedrukt:
+
+```js
+export class Car extends Actor {
+  onPreUpdate(engine) {
+     if (engine.input.keyboard.wasPressed(Keys.Space)) {
+        console.log("shoot!")
+    }
+  }
+}
+```
+
 
 - [Bekijk hier een volledig voorbeeld met x,y en WASD keys](../snippets/keyboard.md)
 
