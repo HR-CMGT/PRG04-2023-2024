@@ -232,7 +232,7 @@ export class Game extends Engine {
 
 # Resources
 
-Plaats je resources in de `public` folder. Je kan daarbinnen submappen aanmaken. Hieronder zie je een voorbeeld waarin afbeeldingen, geluid en fonts worden geladen.
+Plaats *images, fonts en sounds* in de `public` folder. Je kan daarbinnen submappen aanmaken:
 
 RESOURCES.JS
 
@@ -240,8 +240,8 @@ RESOURCES.JS
 import { ImageSource, Sound, Resource, Loader, FontSource } from 'excalibur'
 const Resources = {
     Ship: new ImageSource('images/ship.png'),
-    LevelStart: new Sound("sound/LevelStart0.wav"),
-    PixelFont: new FontSource('PressStart2P-Regular.ttf', 'PressStart')
+    LevelStart: new Sound("sounds/LevelStart0.wav"),
+    PixelFont: new FontSource('fonts/PressStart2P-Regular.ttf', 'PressStart')
 }
 
 const ResourceLoader = new Loader()
@@ -255,7 +255,9 @@ Fonts en sounds gebruiken
 ```javascript
 class Game extends Engine {
     startGame() {
+        // speel een geluidje
         Resources.LevelStart.play()
+        // gebruik een pixel font
         const label = new Label({
             text: 'Score: 0',
             pos: new Vector(0, 0),
@@ -269,6 +271,7 @@ class Game extends Engine {
     }
 }
 ```
+- [Download het Press Start Pixelfont hier](https://fonts.google.com/specimen/Press+Start+2P)
 
 <Br><Br><Br>
 
