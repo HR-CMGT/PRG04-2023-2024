@@ -253,6 +253,9 @@ for (let res of Object.values(Resources)) {
 Fonts en sounds gebruiken
 
 ```javascript
+import {Label, FontUnit, Color, Vector} from "excalibur"
+import {Resources} from "./resources.js"
+
 class Game extends Engine {
     startGame() {
         // speel een geluidje
@@ -271,7 +274,7 @@ class Game extends Engine {
     }
 }
 ```
-- [Download het Press Start Pixelfont hier](https://fonts.google.com/specimen/Press+Start+2P)
+- [Download het *Press Start* Pixelfont hier](https://fonts.google.com/specimen/Press+Start+2P)
 
 <Br><Br><Br>
 
