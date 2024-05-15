@@ -4,16 +4,63 @@ Je kan de [Excalibur Gamepad](https://excaliburjs.com/docs/gamepad) gebruiken om
 
 <br><br><br>
 
-## Voorbeeld Update
+## Voorbeeld
 
-Check de gamepad in de `update` functie. Dit werkt goed als je meerdere scenes hebt omdat je dan zeker weet dat alleen de update van de huidige scene wordt aangeroepen.
-
-In de player is een property voor de gamepad. Als de property gevuld is, dan kan je in de `onPreUpdate` elk frame kijken wat de positie van de sticks is, en of de buttons zijn ingedrukt.
+Je moet `gamepads` aanzetten in je `game`.
 
 ```javascript
 export class Game extends Engine {
 
-    gamepad
+    constructor() {
+        super()
+        this.start(ResourceLoader).then(() => this.startGame())
+    }
+
+    startGame(){
+        this.input.gamepads.enabled = true
+    }
+}
+```
+Je kan via `gamepads.at(0)` verschillende gamepads opvragen. Je moet wel opletten dat de gamepad `connected` is.
+
+```javascript
+export class Player extends Actor {
+
+    onPreUpdate(engine) {
+        // de eerste aangesloten gamepad
+        let mygamepad = engine.input.gamepads.at(0) 
+
+        // als de gamepad connected is, dan axes en buttons lezen
+        if(mygamepad.connected){
+            const x = mygamepad.getAxes(Axes.LeftStickX)
+            const y = mygamepad.getAxes(Axes.LeftStickY)
+
+            if (mygamepad.wasButtonReleased(Buttons.Face1)) {
+                console.log('Controller A button 1 was just released')
+            }
+
+            if (mygamepad.isButtonPressed(Buttons.Face1)) {
+                console.log('Controller A button 1 is currently being pressed')
+            }
+            
+            this.vel = new Vector(x * 10, y * 10)
+        }
+    }
+}
+```
+
+<br>
+<Br>
+<br>
+
+### Optioneel : Gamepad opslaan
+
+De gamepad vuurt een `connect` event af zodra je op een button drukt. Op dat moment kan je ook de gamepad opslaan. 
+
+```javascript
+export class Game extends Engine {
+
+    mygamepad
 
     constructor() {
         super()
@@ -24,7 +71,7 @@ export class Game extends Engine {
         this.input.gamepads.enabled = true
         this.input.gamepads.on('connect', (connectevent) => {
             console.log("gamepad detected")
-            this.gamepad = connectevent.gamepad
+            this.mygamepad = connectevent.gamepad
         })
     }
 }
@@ -34,19 +81,15 @@ export class Game extends Engine {
 export class Player extends Actor {
 
     onPreUpdate(engine) {
-        if (engine.gamepad === null) {
-            return
-        }
-        const x = engine.gamepad.getAxes(Axes.LeftStickX)
-        const y = engine.gamepad.getAxes(Axes.LeftStickY)
-        this.vel = new Vector(x * 10, y * 10)
+        if (engine.mygamepad) { 
+            const x = engine.mygamepad.getAxes(Axes.LeftStickX)
+            const y = engine.mygamepad.getAxes(Axes.LeftStickY)
 
-        if (engine.input.gamepads.at(0).wasButtonReleased(Buttons.Face1)) {
-            console.log('Controller A button 1 was just released')
-        }
+            if (engine.mygamepad.isButtonPressed(Buttons.Face1)) {
+                console.log('Controller A button 1 is currently being pressed')
+            }
 
-        if (_engine.input.gamepads.at(0).isButtonPressed(Buttons.Face1)) {
-            console.log('Controller A button 1 is currently being pressed')
+            this.vel = new Vector(x * 10, y * 10)
         }
     }
 }
@@ -57,14 +100,14 @@ export class Player extends Actor {
 <br>
 
 
-## Voorbeeld Events
+## Events
 
-Events: deze vuren af op het moment dat een event gebeurt. Met `on` kan je een event listener toevoegen. Let op dat events door ***alle scenes*** heen afgevuurd zullen worden. Je kan met `off` een listener weer verwijderen als je die niet meer nodig hebt. 
+De gamepad kan ook events afvuren, let echter op dat events door ***alle scenes*** heen afgevuurd zullen worden: 
 
 ```javascript
 export class Game extends Engine {
 
-    gamepad
+    mygamepad
 
     constructor() {
         super()
@@ -75,14 +118,14 @@ export class Game extends Engine {
         this.input.gamepads.enabled = true
         this.input.gamepads.on('connect', (connectevent) => {
             console.log("gamepad detected")
-            this.gamepad = connectevent.gamepad
+            this.mygamepad = connectevent.gamepad
 
-            this.gamepad.on('button', (buttonevent) => {
+            this.mygamepad.on('button', (buttonevent) => {
                 if (buttonevent.button === Buttons.Face1) {
                     console.log("button event is triggered")
                 }
             })
-            this.gamepad.on('axis', (axisevent) => {
+            this.mygamepad.on('axis', (axisevent) => {
                 if (axisevent.value > 0.5) {
                     console.log("move right event is triggered")
                 }
@@ -96,7 +139,7 @@ export class Game extends Engine {
 
 ## 🎮 🎮 🎮 🎮 Local multiplayer
 
-Je kan in `game.js` een player aanmaken voor elke gamepad die is gedetecteerd. Dit werkt goed voor multiplayer games. 
+Je kan in `game.js` een player aanmaken voor elke gamepad die wordt gedetecteerd. Dit werkt goed voor multiplayer games en voor `drop in drop out` games.
 
 ```javascript
 export class Game extends Engine {

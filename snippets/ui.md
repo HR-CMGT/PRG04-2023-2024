@@ -33,12 +33,9 @@ export class UI extends ScreenElement {
 
 <br><br><br>
 
-### Healthbar en graphics
+### Healthbar
 
 Omdat een `Actor` een achtergrondkleur heeft kan je makkelijk een healthbar tekenen.
-
-Als je zelf lijnen, cirkels en rechthoeken wil tekenen maak je eerst een lege actor, en vervolgens kan je daarin tekenen via `graphics.use`.
-
 
 ```javascript
 export class UI extends ScreenElement {
@@ -46,23 +43,15 @@ export class UI extends ScreenElement {
     healthbar
 
     onInitialize(engine) {
-        this.healthbar = new Actor({x: 10, y: 40, color: Color.Green, width: 200, height: 20})
-        this.healthbar.graphics.anchor = Vector.Zero
+        let barbackground = new Actor({ x: 10, y: 40, color: Color.fromRGB(255, 255, 255, 0.4), width: 200, height: 20, anchor: Vector.Zero})
+        this.addChild(barbackground)
+
+        this.healthbar = new Actor({ x: 10, y: 40, color: Color.Green, width: 200, height: 20, anchor: Vector.Zero })
         this.addChild(this.healthbar)
-
-
-        const whiteborder = new Rectangle({
-            width: 300,
-            height: 40,
-            color: Color.fromRGB(255, 255, 255, 0.4)
-        })
-        this.border = new Actor()
-        this.border.graphics.use(whiteborder)
-        this.border.pos = new Vector(800, 200)
     }
 
-    updateScore() {
-        this.healthbar.scale = new Vector(0.5, 1)
+    reduceHealth() {
+        this.healthbar.scale = new Vector(0.5, 1) // de health is nu 50%
     }
 }
 ```
