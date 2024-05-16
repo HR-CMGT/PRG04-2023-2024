@@ -78,6 +78,42 @@ export class UI extends ScreenElement {
 
 <br><br><br>
 
+## Graphics tekenen
+
+Je kan graphics tekenen via `this.graphics.use()`
+
+- [Line](https://excaliburjs.com/docs/lines)
+- [Circle](https://excaliburjs.com/docs/graphics#circle)
+- [Rectangle](https://excaliburjs.com/docs/graphics#rectangle)
+- [Polygon](https://excaliburjs.com/docs/graphics#polygon)
+
+```js
+import { Line, Circle, Rectangle, Polygon, Color, Actor } from "excalibur"
+
+export class UI extends ScreenElement {
+
+    onInitialize(engine) {
+    
+        const actor = new Actor()
+        const circledrawing = new Circle({
+            radius: 50,
+            color: Color.Red,
+            lineWidth: 2,
+            strokeColor: Color.Black,
+            padding: 5
+        });
+
+        actor.graphics.use(circledrawing)
+        this.addChild(actor)
+    }
+}
+
+
+
+```
+
+<br><br><bR>
+
 ## De UI in de game plaatsen
 
 ```javascript
@@ -98,12 +134,12 @@ class Game extends Engine {
 
 ## UI altijd boven de game tekenen
 
-Door de `.z` waarde van een Actor negatief te maken wordt die altijd onderin getekend.
+Als de UI niet boven je game verschijnt kan je de `z` waarde gebruiken.
 
 ```javascript
 class Background extends Actor {
     constructor() {
-        this.z = -1
+        this.z = 10
     }
 }
 ```

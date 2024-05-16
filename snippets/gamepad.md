@@ -55,7 +55,7 @@ export class Player extends Actor {
 
 ### Optioneel : Gamepad opslaan
 
-De gamepad vuurt een `connect` event af zodra je op een button drukt. Op dat moment kan je ook de gamepad opslaan. 
+De gamepad vuurt een `connect` event af zodra je op een button drukt. Op dat moment kan je ook de gamepad opslaan. Dan hoef je niet telkens te checken of `gamepads.at(0)` connected is. 
 
 ```javascript
 export class Game extends Engine {
