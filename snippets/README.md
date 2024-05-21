@@ -24,6 +24,7 @@
 - [JSON laden](#json-laden)
 - [Custom Events](#custom-events)
 - [Afstand tussen twee punten](#afstand-tussen-punten)
+- [Enemy behaviour](./behaviour.md)
 
 <br><br><br>
 
@@ -158,8 +159,10 @@ export class Game extends Engine {
 }
 
 ```
+Om je [UI](./ui.md) in beeld te laten staan terwijl de camera beweegt, heb je een [ScreenElement](https://excaliburjs.com/api/class/ScreenElement/) nodig.
 
 - [Camera](https://excaliburjs.com/docs/cameras/)
+- [Screenelement](https://excaliburjs.com/api/class/ScreenElement/)
 
 <br><br><br>
 
@@ -278,13 +281,12 @@ export class Level extends Scene {
 Het is mogelijk om waarden zoals een score van de ene scene naar de andere door te geven via de `onActivate` functie.
 
 ```javascript
-this.scene.engine.goToScene('gameover', { level: 4, score: 12 })
+this.scene.engine.goToScene("game-over", { sceneActivationData: { score: 40 }})
 ```
 Dit kan je dan als volgt uitlezen:
 ```javascript
-onActivate(ctx) {
-    if(ctx.data) {
-        console.log(`LEVEL: ${ctx.data.level}`)
+export class GameOver extends Scene {
+    onActivate(ctx) {
         console.log(`SCORE: ${ctx.data.score}`)
     }
 }
@@ -549,3 +551,5 @@ enemy.pos = new Vector(500,340)
 
 let distance = Vector.distance(ship.pos, enemy.pos)
 ```
+
+Je kan dit gebruiken voor [enemy behaviour](./behaviour.md)
