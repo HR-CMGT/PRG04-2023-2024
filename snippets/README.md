@@ -8,7 +8,7 @@
 - [Keyboard besturing](#keyboard-besturing)
 - [Gamepad besturing](./gamepad.md)
 - [Camera volgt speler](#camera-volgt-speler)
-- [Sturen, draaien en werken met vectoren](#sturen-en-draaien)
+- [Een auto besturen](#sturen-en-draaien)
 - [Scenes](#scenes)
 - [Physics en hitbox](./physics.md)
 - [Sprite roteren en nulpunt](#rotate-sprite)
@@ -25,6 +25,7 @@
 - [Custom Events](#custom-events)
 - [Afstand tussen twee punten](#afstand-tussen-punten)
 - [Enemy behaviour](./behaviour.md)
+- [Werken met vectoren](./vector.md)
 
 <br><br><br>
 

@@ -12,9 +12,6 @@ import { Actor, Vector, Input } from "excalibur";
 import { Resources } from "./resources.js";
 
 export class Car extends Actor {
-  constructor() {
-    super();
-  }
   onInitialize(engine) {
     this.graphics.use(Resources.Car.toSprite());
     this.pos = new Vector(400, 400);
@@ -35,25 +32,7 @@ export class Car extends Actor {
   }
 }
 ```
-<br><br><br>
+<br>
 
-## Vector Math
+- [Zie ook werken met Vectoren](./vector.md)
 
-De `Vector` class biedt meer mogelijkheden om te rekenen met afstanden:
-
-```js
-// afstand tussen ship en enemy
-let distance = Vector.distance(ship.pos, enemy.pos)
-// verschil in vector tussen ship en enemy
-let vectorDifference = enemy.pos.sub(player.pos) 
-// direction van ship naar enemy
-let direction = vectorDifference.normalize()
-// het schip beweegt nu naar de vijand
-ship.vel = direction
-// of je kan handmatig elk frame de direction naar de enemy optellen bij ship
-ship.pos = ship.pos.add(direction)
-// een vector afleiden uit een rotation
-ship.vel = Vector.fromAngle(0.5)
-// een rotation afleiden uit een vector
-ship.rotation = Vector.toAngle(new Vector(10,33))
-```
