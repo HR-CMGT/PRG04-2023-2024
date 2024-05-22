@@ -2,7 +2,7 @@
 
 ![draaien](../images/carangle.png)
 
-Gebruik links,rechts om te sturen, en UP om de auto in die richting te bewegen.
+Als je een auto bestuurt gebruik je `A`, `D` of ⬅️ ➡️ om de auto te draaien (`rotation`). Met de `W` of ⬆️ toets beweeg je in de richting waarin je gedraaid staat. Dit doe je door de `rotation` van de auto om te rekenen naar een `x,y` velocity.
 
 ![car](../images/car.png)
 
@@ -18,44 +18,28 @@ export class Car extends Actor {
   onInitialize(engine) {
     this.graphics.use(Resources.Car.toSprite());
     this.pos = new Vector(400, 400);
-    this.vel = new Vector(0, 0);
   }
 
   onPreUpdate(engine) {
     let speed = 0;
-
-    // UP = forward
     if (engine.input.keyboard.isHeld(Keys.Up)) {
-      speed = -150;
+        speed = 250;
     }
-
-    // cursor keys is direction
     if (engine.input.keyboard.isHeld(Keys.Right)) {
-      this.rotation += 0.05;
+        this.rotation += 0.05;
     }
     if (engine.input.keyboard.isHeld(Keys.Left)) {
-      this.rotation -= 0.05;
+        this.rotation -= 0.05;
     }
-
-    // direction is the cosine/sine of the angle!
-    let direction = new Vector(
-      Math.cos(this.rotation) * speed,
-      Math.sin(this.rotation) * speed
-    );
-
-    this.vel = direction;
+    this.vel = Vector.fromAngle(this.rotation).scale(speed)
   }
 }
 ```
-In deze afbeelding zie je hoe de rotation (θ, in radians) omgezet wordt naar een X,Y vector.
-
-<img src="../images/angle.png" width="330">
-
 <br><br><br>
 
 ## Vector Math
 
-De `Vector` class biedt mogelijkheden om te rekenen met afstanden:
+De `Vector` class biedt meer mogelijkheden om te rekenen met afstanden:
 
 ```js
 // afstand tussen ship en enemy
@@ -68,4 +52,8 @@ let direction = vectorDifference.normalize()
 ship.vel = direction
 // of je kan handmatig elk frame de direction naar de enemy optellen bij ship
 ship.pos = ship.pos.add(direction)
+// een vector afleiden uit een rotation
+ship.vel = Vector.fromAngle(0.5)
+// een rotation afleiden uit een vector
+ship.rotation = Vector.toAngle(new Vector(10,33))
 ```

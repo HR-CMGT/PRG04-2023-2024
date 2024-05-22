@@ -218,14 +218,20 @@ Een [Collision Group](https://excaliburjs.com/docs/collisiongroups/) zorgt dat a
 
 ![draaien](../images/carangle.png)
 
-In plaats van in vier richtingen te bewegen met W A S D kan je ook in de richting bewegen waar je naartoe gedraaid staat. Je kan dan de `rotation` omrekenen naar de `velocity`.
+Als je een auto bestuurt gebruik je `A`, `D` of ⬅️ ➡️ om de auto te draaien (`rotation`). Met de `W` of ⬆️ toets beweeg je in de richting waarin je gedraaid staat. Dit doe je door de `rotation` van de auto om te rekenen naar een `x,y` velocity.
 
 ```javascript
-let speed = 100
-this.vel = new Vector(
-    Math.cos(this.rotation) * speed,
-    Math.sin(this.rotation) * speed
-)
+let speed = 0;
+if (engine.input.keyboard.isHeld(Keys.Up)) {
+    speed = 250;
+}
+if (engine.input.keyboard.isHeld(Keys.Right)) {
+    this.rotation += 0.05;
+}
+if (engine.input.keyboard.isHeld(Keys.Left)) {
+    this.rotation -= 0.05;
+}
+this.vel = Vector.fromAngle(this.rotation).scale(speed)
 ```
 - [Compleet voorbeeld](./movedirection.md)
 - [Codesandbox voorbeeld](https://codesandbox.io/p/sandbox/excalibur-move-direction-yr22q8)
