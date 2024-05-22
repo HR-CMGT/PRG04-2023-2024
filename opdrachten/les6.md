@@ -44,6 +44,9 @@ export class Level extends Scene {
     onActivate(ctx) {
         console.log("reset het level")
     }
+    gameOver(){
+        this.engine.gotoScene('game-over')
+    }
 }
 ```
 

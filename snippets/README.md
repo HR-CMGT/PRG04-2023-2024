@@ -259,18 +259,22 @@ LEVEL
 ```javascript
 export class Level extends Scene {
 
+    score
+
     onInitialize(engine) {
         console.log("this level is created only once.")
+        this.score = 0
         let player = new Player()
         this.add(player)
     }
 
     onActivate(ctx) {
-        console.log("the game has switched to this level.")
+        console.log("the game has switched to this level. player already exists. reset score to 0")
+        this.score = 0
     }
 
     gameOver() {
-        this.scene.engine.goToScene('gameover')
+        this.engine.goToScene('gameover')
     }
 }
 ```
