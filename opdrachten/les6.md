@@ -46,6 +46,21 @@ export class Level extends Scene {
     }
 }
 ```
+
+### Expert tip: scene transitions
+
+Je kan scenes laten outfaden / infaden:
+
+```js
+let transitions = {
+    in: new FadeInOut({ duration: 400, direction: 'in', color: Color.Black }),
+    out: new FadeInOut({ duration: 400, direction: 'out', color: Color.Black })
+}
+this.add('intro', { scene: new Intro(), transitions })
+this.add('level', { scene: new Level(), transitions })
+```
+
+
 <br><br><br>
 
 ## Spawning

@@ -274,6 +274,26 @@ export class Level extends Scene {
     }
 }
 ```
+
+<br>
+
+### Scene transitions
+
+Je kan scenes laten outfaden / infaden:
+
+```js
+class Game extends Engine {
+    startGame() {
+        let transitions = {
+            in: new FadeInOut({ duration: 400, direction: 'in', color: Color.Black }),
+            out: new FadeInOut({ duration: 400, direction: 'out', color: Color.Black })
+        }
+        this.add('intro', { scene: new Intro(), transitions })
+        this.add('level', { scene: new Level(), transitions })
+        this.goToScene('level')
+    }
+}
+```
 <br>
 
 ### Waarden doorgeven aan een scene
@@ -291,6 +311,7 @@ export class GameOver extends Scene {
     }
 }
 ```
+
 <br><br><br>
 
 ## Rotate sprite
