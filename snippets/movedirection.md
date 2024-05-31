@@ -1,4 +1,4 @@
-# Moving in a direction
+# Een auto besturen
 
 ![draaien](../images/carangle.png)
 
@@ -35,4 +35,6 @@ export class Car extends Actor {
 <br>
 
 - [Zie ook werken met Vectoren](./vector.md)
+- [Compleet voorbeeld](./movedirection.md)
+- [Codesandbox voorbeeld](https://codesandbox.io/p/sandbox/excalibur-move-direction-yr22q8)
 

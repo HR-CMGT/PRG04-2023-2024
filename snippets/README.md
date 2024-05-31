@@ -1,33 +1,64 @@
 
 # Code Snippets
 
-- [Tiling en Scrolling Background](./scrolling.md)
-- [Spritesheet](./spritesheet.md)
-- [Click en Exit Screen Events](#click-en-exit-screen-events)
+## Essentials
+
 - [Collision Events](#collision)
+- [Click en Exit Screen Events](#click-en-exit-screen-events)
 - [Keyboard besturing](#keyboard-besturing)
 - [Gamepad besturing](./gamepad.md)
 - [Camera volgt speler](#camera-volgt-speler)
-- [Een auto besturen](#sturen-en-draaien)
+- [Spritesheet](./spritesheet.md)
 - [Scenes](#scenes)
-- [Physics en hitbox](./physics.md)
 - [Sprite roteren en nulpunt](#rotate-sprite)
+- [Physics en hitbox](./physics.md)
 - [Flip sprite](#flip-sprite)
-- [Actors zoeken in een Scene](#actors-zoeken)
+- [Scherm instellingen (afmeting, pixel art, loading, fullscreen)](./scherm.md)
 - [Spawner en Timer](#object-spawner-en-timer)
 - [Tekst met score](./tekstveld.md)
 - [UI met healthbar](./ui.md)
+
+## Bonus technieken
+
+- [Tiling en Scrolling Background](./scrolling.md)
+- [Een auto besturen](./movedirection.md)
+- [Actors zoeken in een Scene](#actors-zoeken)
 - [Random tint](#random-tint)
-- [Pixel Art](#pixel-art)
-- [Schermafmeting en fullscreen](#fullscreen)
-- [Loading Screen aanpassen](#loading-screen-aanpassen)
 - [JSON laden](#json-laden)
-- [Custom Events](#custom-events)
-- [Afstand tussen twee punten](#afstand-tussen-punten)
+- [Afstanden en vectoren](./vector.md)
 - [Enemy behaviour](./behaviour.md)
-- [Werken met vectoren](./vector.md)
 
 <br><br><br>
+
+
+## Collision
+
+Met de collision events kan je checken of je Actor ergens tegenaan botst. Let op dat je actor een `width`,`height`, OF een `radius` heeft. Je kan `instanceof` gebruiken om te zien waar je tegenaan botst.
+
+```javascript
+export class Ship extends Actor {
+
+    constructor() {
+        super({ width: Resources.Ship.width, height: Resources.Ship.height }) 
+
+        // alternatief
+        // super({radius: Resources.Ship.width/2})
+    }
+    
+    onInitialize(engine) {
+        this.on('collisionstart', (event) => this.hitSomething(event))
+    }
+
+    hitSomething(event){
+        if (event.other instanceof Enemey) {
+            console.log('hit enemy')
+        }
+    }
+}
+```
+> *Een [Collision Group](https://excaliburjs.com/docs/collisiongroups/) zorgt dat actors in dezelfde group nooit met elkaar colliden.*
+
+<br><bR><br>
 
 ## Click en Exit Screen Events
 
@@ -102,44 +133,48 @@ class Shark extends Actor {
     }
 }
 ```
-<br>
+#### Binnen beeld blijven
 
-### Keyboard events 
+Als je karakter niet uit beeld mag lopen kan je `clamp` gebruiken. 
 
-Het is mogelijk om te subscriben aan keyboard events. Hierbij moet je goed opletten of je de event listener toevoegt aan de `Game`, aan een `Scene`, of aan een `Actor`. De listeners blijven namelijk altijd actief, ook als je wisselt tussen scenes of als een actor doodgaat. In dit voorbeeld heeft de game drie listeners:
+```js
+import { clamp } from "excalibur"
+
+class Shark extends Actor {
+    onPreUpdate(engine) {
+        //...keyboard code hier
+        this.pos.x = clamp(this.pos.x, 1280);   // afmeting van het level
+        this.pos.y = clamp(this.pos.y, 720);    // afmeting van het level
+    }
+}
+```
+> *Als je [physics](./physics.md) gebruikt kan je `edge colliders` aan de rand van je level plaatsen.*
+
+<br><br><br>
+
+### Keyboard events
+
+Het is mogelijk om te subscriben aan keyboard events. **Event listeners blijven echter altijd actief, ook als je wisselt tussen scenes.** Je kan een listener uit zetten met `off()`.
 
 ```js
 class Game extends Engine {
     startGame() {
         this.input.keyboard.on("press", (evt) => this.keyPressed(evt))
-        this.input.keyboard.on("release", (evt) => this.keyReleased(evt))
-        this.input.keyboard.on("hold", (evt) => this.keyHeld(evt))
     }
     keyPressed(evt){
         if (evt.key === Keys.Space) {
             console.log("space was pressed")
         }
     }
-    keyReleased(evt){
-        console.log(evt.key)
-    }
-    keyHeld(evt){
-        console.log(evt.key)
+    gameOver(){
+        this.input.keyboard.off("press")
     }
 }
 ```
-🚨 Je kan event listeners uitzetten met `off`. Dit is nodig als een actor met listeners doodgaat, of als je een scene verlaat waar listeners in zaten. 
 
-```js
-class Level extends Scene {
-    onDeactivate(engine){
-        this.input.keyboard.off("press", (evt) => this.keyPressed(evt))
-    }
-}
-```
 <br><br><br>
 
-### Camera volgt speler
+## Camera volgt speler
 
 Om een top-down RPG of een sidescroller te maken doe je de volgende stappen:
 
@@ -167,75 +202,9 @@ Om je [UI](./ui.md) in beeld te laten staan terwijl de camera beweegt, heb je ee
 
 <br><br><br>
 
-### Binnen beeld blijven
 
-Als je karakter niet uit beeld mag lopen kan je `clamp` gebruiken. 
 
-```js
-import { clamp } from "excalibur"
 
-class Shark extends Actor {
-    onPreUpdate(engine) {
-        //...keyboard code hier
-        this.pos.x = clamp(this.pos.x, 1280);   // afmeting van het level, bv. engine.drawWidth
-        this.pos.y = clamp(this.pos.y, 720);    // afmeting van het level, bv. engine.drawHeight
-    }
-}
-```
-<br><br><br>
-
-## Collision
-
-Met de collision events kan je checken of je Actor ergens tegenaan botst. Let op dat je actor een `width`,`height`, OF een `radius` heeft. Je kan `instanceof` gebruiken om te zien waar je tegenaan botst.
-
-```javascript
-export class Ship extends Actor {
-
-    constructor() {
-        super({ width: Resources.Ship.width, height: Resources.Ship.height }) 
-
-        // alternatief
-        // super({radius: Resources.Ship.width/2})
-    }
-    
-    onInitialize(engine) {
-        this.on('collisionstart', (event) => this.hitSomething(event))
-    }
-
-    hitSomething(event){
-        if (event.other instanceof Enemey) {
-            console.log('hit enemy')
-        }
-    }
-}
-```
-### Collision group
-
-Een [Collision Group](https://excaliburjs.com/docs/collisiongroups/) zorgt dat actors in dezelfde group nooit met elkaar colliden.
-
-<br><br><Br>
-
-## Sturen en draaien
-
-![draaien](../images/carangle.png)
-
-Als je een auto bestuurt gebruik je `A`, `D` of ⬅️ ➡️ om de auto te draaien (`rotation`). Met de `W` of ⬆️ toets beweeg je in de richting waarin je gedraaid staat. Dit doe je door de `rotation` van de auto om te rekenen naar een `x,y` velocity.
-
-```javascript
-let speed = 0;
-if (engine.input.keyboard.isHeld(Keys.Up)) {
-    speed = 250;
-}
-if (engine.input.keyboard.isHeld(Keys.Right)) {
-    this.rotation += 0.05;
-}
-if (engine.input.keyboard.isHeld(Keys.Left)) {
-    this.rotation -= 0.05;
-}
-this.vel = Vector.fromAngle(this.rotation).scale(speed)
-```
-- [Compleet voorbeeld](./movedirection.md)
-- [Codesandbox voorbeeld](https://codesandbox.io/p/sandbox/excalibur-move-direction-yr22q8)
 
 <br><br><br>
 
@@ -286,11 +255,7 @@ export class Level extends Scene {
 }
 ```
 
-<br>
-
-### Scene transitions
-
-Je kan scenes laten outfaden / infaden:
+#### Scene transitions
 
 ```js
 class Game extends Engine {
@@ -307,14 +272,12 @@ class Game extends Engine {
 ```
 <br>
 
-### Waarden doorgeven aan een scene
-
-Het is mogelijk om waarden zoals een score van de ene scene naar de andere door te geven via de `onActivate` functie.
+#### Waarden doorgeven aan een scene
 
 ```javascript
 this.scene.engine.goToScene("game-over", { sceneActivationData: { score: 40 }})
 ```
-Dit kan je dan als volgt uitlezen:
+Dit kan je als volgt uitlezen:
 ```javascript
 export class GameOver extends Scene {
     onActivate(ctx) {
@@ -384,20 +347,7 @@ let right = left.clone()
 right.flipHorizontal = true
 ```
 
-<br><br><br>
-    
-## Actors zoeken
 
-Je kan via `scene.actors` alle actors uit een scene opvragen. Je kan met `filter` naar een specifiek *type* actor zoeken.
-
-```js
-export class Game extends Engine {
-    logEnemies() {
-        let allEnemies = this.currentScene.actors.filter(actor => actor instanceof Enemy)
-        console.log(allEnemies)
-    }
-}
-```
 
 <br><br><br>
     
@@ -438,87 +388,33 @@ export class Game extends Engine {
     
 <br><br><br>
 
+
+
+# Bonus techniques
+ 
+## Actors zoeken
+
+Je kan via `scene.actors` alle actors uit een scene opvragen. Je kan met `filter` naar een specifiek *type* actor zoeken.
+
+```js
+export class Game extends Engine {
+    logEnemies() {
+        let allEnemies = this.currentScene.actors.filter(actor => actor instanceof Enemy)
+        console.log(allEnemies)
+    }
+}
+```
+
+<br><br><br>
+
 ## Random tint
 
 ```js
 let sprite = Resources.Mario.toSprite()
 sprite.tint = new Color(Math.random() * 255, Math.random() * 255, Math.random() * 255)
 ```
-<br><br><br>
-    
-## Pixel art
-   
-```js   
-export class Game extends Engine {
-    constructor() {
-        super({ width: 480, height: 320 ,antialiasing:false, resolution:Resolution.GameBoyAdvance})
-    }
-}
-```
-    
-<Br><br><br>
 
-## Schermafmeting en fullscreen
-
-#### Schermafmeting
-
-In `game.js` geef je een schermafmeting aan in 16/9 verhouding. Als je game heel groot is moeten je afbeeldingen ook groter / scherper zijn. Een kleine game kan je op een groot scherm tonen met `displayMode: DisplayMode.FitScreen`. Een aantal geschikte afmetingen:
-
-- 800 x 450
-- 1280 x 720 
-- 1600 x 900 
-- 1920 x 1080
-
-```js
-export class Game extends Engine {
-    constructor() {
-        super({
-            width: 1280,
-            height: 720,
-            displayMode: DisplayMode.FitScreen
-        })
-    }
-}
-```
-
-#### Starten in fullscreen
-
-```js
-const Resources = {
-    Bird: new ImageSource('images/bird.png'),
-    Tree: new ImageSource('images/tree.png'),
-}
-
-const ResourceLoader = new Loader({fullscreenAfterLoad: true})
-for (let res of Object.values(Resources)) {
-    ResourceLoader.addResource(res)
-}
-
-export { Resources, ResourceLoader }
-```
-> *Note: de arcadekast start al in fullscreen, dit hoef je niet toe te voegen*.
-
-<br><br><br>
-
-## Loading Screen aanpassen
-
-Op de CMGT Arcade kast heb je geen starbutton nodig. 
-
-GAME.JS
-
-```js
-export class Game extends Engine {
-    constructor(){
-        super({
-            suppressPlayButton: true
-        })
-    }
-}
-```
-
-https://excaliburjs.com/docs/loaders
-
-<br><br><br>
+<br><br><Br>
 
 ## JSON laden
 
@@ -539,49 +435,5 @@ class Pokemon extends Actor {
 ```
 <br><br><br>
 
-## Custom Events
-
-Een child kan een event afvuren met `emit`. De parent kan hier naar luisteren met `on`.
-
-PARENT listens to BLUB event
-```javascript
-class Aquarium extends Actor {
-    onInitialize() {
-        let fish = new Fish()
-        this.add(fish)
-        
-        fish.on("blub", (event) => {
-            console.log("fish says blub")
-        })
-    }
-}
-```
-CHILD emits BLUB event
-```javascript
-import { GameEvent } from "excalibur"
-
-class Fish extends Actor {
-    onCollision() {
-        this.emit('blub', new GameEvent())
-    }
-}
-```
 
 
-<br><br><br>
-
-## Afstand tussen punten
-
-De `Vector` class heeft hulpfuncties om afstanden uit te rekenen.
-
-```js
-let ship = new Actor()
-ship.pos = new Vector(200,100)
-
-let enemy = new Actor()
-enemy.pos = new Vector(500,340)
-
-let distance = Vector.distance(ship.pos, enemy.pos)
-```
-
-Je kan dit gebruiken voor [enemy behaviour](./behaviour.md)

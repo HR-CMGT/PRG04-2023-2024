@@ -1,4 +1,6 @@
-# Werken met Vectoren
+# Afstanden en Vectoren
+
+De `Vector` class heeft allerlei handige functies, je kan bv. met `Vector.disance()` de afstand tussen twee punten opvragen.
 
 Je kan een `Vector` gebruiken als positie, maar ook als richting. Een *direction vector* heeft getallen van 0 tot 1. Bv. `this.vel = new Vector(0, 1)` laat een schip naar rechts bewegen.
 
@@ -34,3 +36,5 @@ ship.vel = Vector.fromAngle(0.5)
 // draaien in de richting van je velocity (bv voor een homing missile)
 ship.rotation = Vector.toAngle(ship.vel)
 ```
+
+> *Vectoren zijn handig voor [enemy behaviour](./behaviour.md)*
