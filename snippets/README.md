@@ -3,6 +3,7 @@
 
 ## Essentials
 
+- [Actors, flip en rotate](#actors)
 - [Collision Events](#collision)
 - [Click en Exit Screen Events](#click-en-exit-screen-events)
 - [Keyboard besturing](#keyboard-besturing)
@@ -10,9 +11,7 @@
 - [Camera volgt speler](#camera-volgt-speler)
 - [Spritesheet](./spritesheet.md)
 - [Scenes](#scenes)
-- [Sprite roteren en nulpunt](#rotate-sprite)
 - [Physics en hitbox](./physics.md)
-- [Flip sprite](#flip-sprite)
 - [Scherm instellingen (afmeting, pixel art, loading, fullscreen)](./scherm.md)
 - [Spawner en Timer](#object-spawner-en-timer)
 - [Tekst met score](./tekstveld.md)
@@ -31,6 +30,68 @@
 <br><br><br>
 
 
+
+
+## Actors, flip en rotate
+
+Een actor met een sprite ziet er als volgt uit. In de `constructor` geef je de ***hitbox*** van de actor door. In `onInitialize()` zet je de meeste basic settings.
+
+```js
+export class Goomba extends Actor {
+    constructor() {
+        super({ width: Resources.Goomba.width, height: Resources.Goomba.height })
+    }
+    onInitalize(engine){
+        this.graphics.use(Resources.Goomba.toSprite())
+        this.pos = new Vector(200,200)   // positie
+        this.vel = new Vector(20,0)      // snelheid
+    }
+}
+```
+
+#### Rotate sprite
+
+
+```js
+export class Peach extends Actor {
+    onInitalize(engine){
+        this.rotation = 0.5
+        this.angularVelocity = 0.2
+    }
+}
+```
+Standaard wordt een afbeelding gecentreerd op een Actor. Als je niet om het middelpunt wil roteren dan kan je een `anchor` gebruiken. *Dit moet je via de constructor doorgeven.*
+```js
+export class Toad extends Actor {
+    constructor() {
+        super({
+            anchor: new Vector(0, 0),
+            width: Resources.Toad.width, 
+            height: Resources.Toad.height 
+        })
+    }
+}
+```
+
+#### Flip sprite
+
+```javascript
+export class Bowser extends Actor {
+    onInitialize(engine) {
+        this.graphics.use(Resources.Bowser.toSprite())
+        this.graphics.flipHorizontal = true
+    }
+    onPreUpdate(engine){
+        this.graphics.flipHorizontal = (this.vel.x > 0)
+    }
+}
+```
+
+
+<br><br><br>
+
+
+
 ## Collision
 
 Met de collision events kan je checken of je Actor ergens tegenaan botst. Let op dat je actor een `width`,`height`, OF een `radius` heeft. Je kan `instanceof` gebruiken om te zien waar je tegenaan botst.
@@ -41,7 +102,7 @@ export class Ship extends Actor {
     constructor() {
         super({ width: Resources.Ship.width, height: Resources.Ship.height }) 
 
-        // alternatief
+        // hit circle
         // super({radius: Resources.Ship.width/2})
     }
     
@@ -203,12 +264,6 @@ Om je [UI](./ui.md) in beeld te laten staan terwijl de camera beweegt, heb je ee
 <br><br><br>
 
 
-
-
-
-<br><br><br>
-
-
 ## Scenes
 
 Je plaatst je `Actors` in `Scenes`, waardoor de `Game` kan wisselen tussen scenes. 
@@ -285,69 +340,6 @@ export class GameOver extends Scene {
     }
 }
 ```
-
-<br><br><br>
-
-## Rotate sprite
-
-Standaard wordt een afbeelding gecentreerd op een Actor. Als je de actor roteert draait de afbeelding dus mooi om het middelpunt:
-
-```js
-export class Goomba extends Actor {
-    constructor() {
-        super({ width: Resources.Goomba.width, height: Resources.Goomba.height })
-        this.pos = new Vector(100,100) 
-        this.rotation = 0.5
-        this.angularVelocity = 0.2
-    }
-}
-```
-Als je niet om het middelpunt wil roteren maar om een hoek, dan kan je een `anchor` gebruiken. Dit moet je via de constructor doorgeven.
-```js
-export class Goomba extends Actor {
-    constructor() {
-        super({
-            anchor: new Vector(0, 0),
-            width: Resources.Goomba.width, 
-            height: Resources.Goomba.height 
-        })
-        this.pos = new Vector(0,0) 
-    }
-}
-```
-
-<br><br><br>
-
-
-## Flip sprite
-
-MARIO.JS
-```javascript
-import { Actor, Engine, Vector } from "excalibur"
-import { Resources, ResourceLoader } from './resources.js'
-
-export class Sprite extends Actor {
-
-    onInitialize(engine) {
-        this.graphics.use(Resources.Mario.toSprite())
-        // start flipped
-        this.graphics.flipHorizontal = true
-    }
-    // flip afhankelijk van richting
-    onPreUpdate(engine){
-        this.graphics.flipHorizontal = (this.vel.x > 0)
-    }
-}
-```
-Flip spritesheet
-
-```javascript
-let left = Animation.fromSpriteSheet(spriteSheetRun, range(1, 10), 50)
-let right = left.clone()
-right.flipHorizontal = true
-```
-
-
 
 <br><br><br>
     

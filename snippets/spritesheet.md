@@ -38,13 +38,14 @@ this.graphics.add("runright", runRight)
 this.graphics.use(idle)
 ```
 
-Flip animation
+### Flip animation
 
 In plaats van een aparte animatie te maken voor links en rechts, kan je ook de animatie flippen. Dit doe je met `animation.flipHorizontal = true`
 
 ```javascript
-var right = left.clone(); 
-right.flipHorizontal = true;
+let left = Animation.fromSpriteSheet(spriteSheetRun, range(1, 10), 50)
+let right = left.clone()
+right.flipHorizontal = true
 ```
 
 
