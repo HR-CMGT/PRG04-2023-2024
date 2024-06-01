@@ -200,22 +200,24 @@ Een pickup of botsing met een vijand heeft meer impact als het geluid maakt. Zie
 
 ## Binnen beeld blijven
 
-Om binnen beeld te blijven kan je in de `onPreUpdate` functie controleren dat de `pos` van de player niet buiten de afmeting van de game gaat.
+Om binnen beeld te blijven kan je in de `keyboard` code controleren dat de `pos` van de player niet buiten de afmeting van de game gaat.
 
 ```js
-import { clamp } from "excalibur"
-
-class Shark extends Actor {
-    onPreUpdate(engine) {
-        this.pos.x = clamp(this.pos.x, 0, 1280)
-        this.pos.y = clamp(this.pos.y, 0, 720)
+class Player extends Actor {
+    onPreUpdate(engine){
+        if (engine.input.keyboard.isHeld(Keys.Left) && this.pos.x > 30) {
+            xspeed = -300
+        }
+        if (engine.input.keyboard.isHeld(Keys.Right) && this.pos.x < 770) {
+            xspeed = 300
+        }
     }
 }
 ```
 
 ## Camera follow
 
-Een andere optie is om de camera de speler te laten volgen. Je level kan dan ineens veel groter zijn dan het scherm.
+Je kan de camera de speler laten volgen. Je level kan dan ineens veel groter zijn dan het scherm.
 
 ```js
 export class Game extends Engine {
