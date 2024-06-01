@@ -11,25 +11,21 @@ De `Vector` class biedt mogelijkheden om te rekenen met afstanden.
 let distance = Vector.distance(ship.pos, enemy.pos)
 
 
-// richting van ship naar enemy
-let vectorDifference = enemy.pos.sub(ship.pos) 
-let direction = vectorDifference.normalize()
+// richting van ship naar enemy, richting is een vector tussen 0 en 1
+let direction = enemy.pos.sub(ship.pos).normalize()
 
 
 // beweeg in de richting van de vijand
 ship.vel = direction
+// beweeg sneller
+ship.vel = direction.scale(200)
 
 
 // ship beweegt van een enemy af
 ship.vel = direction.negate()
 
 
-// een direction vermenigvuldigen met snelheid
-let speed = 200
-ship.vel = direction.scale(speed)
-
-
-// een vector afleiden uit een rotation (bv voor een auto)
+// beweeg in de richting waarin je gedraaid staat (bv voor een auto die draait met de cursor keys)
 ship.vel = Vector.fromAngle(0.5)
 
 
@@ -37,4 +33,4 @@ ship.vel = Vector.fromAngle(0.5)
 ship.rotation = Vector.toAngle(ship.vel)
 ```
 
-> *Vectoren zijn handig voor [enemy behaviour](./behaviour.md)*
+> *[Bekijk hier voorbeelden voor enemy behaviour met vectoren](./behaviour.md)*

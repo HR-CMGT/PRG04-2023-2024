@@ -196,16 +196,37 @@ class Shark extends Actor {
 ```
 #### Binnen beeld blijven
 
-Als je karakter niet uit beeld mag lopen kan je `clamp` gebruiken. 
+Pas de speed alleen aan als de actor nog voldoende van de rand van het level is verwijderd:
+
+```js
+class Player extends Actor {
+    onPreUpdate(engine){
+        let kb = engine.input.keyboard
+        if (kb.isHeld(Keys.Up) && this.pos.y > 30) {
+            yspeed = -300
+        }
+        if (kb.isHeld(Keys.Down) && this.pos.y < 470) {
+            yspeed = 300
+        }
+        if (kb.isHeld(Keys.Left) && this.pos.x > 30) {
+            xspeed = -300
+        }
+        if (kb.isHeld(Keys.Right) && this.pos.x < 770) {
+            xspeed = 300
+        }
+    }
+}
+```
+
+Voor actors zonder keyboard input kan je ook `clamp` gebruiken. 
 
 ```js
 import { clamp } from "excalibur"
 
 class Shark extends Actor {
     onPreUpdate(engine) {
-        //...keyboard code hier
-        this.pos.x = clamp(this.pos.x, 1280);   // afmeting van het level
-        this.pos.y = clamp(this.pos.y, 720);    // afmeting van het level
+        this.pos.x = clamp(this.pos.x, 0, 1280);   // afmeting van het level
+        this.pos.y = clamp(this.pos.y, 0, 720);    // afmeting van het level
     }
 }
 ```
