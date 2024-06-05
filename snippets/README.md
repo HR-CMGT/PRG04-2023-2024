@@ -16,8 +16,9 @@
 - [Spawner en Timer](#object-spawner-en-timer)
 - [Tekst met score](./tekstveld.md)
 - [UI met healthbar](./ui.md)
+- [Troubleshooting](./snippets/troubleshooting.md)
 
-## Bonus technieken
+## Advanced
 
 - [Tiling en Scrolling Background](./scrolling.md)
 - [Een auto besturen](./movedirection.md)
@@ -26,6 +27,10 @@
 - [JSON laden](#json-laden)
 - [Afstanden en vectoren](./vector.md)
 - [Enemy behaviour](./behaviour.md)
+- [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+- [Online Multiplayer met Socket.IO](https://socket.io) of [Lance](https://lance-gg.github.io)
+- [Type Checking](./typechecking.md)
+- [Een excalibur project opzetten zonder het startproject](./snippets/advanced.md)
 
 <br><br><br>
 

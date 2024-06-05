@@ -11,52 +11,46 @@ Door type checking aan te zetten krijg je een meer stricte / strenge controle op
 
 ## Type checking in Javascript
 
-Door **checkJS** op `true` te zetten in een `jsconfig.json` file, krijg je advanced type checking. 
+### JSDoc comments
+
+Je kan [JSDoc](https://jsdoc.app) type notatie gebruiken om types aan te duiden. Hieronder zie je voorbeelden voor classes en functies.
+
+```javascript
+import { Game } from "./game.js"
+export class Bubble extends Actor {
+    /**
+     * @param {number} x
+     * @param {number} y
+     */
+    constructor(x, y) {      // editor weet nu dat x,y numbers moeten zijn
+        super({ x, y }) 
+    }
+    /**
+     * @param { Game } engine
+     */
+    onInitialize(engine) {   // editor weet nu dat engine jouw Game is
+    }
+    
+}
+```
+<br>
+<br>
+<br>
+
+### CheckJS aanzetten
+
+Door **checkJS** op `true` te zetten in krijg je advanced type checking. *In VS Code kan je in settings zoeken naar "checkJS"*. Als jouw editor dit niet heeft kan je het handmatig aanzetten in `jsconfig.json`.
 
 JSCONFIG.JSON
 
 ```json
 {
     "compilerOptions": {
-        "strict": true,
-        "module": "esnext",
-        "target": "es6",
         "checkJs": true,
-        "strictPropertyInitialization": false,
-        "moduleResolution": "node"
     },
-    "include": [
-        "src/js/**/*"
-    ]
 }
 ```
-Je kan nu [JSDoc](https://jsdoc.app) type notatie gebruiken om types aan te duiden. Hieronder zie je voorbeelden voor classes en functies.
 
-```javascript
-/**
- * @class Bubble
- * @extends {Actor}
- */
-xport class Bubble extends Actor {
-    /**
-     * @type { UI }
-     */
-    ui
-    /**
-     * @param {number} x
-     * @param {number} y
-     */
-    constructor(x, y) {
-        super({ x, y }) 
-    }
-    /**
-     * @param { Engine } engine
-     */
-    onInitialize(engine) {
-    }
-    
-}
-```
 Als je het type écht niet weet kan je `type:any` gebruiken, maar dit is eigenlijk hetzelfde als geen type checking gebruiken.
 
 
@@ -64,17 +58,14 @@ Als je het type écht niet weet kan je `type:any` gebruiken, maar dit is eigenli
 <br>
 <br>
 
-## Type checking in Typescript
+## Typescript
 
-Typescript is een superset van Javascript. Dit wil zeggen dat je alle javascript code kan gebruiken in typescript. Typescript voegt hier type checking aan toe.
+Typescript herkent automatisch types, dus je hoeft nu geen `@param` notatie meer te gebruiken. Excalibur is geschreven in Typescript dus dit werkt goed samen.
 
-Excalibur is geschreven in typescript dus dit werkt goed samen. Je hoeft nu geen `@param` notatie te gebruiken.
-
-Je installeert typescript via
 ```bash
 § npm install typescript
 ```
-Je bestanden geef je nu een `.ts` extensie. Door `npm run dev` of `npm run build` te doen, wordt dit omgezet naar javascript.
+Je bestanden geef je nu een `.ts` extensie. Door `npm run dev` of `npm run build` te doen, wordt dit omgezet naar javascript. 
 
 TSCONFIG.JSON
 ```json
@@ -108,12 +99,6 @@ import { Resources } from "./resources"
 
 export class Game extends Engine {
 
-    constructor() {
-        super()
-        const loader = new Loader([Resources.Fish])
-        this.start(loader).then(() => this.startGame())
-    }
-
     showMessage(str : string) : void {
         console.log(`Hello ${str}`)
     }
@@ -121,9 +106,22 @@ export class Game extends Engine {
     addNumbers(a : number, b : number) : number {
         return a + b
     }
+}
 
-    onPreUpdate(engine : Engine) : void {
+export class Mario extends Actor {
+
+    points:number
+
+    onInitialize(engine : Game) : void {
+        this.points = = 0
+    }
+
+    onPreUpdate(engine : Game) : void {
         
+    }
+
+    addPoints(points : number) : void {
+        this.points++
     }
 }
 

@@ -53,6 +53,11 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 - [Excalibur Gallery](https://excaliburjs.com/gallery/), [Show and Tell](https://github.com/excaliburjs/Excalibur/discussions/categories/show-and-tell)
 - [Tenpa Examples](https://github.com/tenpaMk2/excalibur-examples), [Terrible Games](https://github.com/dcgw)
 
+## Youtube tutorials
+
+- [🔥 Drew Conley - Building games with Excalibur](https://www.youtube.com/@DrewConley/search?query=excalibur)
+- [Getting started with OOP in Excalibur - Erik Onarheim](https://www.youtube.com/watch?v=_srmco_KQeE) met [slides](https://slides.com/erikonarheim/build-your-first-game-in-javascript)
+
 ## Assets
 
 - [itch.io assets](https://itch.io/game-assets), [Open Game Art](https://opengameart.org), [Kenney Assets](https://www.kenney.nl/assets)
@@ -62,14 +67,7 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 
 ## Links
 
-- [Codesandbox Excalibur playground](https://codesandbox.io/s/excalibur-vite-testproject-olk4bu?file=/game.js)
-- [Video tutorial Erik Onarheim](https://www.youtube.com/watch?v=_srmco_KQeE) en [slides](https://slides.com/erikonarheim/build-your-first-game-in-javascript)
-- [Voortgang opslaan met localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
-- [Git instellen](https://www.youtube.com/watch?v=HfTXHrWMGVY)
-- [Een excalibur project opzetten zonder het startproject](./snippets/advanced.md)
 - [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [MDN Object Oriented Programming](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
-- [Online Multiplayer met Socket.IO](https://socket.io) of [Lance](https://lance-gg.github.io)
-- [Net Ninja OOP Javascript course](https://www.youtube.com/playlist?list=PL4cUxeGkcC9i5yvDkJgt60vNVWffpblB7)
 - [Javascript Game Design Patterns](https://designpatternsgame.com/patterns)
-- [Type Checking](./snippets/typechecking.md)
+
