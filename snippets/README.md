@@ -23,6 +23,7 @@
 - [Tiling en Scrolling Background](./scrolling.md)
 - [Een auto besturen](./movedirection.md)
 - [Actors zoeken in een Scene](#actors-zoeken)
+- [Een karakter met verschillende wapens (composition)](#wapens)
 - [Random tint](#random-tint)
 - [JSON laden](#json-laden)
 - [Afstanden en vectoren](./vector.md)
@@ -408,11 +409,11 @@ export class Game extends Engine {
 
 
 
-# Bonus techniques
+# Advanced
  
 ## Actors zoeken
 
-Je kan via `scene.actors` alle actors uit een scene opvragen. Je kan met `filter` naar een specifiek *type* actor zoeken.
+Je kan via `scene.actors` alle actors uit een scene opvragen. Je kan met `filter` naar alle actors van een bepaald type zoeken.
 
 ```js
 export class Game extends Engine {
@@ -422,6 +423,46 @@ export class Game extends Engine {
     }
 }
 ```
+Met `actors.find()` kan je zoeken naar één specifieke actor, bv. de player.
+
+<Br><br><br>
+
+## Wapens
+
+![chicken](./chickenfight.gif)
+
+Met composition kan je een karakter verschillende wapens geven. Door te zorgen dat elk wapen dezelfde functies gebruikt, kan elk wapen een ander effect krijgen.
+
+```js
+class ArmedChicken extends Actor {
+    onInitialize(engine){
+        this.weapon = new Gun()
+        this.addChild(this.weapon)
+    }
+    attack(){
+        this.weapon.hit() // dit werkt voor machinegun en gun
+    }
+}
+```
+```js
+class Gun extends Actor {
+    hit(){
+        let bullet = new Bullet()
+        this.scene.engine.add(bullet)
+    }
+}
+```
+```js
+class MachineGun extends Actor {
+    hit(){
+        for(let i = 0; i< 10;i++) {
+            let bullet = new Bullet()
+            this.scene.engine.add(bullet)
+        }
+    }
+}
+```
+- [Voorbeeldcode kip met zwaard 🗡️🐔](https://stackblitz.com/edit/excalibur-chicken) 
 
 <br><br><br>
 
