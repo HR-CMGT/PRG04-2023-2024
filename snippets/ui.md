@@ -60,7 +60,7 @@ export class UI extends ScreenElement {
 
 ## Hartjes
 
-Een voorbeeld van een UI met 6 hartjes naast elkaar:
+Een simpele manier om meerdere hartjes te tekenen is om actors naast elkaar te zetten.
 
 ```js
 export class UI extends ScreenElement {
@@ -107,10 +107,44 @@ export class UI extends ScreenElement {
         this.addChild(actor)
     }
 }
-
-
-
 ```
+
+<br><br><br>
+
+## Herhalende graphics tekenen
+
+Als je `wrapping` aan zet kan je een plaatje eindeloos laten herhalen. De *breedte* van het plaatje bepaalt dan hoe vaak het plaatje herhaalt.
+
+```js
+const Resources = {
+    Heart: new ImageSource('images/heart.png', { wrapping: ImageWrapping.Repeat}),
+}
+```
+```js
+class Hearts extends Actor {
+  constructor() {
+    super({ x: 50, y: 50, anchor: Vector.Zero });
+    this.health = 5
+    this.heartImage = new Sprite({
+      image: Resources.Heart,
+      sourceView: {
+        x: 0,
+        y: 0,
+        width: 100 * this.health,   // basis afmeting van 1 hartje is 100x100
+        height: 100                 // basis afmeting van 1 hartje is 100x100
+      }
+    });
+    this.graphics.use(this.heartImage);
+  }
+  
+  adjustHealth() {
+    this.health--
+    this.heartImage.sourceView.width = 100 * this.health
+    this.heartImage.width = 100 * this.health
+  }
+}
+```
+
 
 <br><br><bR>
 
