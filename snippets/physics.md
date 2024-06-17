@@ -85,35 +85,42 @@ Je kan een physics body de volgende properties meegeven:
 
 ## Player controls en physics
     
-De physics engine regelt de `velocity` van je objecten zoals de speler. Effecten zoals stuiteren zal je niet zien als je handmatig de `velocity` van een object gaat aanpassen. 
-
-Je kan `impulse` gebruiken om een *richting* aan de bestaande `velocity` te geven. Dit wordt beïnvloed door `mass`. Een zwaarder object zal moeizamer op snelheid komen. 
+De physics engine regelt de `velocity` van je objecten zoals de speler. Effecten zoals stuiteren zal je niet zien als je handmatig de `velocity` van een object gaat aanpassen. Je kan `impulse` gebruiken om een *richting* aan de bestaande `velocity` te geven. Dit wordt beïnvloed door `mass`. Een zwaarder object zal moeizamer op snelheid komen. Dit werkt goed voor besturing van (ruimte) schepen of auto's. Als je handmatig de `velocity` zet, dan voelt de besturing hetzelfde als in een non-physics game.
 
 VOORBEELD
     
 ```js
-onInitialize(engine) {
-    this.body.mass = 7    
-}
-onPreUpdate(engine, delta) {
-    if (engine.input.keyboard.isHeld(Keys.D)) {
-        this.body.applyLinearImpulse(new Vector(15 * delta, 0))
+class SpaceShip extends Actor {
+    constructor(x, y) {
+        super({ width: 20, height: 60 })
+        this.body.collisionType = CollisionType.Active
+        this.body.mass = 7    
     }
-
-    if (engine.input.keyboard.isHeld(Keys.A)) {
-        this.body.applyLinearImpulse(new Vector(-15 * delta, 0))
-    }
-
-    if (this.grounded) {
-        if (engine.input.keyboard.wasPressed(Keys.Space)) {
-            this.body.applyLinearImpulse(new Vector(0, -250 * delta))
-            this.grounded = false           // grounded weer op true zetten na collision met ground
+    onPreUpdate(engine, delta) {
+        if (engine.input.keyboard.isHeld(Keys.D)) {
+            this.body.applyLinearImpulse(new Vector(15 * delta, 0))
+        }
     
-            // alternatief voor springen met velocity
-            // this.vel = new Vector(this.vel.x, this.vel.y - 400)
+        if (engine.input.keyboard.isHeld(Keys.A)) {
+            this.body.applyLinearImpulse(new Vector(-15 * delta, 0))
+        }
+    
+        if (this.grounded) {
+            if (engine.input.keyboard.wasPressed(Keys.Space)) {
+                this.body.applyLinearImpulse(new Vector(0, -250 * delta))
+                this.grounded = false           // grounded weer op true zetten na collision met ground
+        
+                // alternatief voor springen met velocity
+                // this.vel = new Vector(this.vel.x, this.vel.y - 400)
+            }
         }
     }
 }
+```
+Als je *Realistic Physics* gebruikt, dan wil je waarschijnlijk niet dat je karakter kan ronddraaien. Dit kan je uitzetten:
+
+```js
+this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation) 
 ```
 
 <br><br><br>
