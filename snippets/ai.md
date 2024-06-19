@@ -11,7 +11,7 @@ Je krijgt meestal niet meteen het gewenste resultaat. Bekijk het antwoord en vra
 > *Create a enemy class with a speed of 5*
 ```js
 class Enemy {
-    speed : 5
+    speed = 5
 }
 ```
 > *Thanks! That's cool but the enemy is not using excalibur, and it's not actually moving*

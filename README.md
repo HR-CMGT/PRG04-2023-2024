@@ -61,9 +61,10 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 ## Assets
 
 - [itch.io assets](https://itch.io/game-assets), [Open Game Art](https://opengameart.org), [Kenney Assets](https://www.kenney.nl/assets)
-- [Create Game Sounds](https://sfxr.me)
+- [Create Game Sounds](https://sfxr.me) en [AI Sound Effects](https://elevenlabs.io/sound-effects)
 - [Tiled game map editor](https://www.mapeditor.org) en [Excalibur plugin](https://excaliburjs.com/docs/tiled-plugin)
-- [AI Pixel Art generator](https://aipixelartgenerator.com/) en [AI Sound Effects](https://elevenlabs.io/sound-effects)
+- [AI Pixel Art generator](https://aipixelartgenerator.com/) 
+- [Pixel fonts](https://www.dafont.com/bitmap.php)
 
 ## Links
 

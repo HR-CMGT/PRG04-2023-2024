@@ -1,5 +1,12 @@
 # UI
 
+- [ScreenElement](#screenelement)
+- [HTML UI](#html-ui)
+
+<br><br><br>
+
+# ScreenElement
+
 Het is handig om tekstvelden, healthbars en dergelijke in een eigen `Actor` class te plaatsen zodat je alles bij elkaar hebt. Het Excalibur [ScreenElement](https://excaliburjs.com/api/class/ScreenElement/) is een Actor class die niet meebeweegt met de camera. Gebruik `this.addChild` om elementen aan je UI toe te voegen.
 
 ### Tekstveld
@@ -175,5 +182,91 @@ class Background extends Actor {
     constructor() {
         this.z = 10
     }
+}
+```
+
+<br><br><br>
+
+
+# HTML UI
+
+Werken met veel tekst en interactieve buttons geeft een minder goede UX ervaring in excalibur. Zodra je veel tekst in je game hebt kan je kiezen om de UI in HTML te bouwen. Je hebt dan `style.transform` nodig om de UI mee te laten schalen met de game.
+
+In dit voorbeeld is de game 800x600 pixels.
+
+HTML
+
+```html
+<body>
+    <div id="ui">
+        <div id="score">Score</div>
+    </div>
+    <script defer type="module" src="/src/js/game.js"></script>
+</body>
+```
+JS
+
+```js
+import '../css/style.css'
+
+// laat de UI meeschalen met de game
+window.addEventListener('resize', () => {
+    const uiDiv = document.getElementById('ui');
+    const scale = Math.min(window.innerWidth / 800, window.innerHeight / 600);
+    uiDiv.style.transform = `scale(${scale})`;
+});
+
+// je kan nu via queryselector de score tonen
+export class Game extends Engine {
+     constructor(model) {
+        super({
+            width: 800, height: 600,
+            displayMode: DisplayMode.FitScreen,
+        })
+        this.start(ResourceLoader).then(() => this.startGame())
+    }
+    startGame() {
+        document.querySelector("#score").innerText = "Score: 10"
+    }
+}
+
+new Game()
+```
+CSS
+```css
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: darkgray;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+canvas {
+    position: absolute;
+}
+
+#ui {
+    transform-origin: top left;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    width: 800px;
+    height: 600px;
+    color: white;
+    font-size: 20px;
+    font-family: "Press Start 2P", sans-serif;
+    pointer-events: none;
+}
+
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 ```

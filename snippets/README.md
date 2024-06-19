@@ -23,7 +23,7 @@
 - [Tiling en Scrolling Background](./scrolling.md)
 - [Een auto besturen](./movedirection.md)
 - [Actors zoeken in een Scene](#actors-zoeken)
-- [Een karakter met verschillende wapens (composition)](#wapens)
+- [Een karakter met verschillende wapens](#wapens)
 - [Random tint](#random-tint)
 - [JSON laden](#json-laden)
 - [Afstanden en vectoren](./vector.md)
