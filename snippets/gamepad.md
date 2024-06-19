@@ -117,7 +117,7 @@ this.mygamepad.on('button', (buttonevent) => {
     }
 })
 this.mygamepad.on('axis', (axisevent) => {
-    if (axisevent.value > 0.5) {
+    if (axisevent.axis === Axes.LeftStickX && axisevent.value > 0.5) {
         console.log("move right event is triggered")
     }
 })
