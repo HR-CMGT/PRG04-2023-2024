@@ -68,7 +68,8 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 
 ## Links
 
+- [Javascript Game Development Newsletter](https://gamedevjsweekly.com)
+- [Javascript Game Design Patterns](https://designpatternsgame.com/patterns)
 - [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [MDN Object Oriented Programming](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
-- [Javascript Game Design Patterns](https://designpatternsgame.com/patterns)
 
