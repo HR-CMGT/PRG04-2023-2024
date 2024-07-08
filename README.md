@@ -62,7 +62,7 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 
 - [itch.io assets](https://itch.io/game-assets), [Open Game Art](https://opengameart.org), [Kenney Assets](https://www.kenney.nl/assets)
 - [Create Game Sounds](https://sfxr.me) en [AI Sound Effects](https://elevenlabs.io/sound-effects)
-- [Tiled game map editor](https://www.mapeditor.org) en [Excalibur plugin](https://excaliburjs.com/docs/tiled-plugin)
+- [Sprite Sheet Maker](https://www.finalparsec.com/tools/sprite_sheet_maker)
 - [AI Pixel Art generator](https://aipixelartgenerator.com/) 
 - [Pixel fonts](https://www.dafont.com/bitmap.php)
 
@@ -70,6 +70,7 @@ In dit vak bouwen we Object Oriented  games met [excalibur](https://excaliburjs.
 
 - [Javascript Game Development](https://gamedevjs.com) en [Newsletter](https://gamedevjsweekly.com)
 - [Javascript Game Design Patterns](https://designpatternsgame.com/patterns)
+- [Game Programming Patterns](https://gameprogrammingpatterns.com)
 - [MDN Game Development](https://developer.mozilla.org/en-US/docs/Games)
 - [MDN Object Oriented Programming](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
 
